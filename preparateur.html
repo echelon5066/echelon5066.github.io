@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!--- Le head--->
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/preparateur.css">
+
+  <title>Chifoumi</title>
+  
+</head> 
+
+<body>
+<div id="background"></div>
+
+<!---L'introduction du jeu--->
+<div id="intro_du_jeu">
+    <h1>
+      Bienvenue au laboratoire de chimie !<br>Tentez de battre le préparateur au chifoumi, version améliorée, pour connaître l’identité de celui qui lui a demandé le poison.
+    </h1>
+    <button class="bouton_intro" onclick="suivant('intro_du_jeu', 'regles')">Suivant</button>
+</div>
+
+<div id="regles" style="display: none;">
+  <div id="reglesFlex">
+    <span>
+      <h1>Règles du jeu</h1>
+      <p>Le chifoumi version améliorée se joue comme un Pierre-Feuille-Ciseaux classique, mais il existe deux possibilités supplémentaires : Lézard et Spock.<br>
+      Le diagramme ci-contre montre les combinaisons gagnantes. Par exemple, le lézard (vert) gagne sur Spock et la feuille, mais perd contre les ciseaux.</p>
+    </span>
+      <img src="/images/preparateur/diagramme.png" />
+  </div>
+    <button class="bouton_intro" onclick="suivant('regles', 'jeu', 'flex')">Jouer</button>
+</div>
+
+<div id="jeu" style="display: none;">
+    <div id="score"><p><b>Score</b><br><span id="score-prep">0</span> à <span id="score-joueur">0</span></p></div>
+    <div id="manche"><span id="texte-manche"></span></div>
+    <div id="plateau">
+        <div id="preparateur"> <!-- Préparateur -->
+          <div class="cercle" id="cercle-prep"></div>
+        </div>
+        <div id="joueur"> <!-- Joueur -->
+          <div class="cercle" id="cercle-joueur"></div>
+          <div class="actions">
+            <button onclick="jouer('P')" style="background-image: url('P.jpeg');"></button>
+            <button onclick="jouer('W')" style="background-image: url('W.jpeg');"></button>
+            <button onclick="jouer('C')" style="background-image: url('C.jpeg');"></button>
+            <button onclick="jouer('L')" style="background-image: url('L.jpeg');"></button>
+            <button onclick="jouer('S')" style="background-image: url('S.jpeg');"></button>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div id="fin" style="display: none;">
+  <h2 id="resultatFinal"></h2>
+  <button onclick="suivant('fin', 'indice')" id="afficherIndice" class="bouton_intro" style="display: none;">Voir la liste</button>
+  <button onclick="window.location.reload()" id="recommencer" class="bouton_intro" style="display: none;">Recommencer</button>
+  <button onclick="window.location='/';" id="retourAccueil" class="bouton_intro" style="display: none;">Accueil</button>
+  <!-- window.location='/'; redirige vers la racine du site (accueil) -->
+</div>
+
+<div id="indice" style="display:none" >
+  <h2><u> Liste des commandes semaine du XX/XX</u></h2>
+  <table id="commandes" style="border: 1px solid black">
+    <tr>
+      <th>Jour</th>
+      <th>Demandeur</th>
+      <th>Produit</th>
+    </tr>
+    <tr>
+      <td>Lundi</td>
+      <td>Monsieur Girafe</td>
+      <td>Permanga-naze de pet-assium</td>
+    </tr>
+    <tr>
+      <td>Mardi</td>
+      <td>Madame Rimaux</td>
+      <td>Nitro-GlycéBoom</td>
+    </tr>
+    <tr>
+      <td>Mercredi</td>
+      <td>Monsieur Limon</td>
+      <td>Acide souffrir-ique</td>
+    </tr>
+    <tr>
+      <td>Mercredi</td>
+      <td>Monsieur Dewez??</td>
+      <td>Eau désolée</td>
+    </tr>
+  </table>
+
+  <div style="text-align: center;"><button onclick = "suivant('indice','outro')" id="retour" class="bouton_intro">Retour</button></div>
+
+</div>
+
+<div id="outro" style="display: none;">
+  <h2 id="resultatFinal"></h2>
+  <button onclick="suivant('fin', 'indice')" id="afficherIndice" style="display: none;">Voir la liste</button>
+  <button onclick="window.location.reload()" id="recommencer" class="bouton_intro" style="display: none;">Recommencer</button>
+  <button onclick="window.location='/';" id="retourAccueil" class="bouton_intro" style="display: none;">Accueil</button>
+  <!-- window.location='/'; redirige vers la racine du site (accueil) -->
+</div>
+
+
+<script>
+    function suivant(disparu, apparu, mode = "block") {
+      document.getElementById(disparu).style.display = "none";
+      document.getElementById(apparu).style.display = mode;
+    }
+</script>
+
+<script>
+const possibilites = [
+  [0,1,2,2,1],
+  [2,0,1,1,2],
+  [1,2,0,2,1],
+  [1,2,1,0,2],
+  [2,1,2,1,0]
+];
+// Tableau à double entrée
+// 0 : match nul
+// 1 : perdu
+// 2 : gagné
+
+const jeu = {
+  "P": ["la pierre", 0, "écrabouille", "f"],
+  "W": ["la feuille", 1, "étouffe", "f"],
+  "C": ["la paire de ciseaux", 2, "déchiquette", "f"],
+  "L": ["le lézard", 3, "mord", "m"],
+  "S": ["Mr Spock", 4, "vaporise", "m"]
+};
+
+const choix = ["P","W","C","L","S"];
+
+let score = [0, 0];
+// Joueur, Préparateur
+
+const manche = document.getElementById("texte-manche");
+const cerclePrep = document.getElementById("cercle-prep");
+const cercleJoueur = document.getElementById("cercle-joueur");
+
+function gagne_sur(a, b){
+  return possibilites[a][b];
+}
+
+function jouer(choixJoueur) {
+  const choixPrep = choix[Math.floor(Math.random() * 5)]; // Choix du préparateur automatique
+  cerclePrep.style.backgroundImage = "url('/images/preparateur/" + choixPrep + "-prep.jpeg')";
+
+  cercleJoueur.style.backgroundImage = "url('/images/preparateur/" + choixJoueur + ".jpeg')"
+  const res = gagne_sur(jeu[choixJoueur][1], jeu[choixPrep][1]);
+  if (res === 0){
+    manche.innerText = "Les deux joueurs ont joué " + jeu[choixJoueur][0] + ". Égalité.";
+  }
+  else if (res === 1){
+    // Préparateur a gagné
+    manche.innerText = "Le préparateur joue " + jeu[choixPrep][0] + " qui " + jeu[choixPrep][2] + " " + jeu[choixJoueur][0] + " que vous avez joué";
+    // Accord du participe passé
+    if (jeu[choixJoueur][3] === "f") {
+      manche.innerText += "e";
+    }
+    manche.innerText += ".";
+  }
+  else {
+    // Joueur a gagné
+    manche.innerText = "Vous jouez " + jeu[choixJoueur][0] + " qui " + jeu[choixJoueur][2] + " " + jeu[choixPrep][0] + " du préparateur.";
+  }
+  scoreDef(res);
+}
+
+function scoreDef(res) {
+  if (res === 1) {
+    // Préparateur a gagné
+    score[1]++;
+    document.getElementById("score-prep").innerText = score[1];
+  } else if (res === 2) {
+    // Joueur a gagné
+    score[0]++;
+    document.getElementById("score-joueur").innerText = score[0];
+  }
+
+  if ((score[0] + score[1]) >= 5) {
+    suivant("jeu", "fin");
+    afficherFin();
+  }
+}
+
+function afficherFin() {
+  if (score[0] > score[1]) {
+    // Victoire du joueur
+    document.getElementById("resultatFinal").innerHTML = "Vous avez gagné contre le préparateur, bravo !<br>Il vous autorise à consulter la liste des commandes."
+    document.getElementById("afficherIndice").style.display = "unset"; // Valeur par défaut
+  } else {
+    document.getElementById("resultatFinal").innerText = "Vous avez perdu contre le préparateur. Réessayez une autre partie !"
+    document.getElementById("recommencer").style.display = "unset";
+  }
+}
+
+/* function pierre_feuille_ciseaux(){
+  while ((score[0] + score[1]) < 3){
+    tour();
+  }
+
+  if (score[0] > score[1]){
+    alert("\nLe joueur A gagne la partie !");
+  } else {
+    alert("\nLe joueur B gagne la partie !");
+  }
+} */
+
+//pierre_feuille_ciseaux();
+/* function tour(){
+  let a, b;
+
+  if ( mode.toLowerCase() === "non"){
+    a = prompt("\nQue joue le joueur A ? (P, W, C, L, S)");
+    b = prompt("Que joue l'adversaire B ? (P, W, C, L, S)");
+  }
+  else if (mode.toLowerCase() === "oui"){
+    a = prompt("\nQue joue le joueur A ? (P, W, C, L, S)");
+    let choix = ["P","W","C","L","S"];
+    b = choix[Math.floor(Math.random() * 5)];
+    alert("L'ordinateur a joué " + b);
+  }
+
+  resultat(a, b);
+  alert("Le score est de " + score[0] + " à " + score[1]);
+} */
+/* function resultat(a, b){
+  let res = gagne_sur(jeu[a][1], jeu[b][1]);
+
+  if (res === 0){
+    alert("\nLes deux joueurs ont joué " + jeu[a][0] + ". Personne n'a gagné.");
+  }
+  else if (res === 1){
+    alert("\nLe joueur B joue " + jeu[b][0] + " qui " + jeu[b][2] + " " + jeu[a][0] + " du joueur A.");
+    score[1]++;
+  }
+  else {
+    alert("\nLe joueur A joue " + jeu[a][0] + " qui " + jeu[a][2] + " " + jeu[b][0] + " du joueur B.");
+    score[0]++;
+  }
+}
+ */
+// let mode = prompt("Voulez-vous jouer contre l'ordinateur ? (oui/non) : ");
+</script>
+
+
+  
+</body>
+</html>
