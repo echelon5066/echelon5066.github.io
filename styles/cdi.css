@@ -1,0 +1,201 @@
+@font-face {
+    font-family: "Segoe UI";
+    src: url('/polices/segoe-ui/Segoe\ UI.ttf') format('truetype');
+    font-weight: normal;
+}
+@font-face {
+    font-family: "Segoe UI";
+    src: url('/polices/segoe-ui/Segoe\ UI\ Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+@font-face {
+    font-family: "Segoe UI";
+    src: url('/polices/segoe-ui/Segoe\ UI\ Italic.ttf') format('truetype');
+    font-style: italic;
+}
+@font-face {
+    font-family: "Segoe UI";
+    src: url('/polices/segoe-ui/Segoe\ UI\ Bold\ Italic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+html, body {
+    height: 100%;
+    margin: 0px;
+}
+body {
+    background-color: black;
+    font-family: 'Segoe UI';
+}
+
+button {
+    font-size: medium;
+    font-family: 'Segoe UI';
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid black;
+    font-size: 1.1em;
+    padding: 10px;
+}
+
+.centre {
+    text-align: center;
+}
+
+.ecran {
+    width: calc(100% - 70px);
+    height: calc(100% - 70px);
+    background-color: blue;
+    position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+#bienvenue {
+    width: 75%;
+    max-height: calc(75% - 20px);
+    overflow-y: auto;
+    position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+#taches {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 7vh;
+    background-color: rgb(42, 42, 42);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+#temps {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    padding-right: 10px;
+}
+
+#logoWindows {
+    height: 100%;
+}
+#logoWindows > img {
+    max-height: 100%;
+    cursor: pointer;
+}
+
+#bureau {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 20px;
+    color: white;
+    gap: 20px;
+}
+#bureau img {
+    width: 6vw;
+    height: auto;
+    cursor: pointer;
+}
+#firefox, #bienvenueEXE {
+    max-width: 6vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+#firefox span, #bienvenueEXE span {
+    word-break: break-all;
+    text-align: center;
+}
+
+#fenetreFirefox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 7vh); /* toute la hauteur sans la barre des tâches */
+    background-color: white;
+    border: 1px solid black;
+    box-sizing: border-box;
+    display: none;
+}
+#contenuFirefox {
+    width: 100%;
+    height: calc(100% - 3vh - 5px - 10px);
+    overflow-y: auto;
+    max-height: calc(100% - 3vh - 5px - 10px);
+}
+#fermerFirefox {
+    position: absolute;
+    width: 3vw;
+    height: 3vh;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    padding: 5px 20px 10px 20px; /* padding en haut / à droite / en bas / à gauche */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4vh;
+    font-weight: bold;
+}
+#titreFirefox {
+    /* enlève la taille du bouton de fermeture et ses paddings */
+    width: calc(100% - 3vw - 2*20px);
+    height: calc(3vh + 5px + 10px);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 20px;
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+}
+#maisonFirefox{
+    height: 2em;
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 10px;
+}
+#maisonFirefox img {
+    height: 100%;
+}
+#accueilFirefox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+#accueilFirefox img {
+    width: 20%;
+}
+#ongletsFirefox {
+    height: 100%;
+}
+#historique {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: unset !important;
+    padding-bottom: 10px;
+}

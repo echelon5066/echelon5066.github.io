@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CDI</title>
+        <link rel="stylesheet" href="styles/cdi.css">
+    </head>
+    <body>
+        <div class="ecran">
+            <div id="bienvenue">
+                <h2>Bienvenue au CDI !</h2>
+                <p>Vous pouvez utiliser cet ordinateur à des fins pédagogiques uniquement. Un navigateur web est à votre disposition dans le cadre de votre travail.</p>
+                <p>L'accès à Internet se fait à condition d'acceptation de la charte d'utilisation des équipements informatiques fournie à votre arrivée dans l'établissement. Tout usage détecté comme illicite ou contrevenant à cette charte sera automatiquement signalé et analysé par l'équipe informatique, et des sanctions seront prises en cas de violation grave.</p>
+
+                <div class="centre">
+                    <button onclick="document.getElementById('bienvenue').style.display = 'none';">Accéder aux ressources</button>
+                </div>
+            </div>
+
+            <div id="bureau">
+                <div id="firefox"><img src="images/cdi/firefox.svg"><span>Firefox</span></div>
+                <div id="bienvenueEXE"><img src="images/cdi/exe.svg"><span>bienvenue.exe</span></div>
+                <div id="mystere"></div>
+            </div>
+
+            <div id="fenetreFirefox">
+                <div id="titreFirefox">
+                    <span id="maisonFirefox"><img src="images/cdi/accueilFirefox.svg" title="Retour à l'accueil"></span>
+                    Firefox ESR 115
+                </div>
+                <div id="fermerFirefox">×</div>
+                <div id="contenuFirefox">
+                    <div id="accueilFirefox">
+                        <img src="images/cdi/firefox.svg">
+                        <span style="font-size: 10vh; font-weight: bold;">Firefox</span>
+                        <!-- Boutons de navigation -->
+                        <div id="navigation">
+                            <button class="bouton" onclick="afficherSite('google')">Google</button>
+                            <button class="bouton" onclick="afficherSite('wikipedia')">Wikipédia</button>
+                            <button class="bouton" onclick="afficherSite('historique')">Historique</button>
+                        </div>
+                    </div>
+                    <div id="ongletsFirefox" style="display: none;">
+                        <div id="google" style="display: none;">
+                            <iframe id="googleIframe" frameborder="0" title="Google" height="100%" width="100%" src="https://gprivate.com"></iframe>
+                        </div>
+                        <div id="wikipedia" style="display: none;">
+                            <iframe id="wikipediaIframe" frameborder="0" title="Wikipédia" width="100%" height="100%" src="https://fr.wikipedia.org"></iframe>
+                        </div>
+                        <div id="ent" style="display: none;">
+                            <iframe id="entIframe" frameborder="0" title="MonLycee.net" width="100%" height="100%" src="https://monlycee.net"></iframe>
+                        </div>
+                        <div id="historique" style="display: none;">
+                            <h1>Historique des recherches</h1>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Page</th>
+                                    <th>URL</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>04/06/2026 à 17h43</td>
+                                    <td>Google</td>
+                                    <td><a href="https://www.google.fr">https://www.google.fr</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 17h38</td>
+                                    <td>Google – première guerre mondiale causes</td>
+                                    <td><a href="https://www.google.fr/search?q=premi%C3%A8re+guerre+mondiale+causes">https://www.google.fr/search?q=première+guerre+mondiale+causes</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 17h29</td>
+                                    <td>Wikipédia – Première Guerre mondiale</td>
+                                    <td><a href="https://fr.wikipedia.org/wiki/Premi%C3%A8re_Guerre_mondiale">https://fr.wikipedia.org/wiki/Première_Guerre_mondiale</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 17h14</td>
+                                    <td>Lumni – La Première Guerre mondiale (1914-1918)</td>
+                                    <td><a href="https://www.lumni.fr/dossier/la-guerre-de-1914-1918-premiere-guerre-mondiale">https://www.lumni.fr/dossier/la-guerre-de-1914-1918-premiere-guerre-mondiale</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 17h01</td>
+                                    <td>Google – exposé SVT cellule eucaryote procaryote</td>
+                                    <td><a href="https://www.google.fr/search?q=expos%C3%A9+SVT+cellule+eucaryote+procaryote">https://www.google.fr/search?q=exposé+SVT+cellule+eucaryote+procaryote</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 16h54</td>
+                                    <td>Futura Sciences – cellule eucaryote définition</td>
+                                    <td><a href="https://www.futura-sciences.com/planete/dossiers/botanique-algues-surprenants-vegetaux-aquatiques-523/page/4/">https://www.futura-sciences.com/planete/dossiers/botanique-algues-surprenants-vegetaux-aquatiques-523/page/4/</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 16h41</td>
+                                    <td>Qwant – schéma cellule animale SVT</td>
+                                    <td><a href="https://www.qwant.com/?q=sch%C3%A9ma+cellule+animale+SVT&t=web">https://www.qwant.com/?q=schéma+cellule+animale+SVT&t=web</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 16h39</td>
+                                    <td>Educasources – ressources SVT seconde</td>
+                                    <td><a href="https://www.educasources.education.fr/index-441.html">https://www.educasources.education.fr/index-441.html</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 16h28</td>
+                                    <td>Google – produit stoxiques</td>
+                                    <td><a href="https://www.google.fr/search?q=produit+stoxiques">https://www.google.fr/search?q=produit+stoxiques</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 16h25</td>
+                                    <td>Google – champignonsntoxiques</td>
+                                    <td><a href="https://www.google.fr/search?q=champignonsntoxiques">https://www.google.fr/search?q=champignonsntoxiques</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 16h17</td>
+                                    <td>Google Traduction – mitochondria en français</td>
+                                    <td><a href="https://translate.google.fr/?sl=en&tl=fr&text=mitochondria">https://translate.google.fr/?sl=en&tl=fr&text=mitochondria</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 16h09</td>
+                                    <td>YouTube</td>
+                                    <td><a href="https://www.youtube.com">https://www.youtube.com</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 16h05</td>
+                                    <td>YouTube – how to train your dragon clip</td>
+                                    <td><a href="https://www.youtube.com/results?search_query=how+to+train+your+dragon+clip">https://www.youtube.com/results?search_query=how+to+train+your+dragon+clip</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 15h47</td>
+                                    <td>Google – Pronote</td>
+                                    <td><a href="https://www.google.fr/search?q=pronote">https://www.google.fr/search?q=pronote</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 15h33</td>
+                                    <td>Qwant – orientation après spé maths physique métiers</td>
+                                    <td><a href="https://www.qwant.com/?q=orientation+apr%C3%A8s+sp%C3%A9+maths+physique+m%C3%A9tiers&t=web">https://www.qwant.com/?q=orientation+après+spé+maths+physique+métiers&t=web</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 15h21</td>
+                                    <td>Onisep – Que faire après le bac ?</td>
+                                    <td><a href="https://www.onisep.fr/formation/apres-le-bac-les-etudes-superieures/que-faire-apres-le-bac">https://www.onisep.fr/formation/apres-le-bac-les-etudes-superieures/que-faire-apres-le-bac</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 15h08</td>
+                                    <td>Google – parcoursup date limite confirmation voeux 2026</td>
+                                    <td><a href="https://www.google.fr/search?q=parcoursup+date+limite+confirmation+voeux+2026">https://www.google.fr/search?q=parcoursup+date+limite+confirmation+voeux+2026</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 15h02</td>
+                                    <td>Parcoursup – calendrier 2026</td>
+                                    <td><a href="https://www.parcoursup.gouv.fr/index.php?desc=calendrier">https://www.parcoursup.gouv.fr/index.php?desc=calendrier</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 14h49</td>
+                                    <td>Gallica BnF – Il faut produire ! Au front on lutte, à l'arrière on produit pour le front</td>
+                                    <td><a href="https://gallica.bnf.fr/ark:/12148/btv1b53015837n.item">https://gallica.bnf.fr/ark:/12148/btv1b53015837n.item</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 14h31</td>
+                                    <td>Qwant – résumé guerre de tranchées conditions soldats</td>
+                                    <td><a href="https://www.qwant.com/?q=r%C3%A9sum%C3%A9+guerre+de+tranch%C3%A9es+conditions+soldats&t=web">https://www.qwant.com/?q=résumé+guerre+de+tranchées+conditions+soldats&t=web</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 14h18</td>
+                                    <td>Encyclopædia Universalis – Tranchées de Verdun</td>
+                                    <td><a href="https://www.universalis.fr/encyclopedie/tranchees-de-verdun/">https://www.universalis.fr/encyclopedie/tranchees-de-verdun/</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 14h03</td>
+                                    <td>Instagram</td>
+                                    <td><a href="https://www.instagram.com">https://www.instagram.com</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 13h55</td>
+                                    <td>Google – synonyme de "dévastateur" pour rédaction</td>
+                                    <td><a href="https://www.google.fr/search?q=synonyme+d%C3%A9vastateur">https://www.google.fr/search?q=synonyme+dévastateur</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 13h51</td>
+                                    <td>Le Robert – synonymes dévastateur</td>
+                                    <td><a href="https://dictionnaire.lerobert.com/definition/devastateur">https://dictionnaire.lerobert.com/definition/devastateur</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 13h39</td>
+                                    <td>Google – brevet des collèges maths 2025 corrigé</td>
+                                    <td><a href="https://www.google.fr/search?q=brevet+des+coll%C3%A8ges+maths+2025+corrig%C3%A9">https://www.google.fr/search?q=brevet+des+collèges+maths+2025+corrigé</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 13h24</td>
+                                    <td>Annabac – sujets corrigés bac maths terminale</td>
+                                    <td><a href="https://www.annabac.com/terminale-generale/mathematiques">https://www.annabac.com/terminale-generale/mathematiques</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 13h11</td>
+                                    <td>Qwant – musique playlist concentration études</td>
+                                    <td><a href="https://www.qwant.com/?q=musique+playlist+concentration+%C3%A9tudes&t=web">https://www.qwant.com/?q=musique+playlist+concentration+études&t=web</a></td>
+                                </tr>
+                                <tr>
+                                    <td>04/06/2026 à 12h44</td>
+                                    <td>Education.gouv.fr – programmes lycée général</td>
+                                    <td><a href="https://www.education.gouv.fr/reussir-au-lycee/les-programmes-du-lycee-general-et-technologique-9812">https://www.education.gouv.fr/reussir-au-lycee/les-programmes-du-lycee-general-et-technologique-9812</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="taches">
+                <div id="logoWindows"><img src="images/cdi/windows.svg"></div>
+                <div id="temps"><span id="heure"></span><span id="date"></span></div>
+            </div>
+        </div>
+
+        <script>
+            const bienvenue = document.getElementById('bienvenue');
+            const onglets = document.getElementById('ongletsFirefox');
+            const google = document.getElementById('google');
+            const wikipedia = document.getElementById('wikipedia');
+            const historique = document.getElementById('historique');
+
+            function afficherHeure() {
+                let date = new Date();
+                // padStart ajoute un zéro devant si nécessaire, afin d'avoir un affichage de 2 chiffres
+                let heures = date.getHours().toString().padStart(2, "0");
+                let minutes = date.getMinutes().toString().padStart(2, "0");
+                let secondes = date.getSeconds().toString().padStart(2, "0");
+                let affichage = heures + ":" + minutes + ":" + secondes;
+                document.getElementById("heure").innerText = affichage;
+            }
+            setInterval(afficherHeure, 500); // Ajuste l'heure toutes les 0.5 secondes (500 ms)
+
+            function afficherDate() {
+                let date = new Date();
+                let jours = date.getDate().toString().padStart(2, "0");
+                let mois = (date.getMonth() + 1).toString().padStart(2, "0");
+                let annees = date.getFullYear();
+                let affichage = jours + "/" + mois + "/" + annees;
+                document.getElementById("date").innerText = affichage;
+            }
+            afficherDate();
+
+            function afficherSite(site) {
+                document.getElementById('accueilFirefox').style.display = 'none';
+                onglets.style.display = 'block';
+                if (site == 'historique') {
+                    document.getElementById(site).style.display = 'block';
+                } else {
+                    document.getElementById(site).style.display = 'flex';
+                }
+            }
+
+            document.getElementById('logoWindows').addEventListener('click', () => {
+                if (bienvenue.style.display !== 'none') {
+                    bienvenue.style.display = 'none';
+                }
+            });
+
+            document.getElementById('firefox').addEventListener('dblclick', () => { // Double clic
+                if (bienvenue.style.display !== 'none') {
+                    bienvenue.style.display = 'none';
+                }
+                document.getElementById('fenetreFirefox').style.display = 'unset';
+            });
+
+            document.getElementById('fermerFirefox').addEventListener('click', () => {
+                document.getElementById('fenetreFirefox').style.display = 'none';
+            });
+
+            document.getElementById('maisonFirefox').addEventListener('click', () => {
+                [google, wikipedia, historique, onglets].forEach(element => {
+                    element.style.display = 'none';
+                })
+                document.getElementById('accueilFirefox').style.display = 'flex';
+            });
+
+            document.getElementById('bienvenueEXE').addEventListener('dblclick', () => {
+                if (bienvenue.style.display == 'none') {
+                    bienvenue.style.display = 'unset';
+                }
+            });
+        </script>
+    </body>
+</html>
