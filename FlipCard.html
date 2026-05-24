@@ -1,0 +1,439 @@
+
+<html>
+<body> 
+
+        <meta charset="UTF-8">
+        <title>PageFrofro</title>
+
+<head>
+<style>
+
+body{
+display:flex;
+flex-direction:column;
+justify-content: center;
+align-items:center;
+
+background-image: url("Medias/salle_frofro.png");
+font-family: "Georgia";
+background-size: 100%;}
+
+ #conteneur_compteur_de_points{
+			top:5vh;
+			left:5vh;
+			position : absolute;
+			width : 200px;
+			border-radius:5px;
+			display: none;
+			justify-content: space-between;
+		 }
+
+		 #vos_points{
+			width: 150px;
+			font-size: 20px;
+			border-radius: 5px;
+			margin-right: 5px;
+			text-align: center;
+			background-color: white;
+			padding: 10px;
+			right: 15px;
+			position: relative;
+		 }
+		 
+         #compteur_de_points{
+           border-radius: 5px;
+		min-width: 15px;
+		text-align: center;
+		background-color: #74281A;
+		right: 5px;
+		color:white;
+		font-size: 20px;
+		padding: 10px;
+		position: relative;
+          }
+		  
+#conteneur{
+display:none;
+position:relative;
+place-items:center;
+height:50vh;
+width:60vw;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-template-rows: 1fr 1fr 1fr;
+
+}
+
+
+.card {
+ width: 90%;
+  height: 90%;
+	
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+
+  
+    
+}
+
+
+.card__face {
+border-radius:7px;
+font-weight:bold;
+position: absolute;
+    width: 90%;
+    height: 90%;
+    color: white;
+    
+  white-space: pre-line;
+  
+    font-size: clamp(10px, 0.8em, 1vh);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    
+    padding: 10px;
+	
+
+   
+}
+
+.card__face--front {
+  background: #0C900B;
+  text-align:center;
+}
+
+.card__face--back {
+   background: #BC1100;
+  transform: rotateY(180deg);
+}
+#mj{
+			z-index:10;
+			display:block;
+            position : fixed;
+			top:5px;
+			right:5px;
+            color: black;
+            padding: 7px 4px;
+			margin: 5px 10px;
+            border: black;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+			}
+
+
+
+
+#divrep1{
+			display:block;
+			
+			box-sizing: border-box;
+		  position : absolute;
+		  bottom : 20px;
+		  max-height:25vh;
+		  width:100%;
+		  justify-content: center;
+			align-items:center;
+			}
+			
+		.rep{
+			box-sizing: border-box;
+   
+    color: black;
+    background-color: #A0F0C8BF;
+	
+    border-radius: 5px;
+    font-size:clamp(16px, 2.4vw, 20px);
+    text-align: justify;
+	padding:50px 200px 50px 50px;
+	margin:30px 30px 0px 10px;
+line-height:1.4em;	
+            }
+			
+			.perso{
+			position: absolute;
+			left: 0px;
+			top: 20px;
+			color: white;
+			padding: 15px;
+			font-size:clamp(14px, 1vw, 18px) ;
+			background-color: #008b7c;
+			}
+			
+			
+			 
+			  
+			 
+			 .Suivant{
+            position : absolute;
+            right: 20px;
+           
+            color: white;
+            padding: 17px 44px;
+            border: red;
+            border-radius: 5px;
+            font-size: clamp(16px, 1.2vw, 20px);
+            cursor: pointer;
+            background-color:#008b7c;
+			font-family:"Georgia";
+			display:block;
+			bottom:30px;
+			}
+            
+			.Ampel{
+			width:100px;
+			position:relative;
+		
+			margin-top:50px;
+			display:none;
+			margin-bottom:15px;}
+			
+			#Conteneur_Images{
+			display:none;
+position:relative;
+place-items:center;
+    height: 75vh;
+    width: 70vw;
+grid-template-columns: 1fr 1fr ;
+
+			}
+			#Fin{
+			display:none;
+			width:100%;
+			}
+			#Lettre{
+			display:none;
+			max-width:100%;
+			height:80vh;
+			}
+			#Contrat{
+			display:block;
+			max-width:100%;
+			height:80vh;
+			}
+</style>
+</head>
+
+
+<body>
+<input id="mj" type="button" onclick="game_master()"  value="accès MJ"><!--- bouton de triche pour nous, pour aller direct à l'outro--->
+<div id="divrep1" >
+		<div class="perso" id="perso">Narrateur
+		</div>
+	
+		<div class="rep" id="texte" >Vous entrez en salle G101, Mme Fromage vous attend, l'air mysterieux
+</div>
+		</div>
+<input id="next" type="button" value="suivant" class="Suivant" style="right:50px;" onclick=changer_de_div() >
+
+<div id="Conteneur_Images">
+	<img src="Medias/Contrat1.jpg" id="Contrat"  ></img>
+	<img src="Medias/Fin_Lettre.png" id="Fin"  ></img>
+	<img src="Medias/Lettre_Recomposee.png" id="Lettre"  ></img>
+</div>
+<script>
+let z=0
+const textes=[
+
+"Asseyez-vous, cher apprenant, j’ai pu vous observer depuis l’ouverture de cette enquête et je dois dire que je suis impressionnée !", 
+"Comme vous le savez, je travaille à la Stasi, la police secrète de RDA et je suis toujours à la recherche de nouveaux IM (collaborateurs officieux).",
+"J’aimerais donc vous tester, pour voir si vous avez les capacités de poursuivre cette carrière, qui offre de nombreux avantages, à savoir l’accès aux preuves trouvées par les agents Stasi comme moi … Mais je n’en dis pas plus pour le moment.", 
+"Comme vous le savez, un IM doit être capable de pister des citoyens suspects, de faire preuve de réflexion, d’endurance. Il doit noter les détails les plus insignifiants sur la vie de ses cibles et bien cacher ces informations !" ,
+"Le test traditionnel commence par une évaluation de mathématiques en allemand après 24h sans sommeil pour tester vos capacités de réflexion… mais je pense que vous avez déjà fait vos preuves sur cet aspect-ci lors de cette enquête ! Il ne reste donc à tester que la mémoire.",
+"J’ai observé depuis un an et demi six personnes désignées comme suspectes par le parti et j’ai noté des informations sur leur vie. J’ai écrit ces informations et le noms des cibles sur des cartes de mémory, à vous de retrouver les paires !",
+"Autre chose, l'Ampelmann, le bonhomme piéton, est un symbole très important pour la RDA, prenez garde à bien le respecter ! Si l'Ampelmann est rouge, NE CLIQUEZ PAS SUR UNE AUTRE CARTE !",
+"",
+"Eh bien, je suis impressionnée ! Vous avez l'étoffe d’un IM !",
+" Voici un contrat de travail, je vous laisse du temps pour y réfléchir. ",
+"Oh, et pour vous motiver, voilà un morceau de papier que j’ai trouvé lors de mes recherches, je suis sûre que vous y trouverez une utilité…",
+"C'est la fin de la lettre retrouvée par M. Peccable ! ",
+"Cette enquête est désormais terminée, avez-vous démasqué le coupable ? Rendez-vous à l'accueil pour vérifier votre théorie !"
+]
+documents_frofro=[0,0,0,0,0,0,0,0,"Contrat","fin_lettre","lettre_complète"]
+ function changer_de_div(){
+      document.getElementById("perso").innerHTML="Mme Fromage";
+      document.getElementById("texte").innerHTML=textes[z];
+	  z=z+1;
+	
+	  if (z==8){
+		document.getElementById("divrep1").style.display="none";
+		document.getElementById("next").style.display="none";
+		document.getElementById("conteneur").style.display="grid";
+		document.getElementById("Vert").style.display="block";
+		document.getElementById("conteneur_compteur_de_points").style.display="flex";
+		}
+	if (z==10){
+		document.getElementById("Conteneur_Images").style.display="grid";
+		
+	    }
+	if (z==11){
+		document.getElementById("Fin").style.display="block";
+		
+	    }	
+	if (z>=12){
+		document.getElementById("Fin").style.display="none";
+		document.getElementById("Lettre").style.display="block";
+		document.getElementById("perso").innerHTML="Narrateur";
+	    }	
+if (z==14){
+alert("fin");
+		document.getElementById("divrep1").style.display="none";
+		document.getElementById("Conteneur_Images").style.display="none";
+		document.getElementById("next").style.display="none";
+	    }		
+	  }
+</script>
+<div id="jeu">
+<div id="conteneur_compteur_de_points">	
+		<div id = "vos_points" > Score </div>
+		<div id = "compteur_de_points">0</div>
+	</div>
+
+
+
+<img class="Ampel" id="Vert" src="Medias/AmpelmannVert.png"></img>
+<img class="Ampel" id="Rouge" src="Medias/AmpelmannRouge.png"></img>
+
+
+
+
+<div id="conteneur">
+<div class="card" id="card0"></div>
+<div class="card" id="card1"></div>
+<div class="card" id="card2"></div>
+<div class="card" id="card3"></div>
+<div class="card" id="card4"></div>
+<div class="card" id="card5"></div>
+<div class="card" id="card6"></div>
+<div class="card" id="card7"></div>
+<div class="card" id="card8"></div>
+<div class="card" id="card9"></div>
+<div class="card" id="card10"></div>
+<div class="card" id="card11"></div>
+ </div>
+</div>
+<script>
+let Score=0;
+let  CoupleSelectionne=[]
+let IDSelectionnes=[]
+let listeContenu = [ "Marguerite"," A 3 petites soeurs fans de shopping\n\n	Va à l'île de Ré pendant les vacances\n\n	Saute une ligne entre chaque ligne\n",
+ "Maryam" , "Trompe son mari avec la deuxième femme de son mari\n\n	A un ordinateur à l'agonie\n\n	Fait espagnol (bouuuuuh)\n"	,
+ "Charles"," A beaucoup de femmes\n\n Habite à Houilles\n\n  Mange du riz avec du yaourt\n" ,
+ "M. Rayon","Aime la Sachertorte mais pas la géographie \n\n A un filleul Berlinois qui s'appelle Basile Serrier\n\n Est né le 6 mai vers 22h30\n",
+ "Zéphyr","Respecte les normes pep-8\n \nA une graphie legendaire\n \n	Est surnommé Frolin par des frequentations douteuses\n",
+ "Yves","Est toujours en retard\n\n	A un frère, traître à la patrie\n\n	Compte les Patrick Boucheron\n	" ] 
+let listecouple= [[ "Marguerite"," A 3 petites soeurs fans de shopping\n\n	Va à l'île de Ré pendant les vacances\n\n	Saute une ligne entre chaque ligne\n"],
+ ["Maryam" , "Trompe son mari avec la deuxième femme de son mari\n\n	A un ordinateur à l'agonie\n\n	Fait espagnol (bouuuuuh)\n"]	,
+ ["Charles"," A beaucoup de femmes\n\n Habite à Houilles\n\n  Mange du riz avec du yaourt\n"] ,
+ ["M. Rayon","Aime la Sachertorte mais pas la géographie \n\n A un filleul Berlinois qui s'appelle Basile Serrier\n\n Est né le 6 mai vers 22h30\n"],
+ ["Zéphyr","Respecte les normes pep-8\n \nA une graphie legendaire\n \n	Est surnommé Frolin par des frequentations douteuses\n"],
+ ["Yves","Est toujours en retard\n\n	A un frère, traître à la patrie\n\n	Compte les Patrick Boucheron\n	" ] ]
+
+for (let j = 0 ; j < 12 ; j++){
+	let nomCarte= 'card'+j
+	let card = document.getElementById(nomCarte)
+	
+	let divCarte_face = document.createElement("div")	
+	divCarte_face.textContent = "Memory STASI";
+	divCarte_face.className = "card__face card__face--front";
+	
+	let divCarte_back = document.createElement("div")
+	let index = Math.floor(Math.random() * listeContenu.length);
+	let texte = listeContenu[index]
+	divCarte_back .textContent = texte;
+	divCarte_back .className = "card__face card__face--back";
+	card.appendChild(divCarte_face)
+	card.appendChild(divCarte_back);
+	listeContenu.splice(index, 1);}
+
+for (let i = 0; i < 12; i++) {
+    let nomCarte = 'card' + i;
+    let carte = document.getElementById(nomCarte);
+    let rotate = 0;
+
+    carte.addEventListener('click', function() {
+		if (CoupleSelectionne.length !=2){
+			rotate=180;
+			this.style.transform = 'rotateY('+rotate+'deg)';
+
+			let mot = this.querySelector(".card__face.card__face--back").textContent;
+			CoupleSelectionne.push(mot);
+
+			IDSelectionnes.push(this);
+		
+   
+			console.log(CoupleSelectionne,IDSelectionnes)
+			  if (IDSelectionnes[0]==IDSelectionnes[1]){
+						CoupleSelectionne=[CoupleSelectionne[0]];
+						IDSelectionnes=[IDSelectionnes[0]]
+						
+						}
+			
+			
+			
+			if (CoupleSelectionne.length==2 && IDSelectionnes[0]!=IDSelectionnes[1] ){
+			//alert("yena2");
+			
+				A=listecouple.findIndex(couple => couple.includes(CoupleSelectionne[0]));
+				B=listecouple.findIndex(couple => couple.includes(CoupleSelectionne[1]));
+				//console.log(A,B);
+				document.getElementById("Vert").style.display="none";
+				document.getElementById("Rouge").style.display="block";
+				
+				setTimeout(function(){
+					console.log("consequence");
+					document.getElementById("Vert").style.display="block";
+					document.getElementById("Rouge").style.display="none";
+					
+					
+					  
+						if (A==B ){
+							console.log(listecouple[A],CoupleSelectionne,IDSelectionnes);
+							//alert("bravo");
+							IDSelectionnes[0].style.visibility="hidden";
+							IDSelectionnes[1].style.visibility="hidden";
+							Score++;
+							document.getElementById('compteur_de_points').innerHTML = Score; //on update le contenu de compteur de points
+						if (Score==6){
+						document.getElementById("jeu").style.display="none";
+						
+						z=9;//on dit bonjour au nouveau paramètre, z 
+						document.getElementById("texte").innerHTML=textes[8];
+		                document.getElementById("divrep1").style.display="block";
+						document.getElementById("next").style.display="block";//on montre le bouton suivant de l'outro (pas le même que celui pour changer de question)
+						}
+						
+						}
+						
+						else {
+							rotate=0
+							IDSelectionnes[0].style.transform='rotateY('+rotate+'deg)';
+							IDSelectionnes[1].style.transform='rotateY('+rotate+'deg)';
+					
+				
+							//alert("non");
+						}
+						CoupleSelectionne=[];
+						IDSelectionnes=[]
+			  }, 3000);
+				 
+			
+			}
+		}
+//console.log(CoupleSelectionne,IDSelectionnes);
+    });
+}
+
+function game_master(){//fonction pour la santé mentale : permet d'aller direct à la fin du jeu 
+     document.getElementById('compteur_de_points').innerHTML = Score; //on update le contenu de compteur de points
+	 z=6;
+	 Score=5;
+	 //parce qu'on a le droit, c'est nous qu'on code d'abord
+	 }
+//rajouter ampelmann vert et rouge à la place de top et stop + dans discours de fromageot, les ampelmanns sont très importants en ddr, un im doit savoir les respecter !! 
+</script>
+</body>
+</html>
