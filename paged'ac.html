@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="accueil.css">
+  <link href="https://fonts.googleapis.com/css2?family=Eater&display=swap" rel="stylesheet">
+  <title>Page d'accueil</title>
+</head>
+
+<body>
+
+<div id="boite_dialogue">
+  <p id="texte_jeu">Bienvenue au lycée Henri IV</p>
+  <button id="bouton_suivant" onclick="avancerHistoire()">➡</button>
+</div>
+
+<audio id="brouhaha" src="accueil/brouhaha.wav" ></audio>
+<audio id="ambiance_konoha" src="accueil/ambiance_konoha.mp3" ></audio>
+<audio id="ting_notif" src="accueil/ting_notif.mp3"  ></audio>
+
+
+<div id="debut_jeu">
+  <div class="fond fond1"></div>
+  <button id = "jouer_1" onclick="suivant('debut_jeu','hall_lycee');demarrerDialogue()">JOUER !</button>
+  <div id="titre">
+    <h1> ESCAPE GAME H4</h1>
+    <h2>Le meurtrier est toujours dans le lycée ...</h2>
+  </div>
+</div>
+
+
+<div id="hall_lycee">
+	<div class="fond fond2"></div>
+	
+	<div id="notif_motta" style="display: none;">
+    <button class="notif_fermer" onclick="fermerNotif()">X</button>
+    <div class="notif_titre">Message urgent</div>
+    <div class="notif_texte">Annonce en cours en salle des Génovéfains, y aller vite</div>
+	</div>
+
+<button id="aller_geno" onclick="suivant('hall_lycee','salle_geno');document.getElementById('video_geno').play(); fermerNotif(); document.getElementById('ambiance_konoha').pause()">Aller en salle de Génovéfains</button>
+
+<button id="aller_panneau" style="display: none;" onclick="window.location.href='panneau.html'">Aller vers le panneau d'affichage</button>
+
+</div>
+ 
+
+<div id="salle_geno">
+  
+  <video id="video_geno" controls onended="suivant('salle_geno', 'hall_lycee'); document.getElementById('boite_dialogue').style.display = 'block'; document.getElementById('aller_geno').style.display = 'none';document.getElementById('ambiance_konoha').play()">
+    <source src="accueil/VideoProjetNSI.mp4" type="accueil/mp4">
+  </video>
+  
+  
+  
+  <div id="smg">
+	<div class="cheveux"></div>
+	<div class="tete">
+    <div class="oeil g"></div>
+    <div class="oeil d"></div>
+    <div class="bouche"></div>
+  </div>
+</div>
+
+
+</div>
+
+<script>
+ function suivant(disparu,apparu){
+   document.getElementById(disparu).style.display = "none";
+  document.getElementById(apparu).style.display = "block";
+ }
+ 
+ function fermerNotif() {
+   document.getElementById('notif_motta').style.display = "none";
+ }
+ 
+const dialogues = [
+  "Quel joli lycée... C'est toujours un plaisir de venir ici, même le samedi :) ! ",
+  "Quel est donc tout ce brouhaha ? Pourquoi tout le monde a t-il l'air si agité ?",
+  "Oh! Tiens donc ...un message <strong>urgent</strong> de la directrice Motta-Garcia ? Qu'est-ce que cela peut-il bien être ..? Je devrais vite alller voir de ..",
+   "Pauvre monsieur Charpignon, il était si gentil ...quelle tragédie ! <br> <img src= 'accueil/triste.jpg' style = 'width: 68px;' >",
+   "N'empêche que je dois quand même sortir du lycée, j'ai des chats à nourrir moi ... <br> <img src= 'accueil/chat.jpg' style = 'width: 68px;' >",
+   "Et si j'allais voir le <strong>panneau d'affichage</strong> que j'ai vu dans le cloître tout à l'heure"
+];
+
+let index = 0;
+
+// Fonction lancée au clic sur "JOUER !"
+function demarrerDialogue() {
+      index = 0; // On commence avec première phrase
+      document.getElementById("boite_dialogue").style.display = "block"; // On montre la boîte noire
+      document.getElementById("aller_geno").style.display = "none";     // On cache le bouton de fin
+      document.getElementById("texte_jeu").innerHTML = dialogues[index];  // On affiche la 1ère phrase
+	  document.getElementById("ambiance_konoha").play();
+    }
+
+
+
+//lancée à chaque clic sur le bouton "-->"
+function avancerHistoire() {
+      index = index + 1; // On avance d'un élément dans la liste
+
+      // si on n'a pas fini la liste, on met à jour le texte à l'écran
+      if (index < dialogues.length) {
+        document.getElementById("texte_jeu").innerHTML = dialogues[index];
+	if (index === 1) {
+	  document.getElementById("brouhaha").play();
+      document.getElementById("ambiance_konoha").volume = 0.4;
+    }
+     if (index === 2) {
+      document.getElementById("notif_motta").style.display = "block";
+	  document.getElementById("ting_notif").play();
+    }
+	if (index === 3){
+	document.getElementById("boite_dialogue").style.display = "none";
+    document.getElementById("aller_geno").style.display = "block";
+	document.getElementById("brouhaha").pause();
+	}
+	
+	}  
+	if (index === 6){
+	document.getElementById("boite_dialogue").style.display = "none"; 
+    document.getElementById("aller_panneau").style.display = "block";
+  }
+}
+</script>
+  
+</body>
+</html> 
