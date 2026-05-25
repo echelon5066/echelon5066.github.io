@@ -9,20 +9,46 @@
     </head>
     <body>
         <div class="ecran">
-            <div id="bienvenue">
+            <div id="bienvenue" class="bienvenue">
                 <h2>Bienvenue au CDI !</h2>
                 <p>Vous pouvez utiliser cet ordinateur à des fins pédagogiques uniquement. Un navigateur web est à votre disposition dans le cadre de votre travail.</p>
                 <p>L'accès à Internet se fait à condition d'acceptation de la charte d'utilisation des équipements informatiques fournie à votre arrivée dans l'établissement. Tout usage détecté comme illicite ou contrevenant à cette charte sera automatiquement signalé et analysé par l'équipe informatique, et des sanctions seront prises en cas de violation grave.</p>
 
                 <div class="centre">
-                    <button onclick="document.getElementById('bienvenue').style.display = 'none';">Accéder aux ressources</button>
+                    <button onclick="demarrer('bienvenue')">Accéder aux ressources</button>
                 </div>
             </div>
 
-            <div id="bureau">
+            <div id="bureau" style="pointer-events: none;">
                 <div id="firefox"><img src="images/cdi/firefox.svg"><span>Firefox</span></div>
                 <div id="bienvenueEXE"><img src="images/cdi/exe.svg"><span>bienvenue.exe</span></div>
                 <div id="mystere"></div>
+            </div>
+
+            <div id="maj" style="display: none;">
+                <img src="images/cdi/chargement.gif">
+                <p>Installation des mises à jour 0%<br>
+                Ne mettez pas votre PC hors tension. Cette opération va prendre un long moment.</p>
+            </div>
+
+            <div id="bsod" style="display: none;">
+                <span style="font-size: 30vh; margin-bottom: 5%;">;(</span>
+                <span>Votre appareil a rencontré un problème et doit être redémarré.
+                    Nous collectons simplement des informations relatives aux erreurs, puis nous allons peut-être redémarrer l’ordinateur.</span>
+            </div>
+            
+            <div id="popup" class="bienvenue" style="display: none;">
+                <h2>⚠️ Votre PC Windows est compromis ⚠️</h2>
+                <p>Nous avons détecté 27 menaces sur votre PC. À l’avenir, utilisez un antivirus et ne visitez pas de sites Internet louches.</p>
+
+                <div class="centre">
+                    <button onclick="demarrer('popup')">OK</button>
+                </div>
+            </div>
+
+            <div id="taches">
+                <div id="logoWindows"><img src="images/cdi/windows.svg"></div>
+                <div id="temps"><span id="heure"></span><span id="date"></span></div>
             </div>
 
             <div id="fenetreFirefox">
@@ -209,11 +235,6 @@
                     </div>
                 </div>
             </div>
-
-            <div id="taches">
-                <div id="logoWindows"><img src="images/cdi/windows.svg"></div>
-                <div id="temps"><span id="heure"></span><span id="date"></span></div>
-            </div>
         </div>
 
         <script>
@@ -222,27 +243,33 @@
             const google = document.getElementById('google');
             const wikipedia = document.getElementById('wikipedia');
             const historique = document.getElementById('historique');
+            const popup = document.getElementById('popup');
 
             function afficherHeure() {
                 let date = new Date();
                 // padStart ajoute un zéro devant si nécessaire, afin d'avoir un affichage de 2 chiffres
-                let heures = date.getHours().toString().padStart(2, "0");
-                let minutes = date.getMinutes().toString().padStart(2, "0");
-                let secondes = date.getSeconds().toString().padStart(2, "0");
+                let heures = (Math.floor(Math.random() * (23 - 0 + 1))).toString().padStart(2, "0");
+                let minutes = (Math.floor(Math.random() * (59 - 0 + 1))).toString().padStart(2, "0");
+                let secondes = (Math.floor(Math.random() * (59 - 0 + 1))).toString().padStart(2, "0");
                 let affichage = heures + ":" + minutes + ":" + secondes;
                 document.getElementById("heure").innerText = affichage;
             }
-            setInterval(afficherHeure, 500); // Ajuste l'heure toutes les 0.5 secondes (500 ms)
+            setInterval(afficherHeure, 200);
 
             function afficherDate() {
                 let date = new Date();
-                let jours = date.getDate().toString().padStart(2, "0");
-                let mois = (date.getMonth() + 1).toString().padStart(2, "0");
-                let annees = date.getFullYear();
+                let jours = (Math.floor(Math.random() * 31) + 1).toString().padStart(2, "0");
+                let mois =  (Math.floor(Math.random() * 12) + 1).toString().padStart(2, "0");
+                let annees = Math.floor(Math.random() * (2099 - 1601 + 1)) + 1601;
                 let affichage = jours + "/" + mois + "/" + annees;
                 document.getElementById("date").innerText = affichage;
             }
             afficherDate();
+
+            function demarrer(id) {
+                document.getElementById(id).style.display = 'none';
+                document.getElementById('bureau').style.pointerEvents = 'auto';
+            }
 
             function afficherSite(site) {
                 document.getElementById('accueilFirefox').style.display = 'none';
@@ -255,9 +282,17 @@
             }
 
             document.getElementById('logoWindows').addEventListener('click', () => {
-                if (bienvenue.style.display !== 'none') {
-                    bienvenue.style.display = 'none';
-                }
+                ['taches', 'bureau', 'fenetreFirefox'].forEach(element => {
+                    document.getElementById(element).style.display = 'none';
+                })
+                document.getElementById('maj').style.display = 'flex';
+                setTimeout(() => {
+                    document.getElementById('maj').style.display = 'none';
+                    document.getElementById('bsod').style.display = 'flex';
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                }, 2000);
             });
 
             document.getElementById('firefox').addEventListener('dblclick', () => { // Double clic
@@ -283,6 +318,12 @@
                     bienvenue.style.display = 'unset';
                 }
             });
+
+            setInterval(() => {
+                if (popup.style.display === 'none') {
+                    popup.style.display = 'block';
+                }
+            }, 10000);
         </script>
     </body>
 </html>
