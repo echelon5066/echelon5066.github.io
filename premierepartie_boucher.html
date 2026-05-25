@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>M. Boucher</title>
+        <style>
+			#intro{display:block}
+			#intro img{position: relative; top : 0vh; left: 0vw;width:100vw }
+			#suivant1{position: absolute; top:92%; left: 50%; transform:translateX(-50%);font-size: 20px; background-color : #303C3A; color:white}
+			#txt1{position: absolute; top : 86%; left: 50%; transform:translateX(-50%); font-size: 20px; background-color : #303C3A;text-align:center; color:white} 
+			#speaker1{position: absolute; top:83%; left: 50%; transform:translateX(-50%); font-size: 20px; background-color : #303C3A;color:white}
+			
+			#fond{position:relative;top:0vh;left:0vh; display:none;height:100vh}
+			#fond img{height:100vh;display:block;}
+			#restart{position: absolute; top:2%; left: 98%; transform:translateX(-50%);font-size: 20px; background-color : #303C3A; color:white}
+			body{margin: 0}
+            #suivant{position: absolute; top:72%; left: 22.5%; transform:translateX(-50%);font-size: 20px; background-color : #303C3A; color:white}
+			#txt2{position: absolute; top : 66%; left: 22.5%; transform:translateX(-50%); font-size: 20px; background-color : #303C3A;text-align:center; color:white} 
+			#speaker{position: absolute; top:63%; left: 22.5%; transform:translateX(-50%); font-size: 20px; background-color : #303C3A;color:white}
+			
+			#fini{position:relative;top:0vh;left:0vh; display:none;height:100vh}
+			#extrait{position: absolute; top:50%; left: 50%; transform:translateX(-50%)}
+			#fond_fini{position: absolute; top : 0vh; left: 0vw;width:100vw}
+			#suivant2{position: absolute; top:92%; left: 50%; transform:translateX(-50%);font-size: 20px; background-color : #303C3A; color:white}
+			
+			#ordi{position:relative;top:0vh;left:0vh; display:none;width:100vw; height:100vh}
+			#ordi img{position:absolute;width:100vw}
+			#lien{position: absolute; top:70%; left: 50%; transform: translate(-50%, -50%); color:white; font-size: 40px}
+        </style>
+    </head>
+    <body>
+		<div id="intro"> <!-- page d'intro avec dessin à ajouter-->
+			<img src="intro.jpg">
+			<button id="suivant1" onclick='deroul()'> Suivant </button>
+			<div id="txt1"> ... </div>
+			<div id="speaker1"> NARRATEUR </div>
+		</div>
+		<div id="fond"><!-- fond de jeu avec armoire-->
+			<img src="bibli.png">
+			<button id="suivant" onclick='deroul()'> Suivant </button>
+			<div id="txt2"> ... </div>
+			<div id="speaker"> M. BOUCHER </div>
+			<img id="livre0" src="0Sappho.png">
+			<img id="livre1" src="0Phedre.png">
+			<img id="livre2" src="0LPDC.png">
+			<img id="livre3" src="0Freud.png">
+			<img id="livre4" src="0BdV.png">
+			<img id="livre5" src="0ArriaMarcella.png">
+			<button id="restart" onclick='restart()'> Recommencer </button>
+		</div>
+		
+		<div id="fini"> <!-- fond terminé avec livres bien placés à faire-->
+			<img id="fond_fini" src="liendelimageavectoutbienplacé.jpg"> 
+			<img id="extrait" src="extrait.png">
+			<button id="suivant2" onclick='deroul()'> Suivant </button>
+		</div>
+		
+		<div id="ordi"> <!-- outro-->
+			<img src="ordi.jpg">
+			<a id="lien" src="liensiteEol.html"> ALLUMER L'ORDINATEUR </a> <!-- à compléter-->
+		</div>
+		<script>
+		
+		let i = 0 //compteur//
+		let paroles = ["Tiens ? On dirait que M. Boucher est au CDI.", 
+		"Allons l'interroger, on ne sait jamais, peut-être qu'il sait quelque chose.",
+		"Ô rage ! Ô désespoir ! Ô maladresse ennemie ! N'ai-je tant vécu que pour cette comédie ?",
+		"*se tourne* Qui est-ce ? Ah c'est toi ! Comment oublier une écriture aussi affreuse que la tienne..! J'en ai encore des frissons ! ",
+		"Non ATTENDS ! J'ai besoin de toi, gamin-e ! Je dois trier cette énorme pile de livres que j'ai fait tomber... Tiens, prends ceux-là et range-les par thèmes, s'il-te-plaît ! Merci!",
+		"Bon tri !",
+		"Je te remercie ! Quelle efficacité ! ", 
+		"Il me reste ce livre... Pauvre Flaubert ! C'est une insulte à Emma Bovary! M. Cocombrette a eu le culot de me le rendre avec une page cornée."];
+		// ensemble des paroles du narrateur et de M. BOUCHER, appelées par indice i (de 0 à 7)
+		
+		let txt1 = document.getElementById("txt1");
+		let txt2 = document.getElementById("txt2");
+		let speaker1 = document.getElementById("speaker1");
+		let livresjustes=7;//juste pour tester sans ta partie
+		
+		function deroul(){
+		if (i<2){
+		txt1.innerHTML = paroles[i];
+		i = i+1 ; } // fonction qui structure tout le déroulement de la page (paroles et changements fond) par l'avancement de la valeur de i, 
+		// dans l'ordre : intro (Narrateur puis B), jeu, version terminée si tout juste, extrait page cornée, ordi (outro)
+		else if (i <5){
+		speaker1.innerHTML = "M. BOUCHER";
+		txt1.innerHTML = paroles[i];
+		i = i+1}
+		else if (i == 5){
+		document.getElementById("intro").style.display = "none";
+		document.getElementById("fond").style.display = "block";
+		txt2.innerHTML = paroles[i];
+		i = i+1} // debut jeu
+		else if (i == 6 && livresjustes==7){
+		txt2.innerHTML = paroles[i];
+		i=i+1;}
+		else if (i == 7){
+		txt2.innerHTML = paroles[i];
+		document.getElementById("fini").style.display = "block";
+		document.getElementById("fond").style.display = "none";
+		alert("Vous examinez la page cornée par M. Concombrette.");
+		txt2.innerHTML = "Intéressant ! Renseignons-nous sur les ordinateurs du CDI.";
+		i= i+1;}
+		else {
+		document.getElementById("ordi").style.display = "block";
+		document.getElementById("fini").style.display = "none";
+		};};
+		
+		function restart(){
+		i = 5
+		document.getElementById("fond").style.display = "block";
+		document.getElementById("ordi").style.display = "none";
+		document.getElementById("fini").style.display = "none";
+		txt2.innerHTML = paroles[5];} //reprend au début du jeu sans l'intro
+        </script>
+    </body>
+</html>
