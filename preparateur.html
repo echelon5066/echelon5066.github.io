@@ -199,54 +199,6 @@ function afficherFin() {
     document.getElementById("recommencer").style.display = "unset";
   }
 }
-
-/* function pierre_feuille_ciseaux(){
-  while ((score[0] + score[1]) < 3){
-    tour();
-  }
-
-  if (score[0] > score[1]){
-    alert("\nLe joueur A gagne la partie !");
-  } else {
-    alert("\nLe joueur B gagne la partie !");
-  }
-} */
-
-//pierre_feuille_ciseaux();
-/* function tour(){
-  let a, b;
-
-  if ( mode.toLowerCase() === "non"){
-    a = prompt("\nQue joue le joueur A ? (P, W, C, L, S)");
-    b = prompt("Que joue l'adversaire B ? (P, W, C, L, S)");
-  }
-  else if (mode.toLowerCase() === "oui"){
-    a = prompt("\nQue joue le joueur A ? (P, W, C, L, S)");
-    let choix = ["P","W","C","L","S"];
-    b = choix[Math.floor(Math.random() * 5)];
-    alert("L'ordinateur a joué " + b);
-  }
-
-  resultat(a, b);
-  alert("Le score est de " + score[0] + " à " + score[1]);
-} */
-/* function resultat(a, b){
-  let res = gagne_sur(jeu[a][1], jeu[b][1]);
-
-  if (res === 0){
-    alert("\nLes deux joueurs ont joué " + jeu[a][0] + ". Personne n'a gagné.");
-  }
-  else if (res === 1){
-    alert("\nLe joueur B joue " + jeu[b][0] + " qui " + jeu[b][2] + " " + jeu[a][0] + " du joueur A.");
-    score[1]++;
-  }
-  else {
-    alert("\nLe joueur A joue " + jeu[a][0] + " qui " + jeu[a][2] + " " + jeu[b][0] + " du joueur B.");
-    score[0]++;
-  }
-}
- */
-// let mode = prompt("Voulez-vous jouer contre l'ordinateur ? (oui/non) : ");
 </script>
 
 
