@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="accueil.css">
+  <link rel="stylesheet" href="styles/accueil.css">
   <link href="https://fonts.googleapis.com/css2?family=Eater&display=swap" rel="stylesheet">
   <title>Page d'accueil</title>
 </head>
@@ -17,9 +17,9 @@
   <button id="bouton_suivant" onclick="avancerHistoire()">➡</button>
 </div>
 
-<audio id="brouhaha" src="accueil/brouhaha.mp3" ></audio>
-<audio id="ambiance_konoha" src="accueil/ambiance_konoha.mp3" ></audio>
-<audio id="ting_notif" src="accueil/ting_notif.mp3"  ></audio>
+<audio id="brouhaha" src="audios/acueil/brouhaha.mp3" ></audio>
+<audio id="ambiance_konoha" src="audios/accueil/ambiance_konoha.mp3" ></audio>
+<audio id="ting_notif" src="audios/accueil/ting_notif.mp3"  ></audio>
 
 
 <div id="debut_jeu">
@@ -51,7 +51,7 @@
 <div id="salle_geno">
   
   <video id="video_geno" controls onended="suivant('salle_geno', 'hall_lycee'); document.getElementById('boite_dialogue').style.display = 'block'; document.getElementById('aller_geno').style.display = 'none';document.getElementById('ambiance_konoha').play()">
-    <source src="VideoProjetNSI.mp4" type="accueil/mp4">
+    <source src="VideoProjetNSI.mp4" type="main/mp4">
   </video>
   
   
@@ -82,8 +82,8 @@ const dialogues = [
   "Quel joli lycée... C'est toujours un plaisir de venir ici, même le samedi :) ! ",
   "Quel est donc tout ce brouhaha ? Pourquoi tout le monde a t-il l'air si agité ?",
   "Oh! Tiens donc ...un message <strong>urgent</strong> de la directrice Motta-Garcia ? Qu'est-ce que cela peut-il bien être ..? Je devrais vite alller voir de ..",
-   "Pauvre monsieur Charpignon, il était si gentil ...quelle tragédie ! <br> <img src= 'accueil/triste.jpg' style = 'width: 68px;' >",
-   "N'empêche que je dois quand même sortir du lycée, j'ai des chats à nourrir moi ... <br> <img src= 'accueil/chat.jpg' style = 'width: 68px;' >",
+   "Pauvre monsieur Charpignon, il était si gentil ...quelle tragédie ! <br> <img src= 'images/accueil/triste.jpg' style = 'width: 68px;' >",
+   "N'empêche que je dois quand même sortir du lycée, j'ai des chats à nourrir moi ... <br> <img src= 'images/accueil/chat.jpg' style = 'width: 68px;' >",
    "Et si j'allais voir le <strong>panneau d'affichage</strong> que j'ai vu dans le cloître tout à l'heure"
 ];
 
