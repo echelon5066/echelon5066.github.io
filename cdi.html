@@ -244,9 +244,10 @@
             const wikipedia = document.getElementById('wikipedia');
             const historique = document.getElementById('historique');
             const popup = document.getElementById('popup');
+            const maj = document.getElementById('maj');
+            const bsod = document.getElementById('bsod');
 
             function afficherHeure() {
-                let date = new Date();
                 // padStart ajoute un zéro devant si nécessaire, afin d'avoir un affichage de 2 chiffres
                 let heures = (Math.floor(Math.random() * (23 - 0 + 1))).toString().padStart(2, "0");
                 let minutes = (Math.floor(Math.random() * (59 - 0 + 1))).toString().padStart(2, "0");
@@ -257,7 +258,6 @@
             setInterval(afficherHeure, 200);
 
             function afficherDate() {
-                let date = new Date();
                 let jours = (Math.floor(Math.random() * 31) + 1).toString().padStart(2, "0");
                 let mois =  (Math.floor(Math.random() * 12) + 1).toString().padStart(2, "0");
                 let annees = Math.floor(Math.random() * (2099 - 1601 + 1)) + 1601;
@@ -287,8 +287,8 @@
                 })
                 document.getElementById('maj').style.display = 'flex';
                 setTimeout(() => {
-                    document.getElementById('maj').style.display = 'none';
-                    document.getElementById('bsod').style.display = 'flex';
+                    maj.style.display = 'none';
+                    bsod.style.display = 'flex';
                     setTimeout(() => {
                         window.location.reload();
                     }, 3000);
@@ -320,7 +320,7 @@
             });
 
             setInterval(() => {
-                if (popup.style.display === 'none') {
+                if (popup.style.display === 'none' && maj.style.display === 'none' && bsod.style.display === 'none') {
                     popup.style.display = 'block';
                 }
             }, 10000);
