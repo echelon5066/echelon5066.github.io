@@ -97,23 +97,28 @@ table, th, td {
     display: flex;
     flex-direction: column;
     align-items: start;
+    flex-wrap: wrap;
     padding: 20px;
     color: white;
-    gap: 20px;
+    row-gap: 20px;
+    column-gap: 5px;
+    height: 100%;
+    max-height: 100%;
+    box-sizing: border-box;
 }
 #bureau img {
     width: 6vw;
     height: auto;
     cursor: pointer;
 }
-#firefox, #bienvenueEXE {
+#bureau > * {
     max-width: 6vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
 }
-#firefox span, #bienvenueEXE span {
+#bureau > * span {
     word-break: break-all;
     text-align: center;
 }

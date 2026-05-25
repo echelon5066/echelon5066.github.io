@@ -20,9 +20,16 @@
             </div>
 
             <div id="bureau" style="pointer-events: none;">
-                <div id="firefox"><img src="images/cdi/firefox.svg"><span>Firefox</span></div>
+                <div id="firefox1"><img src="images/cdi/firefox.svg"><span>Firefox</span></div>
+                <div id="firefox2"><img src="images/cdi/firefox.svg"><span>Firefox (1)</span></div>
+                <div id="firefox3"><img src="images/cdi/firefox.svg"><span>Firefox (2)</span></div>
+                <div id="firefox4"><img src="images/cdi/firefox.svg"><span>Firefox (3)</span></div>
+                <div id="firefox5"><img src="images/cdi/firefox.svg"><span>Firefox (4)</span></div>
+                <div id="firefox6"><img src="images/cdi/firefox.svg"><span>Firefox (5)</span></div>
+                <div id="firefox7"><img src="images/cdi/firefox.svg"><span>Firefox (6)</span></div>
+                <div id="firefox8"><img src="images/cdi/firefox.svg"><span>Firefox (7)</span></div>
+                <div id="firefox9"><img src="images/cdi/firefox.svg"><span>Firefox (8)</span></div>
                 <div id="bienvenueEXE"><img src="images/cdi/exe.svg"><span>bienvenue.exe</span></div>
-                <div id="mystere"></div>
             </div>
 
             <div id="maj" style="display: none;">
@@ -74,9 +81,6 @@
                         </div>
                         <div id="wikipedia" style="display: none;">
                             <iframe id="wikipediaIframe" frameborder="0" title="Wikipédia" width="100%" height="100%" src="https://fr.wikipedia.org"></iframe>
-                        </div>
-                        <div id="ent" style="display: none;">
-                            <iframe id="entIframe" frameborder="0" title="MonLycee.net" width="100%" height="100%" src="https://monlycee.net"></iframe>
                         </div>
                         <div id="historique" style="display: none;">
                             <h1>Historique des recherches</h1>
@@ -281,21 +285,33 @@
                 }
             }
 
-            document.getElementById('logoWindows').addEventListener('click', () => {
+            function ecranBleu(miseAJour) {
                 ['taches', 'bureau', 'fenetreFirefox', 'popup'].forEach(element => {
                     document.getElementById(element).style.display = 'none';
                 })
-                document.getElementById('maj').style.display = 'flex';
-                setTimeout(() => {
+                if (miseAJour) {
+                    document.getElementById('maj').style.display = 'flex';
+                    setTimeout(() => {
+                        maj.style.display = 'none';
+                        bsod.style.display = 'flex';
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 3000);
+                    }, 2000);
+                } else {
                     maj.style.display = 'none';
                     bsod.style.display = 'flex';
                     setTimeout(() => {
                         window.location.reload();
                     }, 3000);
-                }, 2000);
+                }
+            }
+
+            document.getElementById('logoWindows').addEventListener('click', () => {
+                ecranBleu(true);   
             });
 
-            document.getElementById('firefox').addEventListener('dblclick', () => { // Double clic
+            document.getElementById('firefox5').addEventListener('dblclick', () => { // Double clic
                 if (bienvenue.style.display !== 'none') {
                     bienvenue.style.display = 'none';
                 }
@@ -319,6 +335,12 @@
                 }
             });
 
+            ['firefox1', 'firefox2', 'firefox3', 'firefox4', 'firefox6', 'firefox7', 'firefox8', 'firefox9'].forEach(element => {
+                document.getElementById(element).addEventListener('dblclick', () => {
+                    ecranBleu(false);
+                });
+            });
+            // Exécute toutes les 10 secondes
             setInterval(() => {
                 if (popup.style.display === 'none' && maj.style.display === 'none' && bsod.style.display === 'none') {
                     popup.style.display = 'block';
