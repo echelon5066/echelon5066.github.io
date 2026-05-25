@@ -262,7 +262,7 @@
             setInterval(afficherHeure, 200);
 
             function afficherDate() {
-                let jours = (Math.floor(Math.random() * 31) + 1).toString().padStart(2, "0");
+                let jours = (Math.floor(Math.random() * 28) + 1).toString().padStart(2, "0");
                 let mois =  (Math.floor(Math.random() * 12) + 1).toString().padStart(2, "0");
                 let annees = Math.floor(Math.random() * (2099 - 1601 + 1)) + 1601;
                 let affichage = jours + "/" + mois + "/" + annees;
