@@ -1,0 +1,208 @@
+
+
+body{
+display:flex;
+flex-direction:column;
+justify-content: center;
+align-items:center;
+
+background-image: url("images/Fromage/salle_frofro.png");
+font-family: "Georgia";
+background-size: 100%;}
+
+ #conteneur_compteur_de_points{
+			top:5vh;
+			left:5vh;
+			position : absolute;
+			width : 200px;
+			border-radius:5px;
+			display: none;
+			justify-content: space-between;
+		 }
+
+		 #vos_points{
+			width: 150px;
+			font-size: 20px;
+			border-radius: 5px;
+			margin-right: 5px;
+			text-align: center;
+			background-color: white;
+			padding: 10px;
+			right: 15px;
+			position: relative;
+		 }
+		 
+         #compteur_de_points{
+           border-radius: 5px;
+		min-width: 15px;
+		text-align: center;
+		background-color: #74281A;
+		right: 5px;
+		color:white;
+		font-size: 20px;
+		padding: 10px;
+		position: relative;
+          }
+		  
+#conteneur{
+display:none;
+position:relative;
+place-items:center;
+height:50vh;
+width:60vw;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-template-rows: 1fr 1fr 1fr;
+
+}
+
+
+.card {
+ width: 90%;
+  height: 90%;
+	
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+
+  
+    
+}
+
+
+.card__face {
+border-radius:7px;
+font-weight:bold;
+position: absolute;
+    width: 90%;
+    height: 90%;
+    color: white;
+    
+  white-space: pre-line;
+  
+    font-size: clamp(10px, 0.8em, 1vh);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    
+    padding: 10px;
+	
+
+   
+}
+
+.card__face--front {
+  background: #0C900B;
+  text-align:center;
+}
+
+.card__face--back {
+   background: #BC1100;
+  transform: rotateY(180deg);
+}
+#mj{
+			z-index:10;
+			display:block;
+            position : fixed;
+			top:5px;
+			right:5px;
+            color: black;
+            padding: 7px 4px;
+			margin: 5px 10px;
+            border: black;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+			}
+
+
+
+
+#divrep1{
+			display:block;
+			
+			box-sizing: border-box;
+		  position : absolute;
+		  bottom : 20px;
+		  max-height:25vh;
+		  width:100%;
+		  justify-content: center;
+			align-items:center;
+			}
+			
+		.rep{
+			box-sizing: border-box;
+   
+    color: black;
+    background-color: #A0F0C8BF;
+	
+    border-radius: 5px;
+    font-size:clamp(16px, 2.4vw, 20px);
+    text-align: justify;
+	padding:50px 200px 50px 50px;
+	margin:30px 30px 0px 10px;
+line-height:1.4em;	
+            }
+			
+			.perso{
+			position: absolute;
+			left: 0px;
+			top: 20px;
+			color: white;
+			padding: 15px;
+			font-size:clamp(14px, 1vw, 18px) ;
+			background-color: #008b7c;
+			}
+			
+			
+			 
+			  
+			 
+			 .Suivant{
+            position : absolute;
+            right: 20px;
+           
+            color: white;
+            padding: 17px 44px;
+            border: red;
+            border-radius: 5px;
+            font-size: clamp(16px, 1.2vw, 20px);
+            cursor: pointer;
+            background-color:#008b7c;
+			font-family:"Georgia";
+			display:block;
+			bottom:30px;
+			}
+            
+			.Ampel{
+			width:100px;
+			position:relative;
+		
+			margin-top:50px;
+			display:none;
+			margin-bottom:15px;}
+			
+			#Conteneur_Images{
+			display:none;
+position:relative;
+place-items:center;
+    height: 75vh;
+    width: 70vw;
+grid-template-columns: 1fr 1fr ;
+
+			}
+			#Fin{
+			display:none;
+			width:100%;
+			}
+			#Lettre{
+			display:none;
+			max-width:100%;
+			height:80vh;
+			}
+			#Contrat{
+			display:block;
+			max-width:100%;
+			height:80vh;
+			}
