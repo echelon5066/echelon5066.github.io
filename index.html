@@ -12,16 +12,19 @@
 
 <body>
 
+
 <div id="boite_dialogue">
   <p id="texte_jeu">Bienvenue au lycée Henri IV</p>
   <button id="bouton_suivant" onclick="avancerHistoire()">➡</button>
 </div>
 
+//Les sons
 <audio id="brouhaha" src="audios/accueil/brouhaha.mp3" ></audio>
 <audio id="ambiance_konoha" src="audios/accueil/ambiance_konoha.mp3" loop></audio>
 <audio id="ting_notif" src="audios/accueil/ting_notif.mp3"  ></audio>
 
-
+// note: faire la même pour les images
+	
 <div id="debut_jeu">
   <div class="fond fond1"></div>
   <button id = "jouer_1" onclick="suivant('debut_jeu','hall_lycee');demarrerDialogue()">JOUER !</button>
@@ -33,29 +36,33 @@
 
 
 <div id="hall_lycee">
+	//Le fond d'écran, escalier central
 	<div class="fond fond2"></div>
 	
+	//La notification
 	<div id="notif_motta" style="display: none;">
-    <button class="notif_fermer" onclick="fermerNotif()">X</button>
-    <div class="notif_titre">Message urgent</div>
-    <div class="notif_texte">Annonce en cours en salle des Génovéfains, y aller vite</div>
+    	<button class="notif_fermer" onclick="fermerNotif()">X</button>
+   		 <div class="notif_titre">Message urgent</div>
+   		 <div class="notif_texte">Annonce en cours en salle des Génovéfains, y aller vite</div>
 	</div>
+	
+	//Permet d'aller en géno, de lancer la vidéo, de fermer la notif et de mettre le son d'ambiance en pause
+	<button id="aller_geno" onclick="suivant('hall_lycee','salle_geno');document.getElementById('video_geno').play(); fermerNotif(); document.getElementById('ambiance_konoha').pause()">Aller en salle de Génovéfains</button>
 
-<button id="aller_geno" onclick="suivant('hall_lycee','salle_geno');document.getElementById('video_geno').play(); fermerNotif(); document.getElementById('ambiance_konoha').pause()">Aller en salle de Génovéfains</button>
-
-<button id="aller_panneau" style="display: none;" onclick="window.location.href='panneau.html'">Aller vers le panneau d'affichage</button>
+	//Caché au début, pour aller à la page du panneau
+	<button id="aller_panneau" style="display: none;" onclick="window.location.href='panneau.html'">Aller vers le panneau d'affichage</button>
 
 </div>
  
 
 <div id="salle_geno">
-  
+	//Vidéo qui tourne
   <video id="video_geno" onended="suivant('salle_geno', 'hall_lycee'); document.getElementById('boite_dialogue').style.display = 'block'; document.getElementById('aller_geno').style.display = 'none';document.getElementById('ambiance_konoha').play()">
     <source src="VideoProjetNSI.mp4" type="video/mp4">
   </video>
   
   
-  
+  //Une petite dame qui parle
   <div id="smg">
 	<div class="cheveux"></div>
 	<div class="tete">
@@ -69,15 +76,16 @@
 </div>
 
 <script>
+	//mieux de faire une fonction vu le nombre de fois ou on l'utilise
  function suivant(disparu,apparu){
    document.getElementById(disparu).style.display = "none";
   document.getElementById(apparu).style.display = "block";
  }
- 
+	//pour la "X"
  function fermerNotif() {
    document.getElementById('notif_motta').style.display = "none";
  }
- 
+ //la liste des trucs qui apparaîtront dans la boîte de dialogue
 const dialogues = [
   "Quel joli lycée... C'est toujours un plaisir de venir ici, même le samedi :) ! ",
   "Quel est donc tout ce brouhaha ? Pourquoi tout le monde a t-il l'air si agité ?",
@@ -102,30 +110,35 @@ function demarrerDialogue() {
 
 //lancée à chaque clic sur le bouton "-->"
 function avancerHistoire() {
-      index = index + 1; // On avance d'un élément dans la liste
+      index = index + 1; // On avance d'un élément dans la liste des phrases de la boîte
 
       // si on n'a pas fini la liste, on met à jour le texte à l'écran
-      if (index < dialogues.length) {
+	if (index < dialogues.length) {
         document.getElementById("texte_jeu").innerHTML = dialogues[index];
-	if (index === 1) {
-	  document.getElementById("brouhaha").play();
-      document.getElementById("ambiance_konoha").volume = 0.4;
-    }
-     if (index === 2) {
-      document.getElementById("notif_motta").style.display = "block";
-	  document.getElementById("ting_notif").play();
-    }
-	if (index === 3){
-	document.getElementById("boite_dialogue").style.display = "none";
-    document.getElementById("aller_geno").style.display = "block";
-	document.getElementById("brouhaha").pause();
-	}
+
+		//quand il y a du brouhaha
+		if (index === 1) {
+	  		document.getElementById("brouhaha").play();
+      		document.getElementById("ambiance_konoha").volume = 0.4;
+    	}
+		//pour mettre la notif de motta
+     	if (index === 2) {
+      		document.getElementById("notif_motta").style.display = "block";
+	  		document.getElementById("ting_notif").play();
+   		 }
+		//Pour faire disparaître la boîte de dialogue le temps de la vidéo
+		if (index === 3){
+			document.getElementById("boite_dialogue").style.display = "none";
+    		document.getElementById("aller_geno").style.display = "block";
+			document.getElementById("brouhaha").pause();
+		}
 	
 	}  
+	// pour aller au panneu d'affichage (une autre page)
 	if (index === 6){
-	document.getElementById("boite_dialogue").style.display = "none"; 
-    document.getElementById("aller_panneau").style.display = "block";
-  }
+		document.getElementById("boite_dialogue").style.display = "none"; 
+    	document.getElementById("aller_panneau").style.display = "block";
+  	}
 }
 </script>
   
