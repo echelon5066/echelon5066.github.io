@@ -7,8 +7,11 @@ justify-content: center;
 align-items:center;
 
 background-image: url("/images/Fromage/salle_frofro.png");
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 font-family: "Georgia";
-background-size: 100%;}
+}
 
  #conteneur_compteur_de_points{
 			top:5vh;
