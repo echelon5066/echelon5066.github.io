@@ -16,15 +16,15 @@
 		<div id="Txt"> ... </div>
 		<div id="Speaker"> NARRATEUR </div>
 		<script>
-		let i = 0 <!--- compteur -->
+		let i = 0 //compteur //
 		let paroles = ["H4 talents ..? Questions pour un Champion ..? Tout paraît si trivial maintenant.", " *lancer la musique* ", "De la musique classique ? Le son provient de la D001."];
 		let Txt = document.getElementById("Txt");
 		let bouton = document.getElementById("suivant");
-		bouton.addEventListener("click", deroul); <!--- qd clique change le texte selon compteur-->
+		bouton.addEventListener("click", deroul);// qd clique change le texte selon compteur//
 		function deroul(){
 		if (i<=2){
 		Txt.innerHTML = paroles[i];
-		i = i+1 ; }} <!--- qd ttes les paroles dites, ne fait plus rien -->
+		i = i+1 ; }} // qd ttes les paroles dites, ne fait plus rien//
         </script>
     </body>
 </html>
