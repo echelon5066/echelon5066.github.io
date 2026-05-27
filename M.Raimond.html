@@ -2,11 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Musik-Zuerst_Raimond</title>
+        <title>Musik-Zuerst_Rayon</title>
         <style>
 		body {
 			min-height:100vh;
-			background-image:url("images/fdSalle.jpg");
+			background-image:url("images/rayon/fdSalle.jpg");
 			background-repeat: no-repeat; 
 			background-size: cover;
 			background-position: absolute;
@@ -144,7 +144,8 @@
 	<select id="menu4"></select>
 	<select id="menu5"></select>
 	<button id="bouton">suivant</button>
-	<img id="Agenda" src="images/Agenda.png" alt="Agenda">
+	<img id="Agenda" src="images/rayon/Agenda.png" alt="Agenda">
+	<p class="rep" id="Suspect>Tiens tiens... une réunion sur la snt dans le jardin... peu avant qu'on l'y trouve mort ! Je crois qu'on a trouvés nos suspects ! Et ce cup of Tea avec M. Waterlimon la veille... Allons voir si il sait quelque chose ! je crois que les salles des professeurs sont indiqués sur le panneau d'affichage.</p>
 	<button id="BoutonRefresh" onclick="window.location.reload()">Recommencer</button>
 <script>
 	document.getElementById("div-Q").style.display="none";
@@ -158,6 +159,7 @@
 	document.getElementById("compteur").style.display="none";
 	document.getElementById("Agenda").style.display="none";
 	document.getElementById("BoutonRefresh").style.display="none";
+	document.getElementById("Suspect").style.display="none";
 let z=0
 let  textes=[
  
@@ -188,11 +190,11 @@ let  perso=["narrateur","Monsieur Raimond","Monsieur Raimond","Monsieur Raimond"
 
 		
        let données_vraies=[
-		["audios/le-nozze-di-figaro.mp3", "Le Nozze di Figaro", "Mozart", "Ré majeur", "(1756-1791)", "35 ans"],
-		["audios/toccata.ogg", "Toccata et fugue", "Bach", "Do mineur", "(1685-1750)", "65 ans"],
-		["audios/concerto-flute-harpe.mp3", "Concerto pour flûte et harpe", "Mozart", "Do majeur", "(1756-1791)", "35 ans"],
-		["audios/le-chant-des-cygnes.mp3", "Le Chant du Cygne", "Schubert", "Ré majeur?", "(1797-1828)", "31 ans"],
-		["audios/passion-st-jean.mp3", "La passion selon Saint Jean", "Bach", "Sol mineur", "(1685-1750)", "65 ans"]
+		["audios/Rayon/le-nozze-di-figaro.mp3", "Le Nozze di Figaro", "Mozart", "Ré majeur", "(1756-1791)", "35 ans"],
+		["audios/Rayon/toccata.ogg", "Toccata et fugue", "Bach", "Do mineur", "(1685-1750)", "65 ans"],
+		["audios/Rayon/concerto-flute-harpe.mp3", "Concerto pour flûte et harpe", "Mozart", "Do majeur", "(1756-1791)", "35 ans"],
+		["audios/Rayon/le-chant-des-cygnes.mp3", "Le Chant du Cygne", "Schubert", "Ré majeur?", "(1797-1828)", "31 ans"],
+		["audios/Rayon/passion-st-jean.mp3", "La passion selon Saint Jean", "Bach", "Sol mineur", "(1685-1750)", "65 ans"]
 		];
 
 	   let données_Q=[
@@ -248,7 +250,8 @@ function reponse(){
 	document.getElementById("bouton").style.display="none";
 	document.getElementById("compteur").style.display="none";
 	document.getElementById("div-1").style.display="none";
-	document.getElementById("Agenda").style.display="block";}
+	document.getElementById("Agenda").style.display="block";
+	document.getElementById("Suspect").style.display="block";}
 	else{
 	document.getElementById("compteur").innerHTML = "Ach ! Vous avez "+point+ " points. Dommage, recommencez!"
 	document.getElementById("BoutonRefresh").style.display="block";}
