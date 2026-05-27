@@ -22,35 +22,35 @@
 
 		 <div id="menu">
 			<select id="coupable"> 
-					<option>M. Concombrette</option>
-					<option>Mme Mozza-Garcia</option>	
-					<option id="Vrai_coupable">M. Fournée</option>
-					<option>Mme Fontaneth</option>
+					<option value="1">M. Concombrette</option>
+					<option value="1">Mme Mozza-Garcia</option>	
+					<option value="0">M. Fournée</option>
+					<option value="1">Mme Fontaneth</option>
 				
 			</select>
 			a 
 			 
 			<select id="moyen"> 
-					<option id="Vrai_moyen">empoisonné</option>
-					<option>poignardé</option>	
-					<option >kidnappé</option>
-					<option>étranglé</option>
+					<option value="0">empoisonné</option>
+					<option value="1">poignardé</option>	
+					<option value="1">kidnappé</option>
+					<option value="1">étranglé</option>
 				
 			</select>
 			M. Champignon. Son motif ? la victime
 			<select id="motif"> 
-					<option>manquait de rigueur.</option>
-					<option>refusait de prendre parti entre les SVT et la NSI.</option>	
-					<option>était plus apprécié des élèves.</option>
-					<option id="Vrai_motif"> ne voulait pas laisser le poste de professeur de NSI à sa fille.</option>
+					<option value="1">manquait de rigueur.</option>
+					<option value="1">refusait de prendre parti entre les SVT et la NSI.</option>	
+					<option value="1">était plus apprécié des élèves.</option>
+					<option value="0""> ne voulait pas laisser le poste de professeur de NSI à sa fille.</option>
 				
 			</select id="indice">
 			Mais un indice l'a trahi ! Le coupable a
 			<select id="coupable"> 
-					<option>corné une page d'un livre où un personnage est empoisonné !</option>
-					<option id="Vrai_indice">a reçu une lettre suspecte !</option>	
-					<option >a été vu en train de se disputer avec la victime !</option>
-					<option>a laissé des traces sur son historique !</option>
+					<option value="1">corné une page d'un livre où un personnage est empoisonné !</option>
+					<option value="0">a reçu une lettre suspecte !</option>	
+					<option  value="1">a été vu en train de se disputer avec la victime !</option>
+					<option value="1">a laissé des traces sur son historique !</option>
 				
 			</select>
 				
@@ -65,6 +65,8 @@
 </div>
 <script>
 let z=0
+let input_fin=[]
+const solution=["0","0","0","0"]
 const textes=[
 
 "Asseyez-vous, cher apprenant, j’ai pu vous observer depuis l’ouverture de cette enquête et je dois dire que je suis impressionnée !", 
@@ -108,7 +110,19 @@ documents_frofro=[0,0,0,0,0,0,0,0,"Contrat","fin_lettre","lettre_complète"]
 		document.getElementById("perso").innerHTML="Narrateur";
 	    }	
 else if (z==14){
-	document.getElementById("menu").style.display="block";
+	document.getElementById("menu").style.display="none";
+		
+		input_fin.push (document.getElementById("coupable").value);
+		input_fin.push (document.getElementById("moyen").value);
+		input_fin.push (document.getElementById("motif").value);
+		input_fin.push (document.getElementById("indice").value);
+		
+		if input_fin==solution{
+			alert("bravo ! vous avez réussi cette enquête !")
+		}
+		else {
+			alert("Malheureuseement, vous n'avez pas résolu correctement cette enquête. A cause de vous, un tueur court peut-être en liberté, tandis qu'un innocent sera mis en prison, nous vouls laissons le poids de cette décision sur votre conscience...")
+		}
 	
 	
 	}
