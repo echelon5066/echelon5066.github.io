@@ -11,7 +11,6 @@
 </head>
 
 
-<body>
 <input id="mj" type="button" onclick="game_master()"  value="accès MJ"><!--- bouton de triche pour nous, pour aller direct à l'outro--->
 <div id="divrep1" >
 		<div class="perso" id="perso">Narrateur
@@ -20,7 +19,10 @@
 		<div class="rep" id="texte" >Vous entrez en salle G101, Mme Fromage vous attend, l'air mysterieux
 			
 		</div>
- <div id="menu">
+ 
+		
+</div>
+<div id="menu">
 			<select id="coupable"> 
 					<option value="1">M. Concombrette</option>
 					<option value="1">Mme Mozza-Garcia</option>	
@@ -55,8 +57,7 @@
 			</select>
 				
 		</div>
-		
-</div>
+
 <input id="next" type="button" value="suivant" class="Suivant" style="right:50px;" onclick=changer_de_div() >
 
 <div id="Conteneur_Images">
@@ -66,8 +67,8 @@
 </div>
 <script>
 let z=0
-let input_fin=[]
-const solution=["0","0","0","0"]
+let input_fin=""
+const solution="0000"
 const textes=[
 
 "Asseyez-vous, cher apprenant, j’ai pu vous observer depuis l’ouverture de cette enquête et je dois dire que je suis impressionnée !", 
@@ -113,30 +114,35 @@ documents_frofro=[0,0,0,0,0,0,0,0,"Contrat","fin_lettre","lettre_complète"]
 		document.getElementById("perso").innerHTML="Narrateur";
 		console.log(z)
 	    }	
-else if (z==14){
+else if (z==13){
 	console.log(z)
-	document.getElementById("menu").style.display="none";
+	document.getElementById("Conteneur_Images").style.display="none";
+	document.getElementById("menu").style.display="inline-block";
 		
-		input_fin.push (document.getElementById("coupable").value);
-		input_fin.push (document.getElementById("moyen").value);
-		input_fin.push (document.getElementById("motif").value);
-		input_fin.push (document.getElementById("indice").value);
 		
+		console.log(input_fin,solution);
+		;}
+else if (z==14){	
+         input_fin=document.getElementById("coupable").value+document.getElementById("moyen").value+document.getElementById("motif").value+document.getElementById("indice").value	
+		document.getElementById("next").value="fin du jeu"
 		if (input_fin==solution){
-			alert("bravo ! vous avez réussi cette enquête !")
+			document.getElementById("texte").innerHTML="bravo ! vous avez réussi cette enquête !"
+			
 		}
 		else {
-			alert("Malheureuseement, vous n'avez pas résolu correctement cette enquête. A cause de vous, un tueur court peut-être en liberté, tandis qu'un innocent sera mis en prison, nous vouls laissons le poids de cette décision sur votre conscience...")
+			document.getElementById("texte").innerHTML="Malheureusement, vous n'avez pas résolu correctement cette enquête. A cause de vous, un tueur court peut-être en liberté, tandis qu'un innocent sera mis en prison, nous vouls laissons le poids de cette décision sur votre conscience..."
+		
+		
 		}
 	
 	
 	}
 		
 if (z==15){
-alert("fin");
 		document.getElementById("divrep1").style.display="none";
-		document.getElementById("Conteneur_Images").style.display="none";
+		document.getElementById("menu").style.display="none";
 		document.getElementById("next").style.display="none";
+		document.getElementById("next").onclick= function fin(){ window.location.href="index.html"}
 	    }		
 	  }
 </script>
@@ -180,7 +186,7 @@ let listeContenu = [ "Marguerite"," A 3 petites soeurs fans de shopping\n\n	Va �
  "Zéphyr","Respecte les normes pep-8\n \nA une graphie legendaire\n \n	Est surnommé Frolin par des frequentations douteuses\n",
  "Yves","Est toujours en retard\n\n	A un frère, traître à la patrie\n\n	Compte les Patrick Boucheron\n	" ] 
 let listecouple= [[ "Marguerite"," A 3 petites soeurs fans de shopping\n\n	Va à l'île de Ré pendant les vacances\n\n	Saute une ligne entre chaque ligne\n"],
- ["Maryam" , "Trompe son mari avec la deuxième femme de son mari\n\n	A un ordinateur à l'agonie\n\n	Fait espagnol (bouuuuuh)\n"]	,
+ ["Maryam" , "Ecrit en police 42\n\n	A un ordinateur à l'agonie\n\n	Fait espagnol (bouuuuuh)\n"]	,
  ["Charles"," A beaucoup de femmes\n\n Habite à Houilles\n\n  Mange du riz avec du yaourt\n"] ,
  ["M. Rayon","Aime la Sachertorte mais pas la géographie \n\n A un filleul Berlinois qui s'appelle Basile Serrier\n\n Est né le 6 mai vers 22h30\n"],
  ["Zéphyr","Respecte les normes pep-8\n \nA une graphie legendaire\n \n	Est surnommé Frolin par des frequentations douteuses\n"],
