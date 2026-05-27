@@ -81,14 +81,14 @@ const textes=[
 " Voici un contrat de travail, je vous laisse du temps pour y réfléchir. ",
 "Oh, et pour vous motiver, voilà un morceau de papier que j’ai trouvé lors de mes recherches, je suis sûre que vous y trouverez une utilité…",
 "C'est la fin de la lettre retrouvée par M. Peccable ! ",
-"Cette enquête est désormais terminée, avez-vous démasqué le coupable ? Rendez-vous à l'accueil pour vérifier votre théorie !"
-]
+"Cette enquête est désormais terminée, avez-vous démasqué le coupable ?",
+""]
 documents_frofro=[0,0,0,0,0,0,0,0,"Contrat","fin_lettre","lettre_complète"]
  function changer_de_div(){
-	 	if (z<14){
+	 	
       document.getElementById("perso").innerHTML="Mme Fromage";
       document.getElementById("texte").innerHTML=textes[z];
-	  z=z+1;}
+	  z=z+1;
 	
 	  if (z==8){
 		document.getElementById("divrep1").style.display="none";
@@ -105,12 +105,14 @@ documents_frofro=[0,0,0,0,0,0,0,0,"Contrat","fin_lettre","lettre_complète"]
 		document.getElementById("Fin").style.display="block";
 		
 	    }	
-	if (z>=12){
+	if (z==12){
 		document.getElementById("Fin").style.display="none";
 		document.getElementById("Lettre").style.display="block";
 		document.getElementById("perso").innerHTML="Narrateur";
+		console.log(z)
 	    }	
 else if (z==14){
+	console.log(z)
 	document.getElementById("menu").style.display="none";
 		
 		input_fin.push (document.getElementById("coupable").value);
