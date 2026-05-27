@@ -3,35 +3,40 @@
         <meta charset="UTF-8">
         <title>Peccable</title>
         <style>
-            body{background-image: url("lefond_peccable.png");background-size: 100%;}
-            #suivant{position: absolute; top:600px; left: 1300px; font-size: 65px; background-color : #303C3A; color:white}
-			#Txt{position: absolute; top : 610px; left: 50%; transform:translateX(-50%); font-size: 20px; background-color : #303C3A;text-align:center; color:white} 
-			#Speaker{position: absolute; top:587px; left: 50%; transform:translateX(-50%); font-size: 20px; background-color : #303C3A;color:white}
-			#pts{position: absolute; top : 50px; left: 50%; transform:translateX(-50%); font-size: 40px; background-color : #303C3A;text-align:center; color:white}
-			#lettre{position: absolute; top : 30px; left: 50%; transform:translateX(-50%);opacity:0;}
-			#bouton1{position: absolute; top:66%; left: 68%;opacity:0;}
-			#bouton2{position: absolute; top:72%; left: 85%;opacity:0;}
-			#bouton3{position: absolute; top:50%; left: 85%;opacity:0;}
-			#bouton4{position: absolute; top:72%; left: 77%;opacity:0;}
-			#bouton5{position: absolute; top:22%; left: 89%;opacity:0;}
-			#bouton6{position: absolute; top:34%; left: 75%;opacity:0;}
-			#bouton7{position: absolute; top:22%; left: 55%;opacity:0;}
+            #fond img{position: relative; top : 0vh; left: 0vw;width:100vw ;height:100vh;z-index: 0;}
+
+           	#suivant{position: absolute; top:81%; left: 92%; font-size: 65px; background-color : #303C3A; color:white;z-index: 10;}
+			#Txt{position: absolute; top : 85%; left: 51%; transform:translateX(-50%); font-size: 20px; background-color : #303C3A;text-align:center; color:white} 
+			#speaker{position: absolute; top: 80%; left: 51%; transform:translateX(-50%); font-size: 20px; background-color : #303C3A;color:white}
+			#pts{position: absolute; top : 7%; left: 51%; transform:translateX(-50%); font-size: 40px; background-color : #303C3A;text-align:center; color:white}
+			#lettre{position: absolute; top : 50%; left: 51%;transform: translate(-50%, -50%);opacity:0}
+			#lettre img{width:500px; height:auto;}
+			#bouton1{position: absolute; top:55%; left: 68%;opacity:0;font-size: 20px}
+			#bouton2{position: absolute; top:60%; left: 85%;opacity:0;font-size: 20px}
+			#bouton3{position: absolute; top:42%; left: 85%;opacity:0;font-size: 20px}
+			#bouton4{position: absolute; top:60%; left: 77%;opacity:0;font-size: 20px}
+			#bouton5{position: absolute; top:19%; left: 89%;opacity:0;font-size: 20px}
+			#bouton6{position: absolute; top:28%; left: 75%;opacity:0;font-size: 20px}
+			#bouton7{position: absolute; top:19%; left: 55%;opacity:0;font-size: 20px}
         </style>
     </head>
     <body>
-		<button id="suivant"> > </button>
-		<div id="Txt"> ... </div>
-		<div id="speaker"> M. PECCABLE </div>
-		<div id="pts"> 0 </div>
-		<div id="lettre"><img src="lettre.png" width="500"></div>
+		<div id="fond">
+			<img src="images/peccable/lefond.png">
+			<button id="suivant"> > </button>
+			<div id="Txt"> ... </div>
+			<div id="speaker"> M. PECCABLE </div>
+			<div id="pts"> 0 </div>
+			<div id="lettre"><img src="images/peccable/lettre.png" ></div>
 		
-		<button id="bouton1"> > </button>
-		<button id="bouton2"> > </button>
-		<button id="bouton3"> > </button>
-		<button id="bouton4"> > </button>
-		<button id="bouton5"> > </button>
-		<button id="bouton6"> > </button>
-		<button id="bouton7"> > </button>
+			<button id="bouton1"> > </button>
+			<button id="bouton2"> > </button>
+			<button id="bouton3"> > </button>
+			<button id="bouton4"> > </button>
+			<button id="bouton5"> > </button>
+			<button id="bouton6"> > </button>
+			<button id="bouton7"> > </button>
+		</div>
 		<script>
 		let i = 0 //compteur//
 		let nb = 0 ; //compteur de points//
