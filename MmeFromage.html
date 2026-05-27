@@ -86,11 +86,12 @@ const textes=[
 ""]
 documents_frofro=[0,0,0,0,0,0,0,0,"Contrat","fin_lettre","lettre_complète"]
  function changer_de_div(){
-	 	
+	  if (z<14){	
       document.getElementById("perso").innerHTML="Mme Fromage";
       document.getElementById("texte").innerHTML=textes[z];
 	  z=z+1;
 	console.log(z)
+	  }
 	  if (z==8){
 		document.getElementById("divrep1").style.display="none";
 		document.getElementById("next").style.display="none";
