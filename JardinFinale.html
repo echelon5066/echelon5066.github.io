@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>JardinFinale</title>
+        <style>
+
+	body {
+			margin: 0;
+			min-height: 100vh;
+			overflow: hidden; 
+			}
+
+	.image-container {
+			position: relative; 
+			width: 100%;
+			height: 100vh;
+			}
+
+	.background-image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover
+			position: absolute;
+			top: 0;
+			left: 0;
+			}
+		
+	#PorteFeuille{
+	
+			position: absolute;
+			top:90%; 
+			left: 29%;
+			opacity:0;
+			padding: 10px;
+			
+			}
+			
+	#sac{
+	
+			position: absolute;
+			top:81%;
+			left: 41%;
+			opacity:0;
+			padding: 10px;
+			
+			}
+			
+	#Tasse{
+	
+			position: absolute;
+			top:58%;
+			left: 47%;
+			opacity:0;
+			padding: 10px;
+			
+			}
+			
+	#clé{
+			position: absolute;
+			top:77%;
+			left: 54%;
+			opacity:0;
+			padding: 10px;
+			
+			}
+			
+	#silhouette{
+	
+			position: absolute;
+			top:77%;
+			left: 71%;
+			opacity:0;
+			padding: 10px;
+			
+			}
+	#zoneDeText{
+			
+			position: absolute;
+			top:10%;
+			left: 10%;
+			
+			}
+	  .rep{
+	  
+			box-sizing: border-box;
+   			color: black;
+    		background-color: #577635;
+			border-radius: 5px;
+			font-size:clamp(16px, 2.4vw, 20px);
+    		text-align: justify;
+			padding:20px;
+			line-height:1.4em;
+			
+			}
+
+        </style>
+    </head>
+    <body>
+        <div class="image-container">
+            <img class="background-image" src="Image/ImageJardinProjetNSImodifier.jpg">
+            <div class = "rep" id="zoneDeText"></div> 
+
+            <button id="PorteFeuille"> > </button>
+            <button id="sac"> > </button>
+            <button id="Tasse"> > </button>
+            <button id="clé"> > </button>
+            <button id="silhouette"> > </button>
+        </div>
+
+        <script>
+			let zoneDeText = document.getElementById("zoneDeText"); 
+			zoneDeText.style.display = "none";
+			
+            let text = ["Porte-feuille", "Sac", "Tasse", "Clé", "Silhouette"];
+
+
+            let PorteFeuille = document.getElementById("PorteFeuille");
+            let sac = document.getElementById("sac");
+            let Tasse = document.getElementById("Tasse");
+            let clé = document.getElementById("clé");
+            let silhouette = document.getElementById("silhouette");
+            
+
+            function AfficherText(element, textIndex) {
+                element.addEventListener("mouseover", function() {
+                    zoneDeText.style.display = "block";
+                    zoneDeText.innerHTML = text[textIndex];
+                });
+                element.addEventListener("mouseout", function() {
+                    zoneDeText.style.display = "none";
+                });
+            }
+
+            AfficherText(PorteFeuille, 0);
+            AfficherText(sac, 1);
+            AfficherText(Tasse, 2);
+            AfficherText(clé, 3);
+			AfficherText(silhouette, 4);
+        </script>
+    </body>
+</html>
