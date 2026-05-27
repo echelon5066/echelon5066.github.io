@@ -58,6 +58,13 @@
                 <div id="temps"><span id="heure"></span><span id="date"></span></div>
             </div>
 
+            <div id="notification" style="display: none;">
+                <h2>Nouveau mail</h2>
+                <p>De : ERLENMEYER Büchner &lt;buchner.erlenmeyer@monlycee.net&gt;</p>
+                <p>Objet : URGENT - Commande laboratoire</p>
+                <p>Cher tous, Qui a commandé au laboratoire de chimie un…</p>
+            </div>
+
             <div id="fenetreFirefox">
                 <div id="titreFirefox">
                     <span id="maisonFirefox"><img src="images/cdi/accueilFirefox.svg" title="Retour à l'accueil"></span>
@@ -265,6 +272,11 @@
                 onglets.style.display = 'block';
                 if (site == 'historique') {
                     document.getElementById(site).style.display = 'block';
+                    setTimeout(() => {
+                        if (document.getElementById('notification').style.display == "none") {
+                            document.getElementById('notification').style.display = "block";
+                        }
+                    }, 3000);
                 } else {
                     document.getElementById(site).style.display = 'flex';
                 }

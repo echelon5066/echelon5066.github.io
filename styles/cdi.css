@@ -235,3 +235,20 @@ table, th, td {
     z-index: 999;
     box-shadow: 10px 5px 5px gray;
 }
+
+#notification {
+    z-index: 1000;
+    background-color: rgb(82, 82, 82);
+    color: white;
+    text-align: left;
+    padding: 10px;
+    bottom: 7vh;
+    position: absolute;
+    animation: glisser 2s ease-out; 
+    right: 20px;
+}
+
+@keyframes glisser {
+    from { right: -100%; opacity: 0; }
+    to { right: 20px; opacity: 1; }
+}
