@@ -6,9 +6,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/styles/preparateur.css">
+  <link rel="stylesheet" href="styles/preparateur.css">
 
-  <title>Chifoumi</title>
+  <title>Salle de TP</title>
   
 </head> 
 
@@ -30,7 +30,7 @@
       <p>Le chifoumi version améliorée se joue comme un Pierre-Feuille-Ciseaux classique, mais il existe deux possibilités supplémentaires : Lézard et Spock.<br>
       Le diagramme ci-contre montre les combinaisons gagnantes. Par exemple, le lézard (vert) gagne sur Spock et la feuille, mais perd contre les ciseaux.</p>
     </span>
-      <img src="/images/preparateur/diagramme.png" />
+      <img src="images/preparateur/diagramme.png" />
   </div>
     <button class="bouton_intro" onclick="suivant('regles', 'jeu', 'flex')">Jouer</button>
 </div>
@@ -64,7 +64,7 @@
 </div>
 
 <div id="indice" style="display:none" >
-  <h2><u> Liste des commandes semaine du XX/XX</u></h2>
+  <h2><u> Liste des commandes<br>Semaine du XX/XX</u></h2>
   <table id="commandes" style="border: 1px solid black">
     <tr>
       <th>Jour</th>
@@ -78,33 +78,34 @@
     </tr>
     <tr>
       <td>Mardi</td>
-      <td>Madame Rimaux</td>
+      <td>Madame Grumeaux</td>
       <td>Nitro-GlycéBoom</td>
     </tr>
     <tr>
       <td>Mercredi</td>
-      <td>Monsieur Limon</td>
+      <td>Monsieur Waterlimon</td>
       <td>Acide souffrir-ique</td>
     </tr>
     <tr>
-      <td>Mercredi</td>
-      <td>Monsieur Dewez??</td>
+      <td>Jeudi</td>
+      <td>Monsieur de Fraise</td>
       <td>Eau désolée</td>
+    </tr>
+    <tr style="color: red;">
+      <td>Vendredi</td>
+      <td>Monsieur ???</td>
+      <td>Arsenic</td>
     </tr>
   </table>
 
-  <div style="text-align: center;"><button onclick = "suivant('indice','outro')" id="retour" class="bouton_intro">Retour</button></div>
+  <div style="text-align: center;"><button onclick = "suivant('indice','fin'); suivant('indice','notif')" id="retour" class="bouton_intro">Retour</button></div>
 
 </div>
 
-<div id="outro" style="display: none;">
-  <h2 id="resultatFinal"></h2>
-  <button onclick="suivant('fin', 'indice')" id="afficherIndice" style="display: none;">Voir la liste</button>
-  <button onclick="window.location.reload()" id="recommencer" class="bouton_intro" style="display: none;">Recommencer</button>
-  <button onclick="window.location='/';" id="retourAccueil" class="bouton_intro" style="display: none;">Accueil</button>
-  <!-- window.location='/'; redirige vers la racine du site (accueil) -->
+<div id="notif" style="display: none;">
+  <div class="notif_titre">Message urgent</div>
+  <div class="notif_texte">Message mystérieux de Madame Fromage</div>
 </div>
-
 
 <script>
     function suivant(disparu, apparu, mode = "block") {//test acces ecriture
