@@ -96,7 +96,6 @@
 		{ src: "mbappe.jpg", type: "vraie" },
 		{ src: "femme3i.jpg", type: "ia" },
 		{ src: "hommev.jpg", type: "vraie" },
-		{ src: "femme3i.jpg", type: "ia" },
 		{ src: "coeuri.jpg", type: "ia" },
 		{ src: "foreti.jpg", type: "ia" },
 		{ src: "soleilv.jpg", type: "vraie" },	
@@ -133,7 +132,7 @@
 	// Fonction pour vérifier le choix du joueur, si c'est la bonne réponse
     function verifierChoix(choixJoueur) {
         let imageActuelle = images[imageIndex];
-        //On vérifie que le choix du joeur correspond ou non au type ( ia ou vraie ) de l'image
+        // On vérifie que le choix du joeur correspond ou non au type ( ia ou vraie ) de l'image
         if (choixJoueur === imageActuelle.type) {
             score = score + 1; // Si c'est le cas il gagne 1 point
             document.getElementById("valeur_score").innerText = score;

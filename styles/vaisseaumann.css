@@ -86,7 +86,7 @@ button {
     height: 380px;
     cursor: grab;
     position: relative;
-    touch-action: none; /* Crucial pour le mobile */
+    touch-action: none;
 }
 
 
@@ -105,13 +105,12 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
     color: white;
     font-size: 24px;
     font-weight: bold;
     border-radius: 20px;
     z-index: 10;
+    padding: 10px;
 }
 
 /* Quand il est correct : on l'affiche en vert */
