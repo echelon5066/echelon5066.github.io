@@ -1,24 +1,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Peccable</title>
-        <style>
-            #fond img{position: relative; top : 0vh; left: 0vw;width:100vw ;height:100vh;z-index: 0;}
-
-           	#suivant{position: absolute; top:81%; left: 92%; font-size: 65px; background-color : #303C3A; color:white;z-index: 10;}
-			#Txt{position: absolute; top : 85%; left: 51%; transform:translateX(-50%); font-size: 20px; background-color : #303C3A;text-align:center; color:white} 
-			#speaker{position: absolute; top: 80%; left: 51%; transform:translateX(-50%); font-size: 20px; background-color : #303C3A;color:white}
-			#pts{position: absolute; top : 7%; left: 51%; transform:translateX(-50%); font-size: 40px; background-color : #303C3A;text-align:center; color:white}
-			#lettre{position: absolute; top : 50%; left: 51%;transform: translate(-50%, -50%);opacity:0}
-			#lettre img{width:500px; height:auto;}
-			#bouton1{position: absolute; top:55%; left: 68%;opacity:0;font-size: 20px}
-			#bouton2{position: absolute; top:60%; left: 85%;opacity:0;font-size: 20px}
-			#bouton3{position: absolute; top:42%; left: 85%;opacity:0;font-size: 20px}
-			#bouton4{position: absolute; top:60%; left: 77%;opacity:0;font-size: 20px}
-			#bouton5{position: absolute; top:19%; left: 89%;opacity:0;font-size: 20px}
-			#bouton6{position: absolute; top:28%; left: 75%;opacity:0;font-size: 20px}
-			#bouton7{position: absolute; top:19%; left: 55%;opacity:0;font-size: 20px}
-        </style>
+        <title>Jean-Sébastien Peccable</title>
+		<link rel="stylesheet" href="styles/peccable.css">
     </head>
     <body>
 		<div id="fond">
@@ -38,54 +22,54 @@
 			<button id="bouton7"> > </button>
 		</div>
 		<script>
-		let i = 0 //compteur//
-		let nb = 0 ; //compteur de points//
-		let paroles = ["Rhhhhôôôôô...! Comment vais-je faire..!", "*se tourne* Oh ! Quelle chance ! Jeune individu, venez par ici ! Oui, vous ! JE VOUS VOIS ! VENEZ !", 
-		"Ah ! Je savais qu'un ange viendrait m'aider...Après tout le malheur qui s'abat sur le lycée, ce n'est que justice..!", 
-		"Dites-moi jeune personne, pourriez-vous m'aider ? Je m'appelle Jean-Sébastien Peccable, je suis l'agent d'entretien des salles G.", 
-		"Je dois finir mon travail mais je ne trouve plus mes lunettes...", "Vous qui m'avez l'air bon voyant, aidez-moi à repérer ce qu'il faut nettoyer ! Il doit bien en rester au moins 7.",
-		"Ah ! Merci beaucoup petit ange ! Grâce à vous je sais quoi faire !", "A commencer par sortir cette poubelle...Oh ?"];
-		let Txt = document.getElementById("Txt");
-		let bouton = document.getElementById("suivant");
-		bouton.addEventListener("click", deroul); // qd clique change le texte selon compteur //
-		function deroul(){
-		if (i<6){
-		Txt.innerHTML = paroles[i];
-		i = i+1 ; }
-		else if (nb == 7 && i < paroles.length){Txt.innerHTML = paroles[i];
-		i = i+1}
-		else if (i == paroles.length){alert("Une lettre déchirée tombe de la poubelle.");
-		document.getElementById("lettre").style.opacity = "1";
-		i = i+1;}
-		else if (i > paroles.length){
-		document.getElementById("lettre").style.opacity = "0"
-		let speaker = document.getElementById("speaker");
-		speaker.innerHTML = "NARRATEUR";
-		Txt.innerHTML = "Etrange... Bon, il est temps d'aller se renseigner sur les poisons. CDI !";
-		};};//qd ttes les paroles du début dites, ne fait plus rien avant que jeu réussi//
-		
-		let pts = document.getElementById("pts");
-		let bouton1 = document.getElementById("bouton1");
-		let bouton2 = document.getElementById("bouton2");
-		let bouton3 = document.getElementById("bouton3");
-		let bouton4 = document.getElementById("bouton4");
-		let bouton5 = document.getElementById("bouton5");
-		let bouton6 = document.getElementById("bouton6");
-		let bouton7 = document.getElementById("bouton7");
-		
-		bouton1.addEventListener("click", ajout); <!--- qd clique sur le bon endroit, gagne point-->
-		bouton2.addEventListener("click", ajout);
-		bouton3.addEventListener("click", ajout);
-		bouton4.addEventListener("click", ajout);
-		bouton5.addEventListener("click", ajout);
-		bouton6.addEventListener("click", ajout);
-		bouton7.addEventListener("click", ajout);
-		function ajout(){
-		if (nb<7){<!--- score max-->
-		nb = nb+1
-		pts.innerHTML = nb;
-		};
-		event.target.remove()} ;<!--- retire le bouton une fois qu'il a rapporté un point pour éviter triche -->
+			let i = 0 //compteur//
+			let nb = 0 ; //compteur de points//
+			let paroles = ["Rhhhhôôôôô...! Comment vais-je faire..!", "*se tourne* Oh ! Quelle chance ! Jeune individu, venez par ici ! Oui, vous ! JE VOUS VOIS ! VENEZ !", 
+			"Ah ! Je savais qu'un ange viendrait m'aider...Après tout le malheur qui s'abat sur le lycée, ce n'est que justice..!", 
+			"Dites-moi jeune personne, pourriez-vous m'aider ? Je m'appelle Jean-Sébastien Peccable, je suis l'agent d'entretien des salles G.", 
+			"Je dois finir mon travail mais je ne trouve plus mes lunettes...", "Vous qui m'avez l'air bon voyant, aidez-moi à repérer ce qu'il faut nettoyer ! Il doit bien en rester au moins 7.",
+			"Ah ! Merci beaucoup petit ange ! Grâce à vous je sais quoi faire !", "A commencer par sortir cette poubelle...Oh ?"];
+			let Txt = document.getElementById("Txt");
+			let bouton = document.getElementById("suivant");
+			bouton.addEventListener("click", deroul); // qd clique change le texte selon compteur //
+			function deroul(){
+			if (i<6){
+			Txt.innerHTML = paroles[i];
+			i = i+1 ; }
+			else if (nb == 7 && i < paroles.length){Txt.innerHTML = paroles[i];
+			i = i+1}
+			else if (i == paroles.length){alert("Une lettre déchirée tombe de la poubelle.");
+			document.getElementById("lettre").style.opacity = "1";
+			i = i+1;}
+			else if (i > paroles.length){
+			document.getElementById("lettre").style.opacity = "0"
+			let speaker = document.getElementById("speaker");
+			speaker.innerHTML = "NARRATEUR";
+			Txt.innerHTML = "Etrange... Bon, il est temps d'aller se renseigner sur les poisons. CDI !";
+			};};//qd ttes les paroles du début dites, ne fait plus rien avant que jeu réussi//
+			
+			let pts = document.getElementById("pts");
+			let bouton1 = document.getElementById("bouton1");
+			let bouton2 = document.getElementById("bouton2");
+			let bouton3 = document.getElementById("bouton3");
+			let bouton4 = document.getElementById("bouton4");
+			let bouton5 = document.getElementById("bouton5");
+			let bouton6 = document.getElementById("bouton6");
+			let bouton7 = document.getElementById("bouton7");
+			
+			bouton1.addEventListener("click", ajout); // qd clique sur le bon endroit, gagne point- 
+			bouton2.addEventListener("click", ajout);
+			bouton3.addEventListener("click", ajout);
+			bouton4.addEventListener("click", ajout);
+			bouton5.addEventListener("click", ajout);
+			bouton6.addEventListener("click", ajout);
+			bouton7.addEventListener("click", ajout);
+			function ajout(){
+			if (nb<7){ // score max-->
+			nb = nb+1
+			pts.innerHTML = nb;
+			};
+			event.target.remove()} ; // retire le bouton une fois qu'il a rapporté un point pour éviter triche
         </script>
     </body>
 </html>
