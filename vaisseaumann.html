@@ -102,7 +102,7 @@
 	];
 
     // Initialisation, on affiche la première image
-    document.getElementById("image").src = "images/vaisseaumann/" + images[0].src;
+    document.getElementById("image").src = images[0].src;
 	
 	//Fonction pour changer la photo et remettre a carte au centre
     function imageSuivante() {
@@ -111,7 +111,7 @@
         
 		//Si l'index est plus petit que le nombre d'image = il reste des images donc on met l'image dans la carte
         if (imageIndex < images.length) {
-            document.getElementById("image").src = "images/vaisseaumann/" + images[imageIndex].src;
+            document.getElementById("image").src = images[imageIndex].src;
         } else { // Il ne reste plus d'imaes
             // Fin du jeu
             document.getElementById("jeu").innerHTML = `
