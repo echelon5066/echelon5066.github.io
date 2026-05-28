@@ -1,116 +1,160 @@
-
-			#intro{display:block}
-			#intro img{
-			position: relative;
-			top : 0vh; 
-			left: 0vw;
-			width:100vw }
-			
-			.Suivant{
-			position: absolute; 
-			top:92%; 
-			left: 50%; 
-			transform:translateX(-50%);
-			font-size: 20px; 
-			background-color : #303C3A; 
-			color:white}
-			
-			.Txt{
-			position: absolute; 
-			top : 86%; 
-			left: 50%; 
-			transform:translateX(-50%); 
-			font-size: 20px; 
-			background-color : #303C3A;
-			text-align:center; 
-			color:white} 
-			
-			
-			.Speaker{
-			position: absolute; 
-			top:83%; 
-			left: 50%; 
-			transform:translateX(-50%); 
-			font-size: 20px; 
-			background-color :#303C3A;
-			color:white}
-			
-			#fond{position:relative;top:0vh;left:0vh; display:none;height:100vh}
-			#bibli{height:100vh;width:100vw;display:block;}
-			#restart{position: absolute; bottom: 25vh;
-    left: 20vw; display:none;transform:translateX(-50%);font-size: 20px; background-color : #303C3A; color:white}
-			body{margin: 0}
-            
-			
-			
-			
-			
-			#extrait{position: absolute; max-heigth:80vh;top:10vh; left: 50%; display:none; transform:translateX(-50%)}
-			
-			#suivant2{position: absolute; top:2%; left: 98%; display:none;transform:translateX(-50%);font-size: 20px; background-color : #303C3A; color:white}
-			
-			#ordi{position:absolute;top:0vh;left:0vh; display:none;width:100vw; height:100vh}
-			#ordi img{position:absolute;width:100vw; height:100vh;object-fit:cover;}
-			#lien{position: absolute; top:70%; left: 50%; transform: translate(-50%, -50%); color:white; font-size: 40px}
-			
-			
-			
-			.bouton_etagere{
-z-index:10;
-width:60vw;
-height:12.33vh;
-position:absolute;
-right:0vw;
-opacity:0%;
+#intro {
+    display: block;
+	background-image: url("../images/boucher/intro.jpg");
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
 }
 
-#etagere0{
-top:15.52vh;
+.Suivant {
+    position: absolute;
+    top: 92%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    background-color: #303c3a;
+    color: white;
 }
 
-#etagere3{
-top:53.37vh;
+.Txt {
+    position: absolute;
+    top: 86%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    background-color: #303c3a;
+    text-align: center;
+    color: white;
 }
 
-#etagere1{
-top:27.59vh;
+.Speaker {
+    position: absolute;
+    top: 83%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    background-color: #303c3a;
+    color: white;
 }
 
-#etagere2{
-top:40.66vh;
+#fond {
+    position: relative;
+    top: 0vh;
+    left: 0vh;
+    display: none;
+    height: 100vh;
+}
+#bibli {
+    height: 100vh;
+    width: 100vw;
+    display: block;
+}
+#restart {
+    position: absolute;
+    bottom: 25vh;
+    left: 20vw;
+    display: none;
+    transform: translateX(-50%);
+    font-size: 20px;
+    background-color: #303c3a;
+    color: white;
+}
+body {
+    margin: 0;
 }
 
-.extrait{
+#extrait {
+    position: absolute;
+    max-height: 80vh;
+    top: 10vh;
+    left: 50%;
+    display: none;
+    transform: translateX(-50%);
+}
+
+#suivant2 {
+    position: absolute;
+    top: 2%;
+    left: 98%;
+    display: none;
+    transform: translateX(-50%);
+    font-size: 20px;
+    background-color: #303c3a;
+    color: white;
+}
+
+#ordi {
+    position: absolute;
+    top: 0vh;
+    left: 0vh;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+}
+#ordi img {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+#lien {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 40px;
+}
+
+.bouton_etagere {
+    z-index: 10;
+    width: 60vw;
+    height: 12.33vh;
+    position: absolute;
+    right: 0vw;
+    opacity: 0%;
+}
+
+#etagere0 {
+    top: 15.52vh;
+}
+
+#etagere3 {
+    top: 53.37vh;
+}
+
+#etagere1 {
+    top: 27.59vh;
+}
+
+#etagere2 {
+    top: 40.66vh;
+}
+
+.extrait {
     z-index: 1;
     display: none;
-    
-    
+
     position: absolute;
     top: 15vh;
-    
+
     width: 26vw;
     left: 9.3vw;
-	
-	
 }
 
+.livre {
+    z-index: 5;
+    display: none;
 
-.livre{
-z-index:5;
-display:none;
-    
     height: 11vh;
     position: absolute;
     bottom: 25vh;
     left: 20vw;
-
-
 }
 .loader {
-   
     width: 48px;
     height: 48px;
-    border: 5px solid #FFF;
+    border: 5px solid #fff;
     border-bottom-color: transparent;
     border-radius: 50%;
     display: inline-block;
@@ -119,14 +163,13 @@ display:none;
     left: 48vw;
     top: 45vh;
     animation: rotation 1s linear infinite;
-    }
+}
 
-    @keyframes rotation {
+@keyframes rotation {
     0% {
         transform: rotate(0deg);
     }
     100% {
         transform: rotate(360deg);
     }
-    } 
-      
+}
