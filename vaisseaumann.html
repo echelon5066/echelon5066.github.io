@@ -54,15 +54,28 @@
 	
 	// Liste contenant les paroles de Mme Vaisseaumann -->
 	const dialogues = [
-		"Hello<br> Vous m'avez suivi ici car vous voulez en savoir plus concernant la disparation de Mr.Champignon",
-		"Avant de vous donner cette indice, j'ai besoin de votre aide... ",
+		"Welcome dans la salle F-0.03... Ignorez l'odeur de café brûlé, c'est parfaitement normal.",
+		"Vous m'avez sûrement suivie ici car vous voulez des informations sur la mystérieuse disparition de Monsieur Champignon...",
+		"Et honnêtement ? Moi aussi. Je suis très curieuse de savoir ce qu'il lui est arrivé, je vais donc vous aider.",
+		"Mais avant ça, j'ai besoin de votre aide pour un problème absolument dramatique.",
 		"Les intelligences artificielles sont de plus en plus performantes de nos jours ...",
-		"J'avais préparer des images pour mes élèves : certaines ont été générées par Intelligence artificielle et d'autres sont des vraies.",
-		"J'avais prévu de faire un jeu dans lequel il devrait distinguées les vraies des fausses. Malheureusement, je les ai fait tomber et les aient mélangées",
-		"Maintenant je n'arrive plus à les différencier. Aidez-moi à les ranger !",
-		"Glissez les images faîtes par IA à gauche et les vraies à droite.",
-		"Bon courage."
-    ];
+		"À tel point que même moi, je n'arrive plus à distinguer les vraies images des fausses.",
+		"Et pourtant, j'ai déjà réussi à reconnaître un faux Picasso chez IKEA.",
+		"J'avais préparé un exercice pour mes élèves...",
+		"Certaines images ont été générées par IA. D'autres sont authentiques.",
+		"Malheureusement, j'ai fait tomber toutes les photos dans l'escalier.",
+		"L'escalier était très pentu.",
+		"Et maintenant tout est mélangé.",
+		"Votre mission est simple :",
+		"Glissez les images générées par IA vers la gauche.",
+		"Et les vraies vers la droite.",
+		"Un peu comme Tinder, mais pour la désinformation.",
+		"Good luck.",
+		"Et surtout...",
+		"ne faites pas confiance aux mains avec six doigts.",
+		"Vous vous êtes bien débrouillé, merci beaucoup mes images sont triés maintenant !",
+		"Hier j'ai vu Champignon et Mozza-Garcia se disputer dans le jardin."
+];
 
 	// Fonction déclencher à chaque click sur '-->' : elle permet de faire avancer le dialogue / les paroles de Mme Vaisseaumann -->
     function avancerHistoire() {
@@ -70,7 +83,7 @@
         index = index + 1;
 		
 		// Si l'index est supérieur au nombres de paroles cela signifie que le dialogue est fini -->
-        if (index >= dialogues.length) {
+        if (index >= 19) {
             document.getElementById("boite_dialogue").style.display = "none"; 
             document.getElementById("jeu").style.display = "block";
             return;
@@ -78,6 +91,13 @@
 		// On fait alors disparaître la boîte de dialogue et on fait apparaître le jeu -->
         document.getElementById("texte_jeu").innerHTML = dialogues[index];
     }
+	 function avancerFin() {
+		 document.getElementById("texte_jeu").innerHTML = dialogues[index];
+		 index = index +1;
+		 if (index >= dialogues.length) {
+			document.getElementById("boite_dialogue").style.display = "none"; 
+        }
+	 }
 
     // Système de score et de gestion des images
     let score = 0; //La valeur du score
@@ -102,7 +122,7 @@
 	];
 
     // Initialisation, on affiche la première image
-    document.getElementById("image").src = images[0].src;
+    document.getElementById("image").src = "images/vaisseaumann/" + images[0].src;
 	
 	//Fonction pour changer la photo et remettre a carte au centre
     function imageSuivante() {
@@ -111,14 +131,17 @@
         
 		//Si l'index est plus petit que le nombre d'image = il reste des images donc on met l'image dans la carte
         if (imageIndex < images.length) {
-            document.getElementById("image").src = images[imageIndex].src;
-        } else { // Il ne reste plus d'imaes
+            document.getElementById("image").src = "images/vaisseaumann/" + images[imageIndex].src;
+        } else { // Il ne reste plus d'images
             // Fin du jeu
             document.getElementById("jeu").innerHTML = `
                 <div style="text-align:center; color:white; background:rgba(0,0,0,0.8); padding:30px; border-radius:20px;">
                     <h2>La partie terminée !</h2>
                     <p style="font-size:22px;">Votre score final est de : <strong>${score} /16</strong></p>
                 </div>`;
+			document.getElementById("jeu").style.display = "none";
+			document.getElementById("boite_dialogue").style.display = "block";
+			avancerFin()
         }
     }
 	
