@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+									<!--Le head-->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="vaissermann.css">
+  <title>Vaisseaumann- I004</title>
+</head> 
+									<!--Fin du head-->
+
+									<!--Le body-->
+
+<body>
+	<div id="background"></div>
+
+	<div id="intro_du_jeu"> <!--Division qui contient l'intro du jeu avec un bouton pour commencer -->
+		<h1>Welcome in Mrs. Vaisseaumann's room !</h1>
+		<button class="bouton_intro" onclick="suivant('intro_du_jeu', 'boite_dialogue')">Suivant</button>
+	</div>
+
+
+
+
+	<!--On crée une boîte de dialogue qui contiendra les paroles de Madame Vaisseaumann et un bouton pour les faire défiler -->
+	<div id="boite_dialogue" > 
+		<!-- On crée un identifiant pour le texte que contiendra la boîte de dialogue afin de pouvoir y faire appel dans le script et donc le modifier facilement -->
+		<p id="texte_jeu">Hello<br> Vous m'avez suivi ici car vous voulez en savoir plus concernant la disparation de Mr.Champignon</p>
+		<button id="bouton_suivant" onclick="avancerHistoire()">➡</button> <!--Bouton pour faire défiler le texte -->
+	</div>
+
+<!--- La division du jeu : barre de score + carte avec les photos dedans--->
+	<div id="jeu" >
+		<!-- On crée une division barre de score avec le mot score + un span modifiable avec le score du joueur -->
+		<div id="barre_score">Score : <span id="valeur_score">0</span></div>
+		<div id="carte">
+			<img id="image" alt="Image à trier" draggable="false"> 
+		</div>
+		<div id="resultat"></div>
+	</div>
+	
+	<script>
+	
+	<!--Fonction pour faire disparître une division et en afficher une autre-->
+	function suivant(disparu, apparu, mode = "block") {
+		document.getElementById(disparu).style.display = "none";
+		document.getElementById(apparu).style.display = mode;
+	}  
+	
+	<!-- L'index des dialogues dans la boîte de dialogue-->
+	let index = 0;
+	
+	<!-- Liste contenant les paroles de Mme Vaisseaumann -->
+	const dialogues = [
+		"Hello<br> Vous m'avez suivi ici car vous voulez en savoir plus concernant la disparation de Mr.Champignon",
+		"Avant de vous donner cette indice, j'ai besoin de votre aide... ",
+		"Les intelligences artificielles sont de plus en plus performantes de nos jours ...",
+		"J'avais préparer des images pour mes élèves : certaines ont été générées par Intelligence artificielle et d'autres sont des vraies.",
+		"J'avais prévu de faire un jeu dans lequel il devrait distinguées les vraies des fausses. Malheureusement, je les ai fait tomber et les aient mélangées",
+		"Maintenant je n'arrive plus à les différencier. Aidez-moi à les ranger !",
+		"Glissez les images faîtes par IA à gauche et les vraies à droite.",
+		"Bon courage."
+    ];
+
+	<!-- Fonction déclencher à chaque click sur '-->' : elle permet de faire avancer le dialogue / les paroles de Mme Vaisseaumann -->
+    function avancerHistoire() {
+		<!-- On augmente l'index de 1 -->
+        index = index + 1;
+		
+		<!-- Si l'index est supérieur au nombres de paroles cela signifie que le dialogue est fini -->
+        if (index >= dialogues.length) {
+            document.getElementById("boite_dialogue").style.display = "none"; 
+            document.getElementById("jeu").style.display = "block";
+            return;
+        }
+		<!-- On fait alors disparaître la boîte de dialogue et on fait apparaître le jeu -->
+        document.getElementById("texte_jeu").innerHTML = dialogues[index];
+    }
+
+    // Système de score et de gestion des images
+    let score = 0; //La valeur du score
+    let imageIndex = 0; //L'index de l'image afffiché
+
+    const images = [
+		{ src: "cielv.jpg", type: "vraie" },
+		{ src: "damev.jpg", type: "vraie" },
+		{ src: "papei.jpg", type: "ia" },
+		{ src: "cuisinev.jpg", type: "ia" },
+		{ src: "chienv.jpg", type: "vraie" },
+		{ src: "musiquei.jpg", type: "ia" },
+		{ src: "poutinei.jpg", type: "ia" },
+		{ src: "aerop.jpg", type: "ia" },
+		{ src: "emeutev.jpg", type: "vraie" },
+		{ src: "mbappe.jpg", type: "vraie" },
+		{ src: "femme3i.jpg", type: "ia" },
+		{ src: "hommev.jpg", type: "vraie" },
+		{ src: "femme3i.jpg", type: "ia" },
+		{ src: "coeuri.jpg", type: "ia" },
+		{ src: "foreti.jpg", type: "ia" },
+		{ src: "soleilv.jpg", type: "vraie" },	
+	];
+
+    // Initialisation, on affiche la première image
+    document.getElementById("image").src = images[0].src;
+	
+	//Fonction pour changer la photo et remettre a carte au centre
+    function imageSuivante() {
+        imageIndex = imageIndex + 1; // On augmente la valeur de l'index des images
+        remettreCarteAuCentre(); // Réinitialise la position avant d'afficher la suite
+        
+		//Si l'index est plus petit que le nombre d'image = il reste des images donc on met l'image dans la carte
+        if (imageIndex < images.length) {
+            document.getElementById("image").src = images[imageIndex].src;
+        } else { // Il ne reste plus d'imaes
+            // Fin du jeu
+            document.getElementById("jeu").innerHTML = `
+                <div style="text-align:center; color:white; background:rgba(0,0,0,0.8); padding:30px; border-radius:20px;">
+                    <h2>La partie terminée !</h2>
+                    <p style="font-size:22px;">Votre score final est de : <strong>${score} /16</strong></p>
+                </div>`;
+        }
+    }
+	
+	function remettreCarteAuCentre() {
+        carte.style.transition = "none"; // On la remet sans animation, juste direct
+        carte.style.transform = "translateX(0px) rotate(0deg)"; // on la remet au centre
+        startX = 0;// on réinitialise les valeur de position de départ et actuelle à 0
+        currentX = 0;
+    }
+	
+	// Fonction pour vérifier le choix du joueur, si c'est la bonne réponse
+    function verifierChoix(choixJoueur) {
+        let imageActuelle = images[imageIndex];
+        //On vérifie que le choix du joeur correspond ou non au type ( ia ou vraie ) de l'image
+        if (choixJoueur === imageActuelle.type) {
+            score = score + 1; // Si c'est le cas il gagne 1 point
+            document.getElementById("valeur_score").innerText = score;
+			document.getElementById("resultat").innerText = " ✅ C'est une bonne réponse !";
+			document.getElementById("resultat").style.display = "block";
+			document.getElementById("resultat").className = "correct"; // Devient vert
+        }
+		else if (choixJoueur !== imageActuelle.type){
+			document.getElementById("resultat").innerText = " ❌ C'est une mauvaise réponse !";
+			document.getElementById("resultat").style.display = "block";
+			document.getElementById("resultat").className = "incorrect"; // Devient rouge
+			}
+		setTimeout(function() {
+			// On recache le carré
+			document.getElementById("resultat").style.display = "none";
+			// On passe à l'image suivante après 3 secondes
+			imageSuivante();
+				}, 2000); 
+		}
+
+    const carte = document.getElementById("carte");
+    let startX = 0;      	// Position de la souris au départ
+    let currentX = 0;    	//		Position de la souris actuelle
+    let isDragging = false; // Variable booléenne qui dit si un déplacment d'image est en cours
+
+    //Début du clic sur la carte
+    carte.addEventListener("pointerdown", (e) => {
+        isDragging = true;
+        startX = e.clientX; // La positon de départ est initialisé à la position de la souris au moment ou l'image est touché
+        carte.style.transition = "none"; 
+        carte.style.cursor = "grabbing"; // Le curseur deveint une main qui attrape
+    });
+
+    // mOuvement /déplacement en cours
+    window.addEventListener("pointermove", (e) => {
+        if (!isDragging) return; // Si le déplacement n'est pas en cours : on fait rien
+
+        currentX= e.clientX; //Position de la souris actuelle
+        let diff = currentX - startX;  // De combien a ton bougé ? De la différence entre la position de départ et la position actuelle
+
+        carte.style.transform = `translateX(${diff}px) rotate(${diff * 0.05}deg)`; //On translate la position de l'image de la différence et on la fait faire une légère rotation
+    });
+
+    // Relâchement
+    window.addEventListener("pointerup", (e) => {
+        if (!isDragging) return; // si aucun déplacemnt de la carte était en cours on ne fait rien 
+        isDragging = false; // On change le statut de la carte de 'en déplacement' à 'pas en déplacement'
+        carte.style.cursor = "grab"; //Le curseur on le remet normal
+
+        let diff = currentX - startX;
+        const seuil = 50;  // on definit un seuil de décision : il faut avoir bouger la carte d'au moins 50 px pour qu'un décision soit validée
+
+        if (diff < -seuil) { //-seuil c'est - 50 px ça veut dire 50 px vers la gauche : choix ia
+            // IA à gauche
+            verifierChoix("ia"); // On lance la fonction pour vérifier si c la bonne réponse ou pas
+               
+        } else if (diff > seuil) { // vers la droite: choix vraie
+            // VRAIE à droite
+            verifierChoix("vraie");
+
+        } else { // si le déplacemnt est compris en ]-50;50[ ; décision non-validée
+            // Rejet : retour fluide
+            carte.style.transition = "transform 0.3s ease"; // on met une petite animation pour la remette fluidement 
+            remettreCarteAuCentre();
+        }
+    });
+</script>
+</body>                                                           
+</html>
