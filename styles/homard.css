@@ -115,7 +115,7 @@ body {
 }
 #mj {
     z-index: 10;
-    display: block;
+    display: none;
     position: fixed;
     top: 5px;
     right: 5px;
