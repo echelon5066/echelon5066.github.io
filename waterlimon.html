@@ -25,7 +25,7 @@
 				points=0; //pareil pour les points
 				document.getElementById('compteur_de_points').innerHTML = points; //on update le contenu de compteur de points
 				nouvelle_question(); //on lance la fonction nouvelle fonction
-			} 
+			}
   		</script>
  
  		<script> // script jeu
@@ -172,7 +172,7 @@
 					En arrivant dans la salle, vous appercevez M. Waterlimon, l'air bien abattu.
 					Vous vous approchez de lui et engagez la conversation, bien décidé à obtenir des informations !
 				</h1>
-				<input id = bouton_intro type="button" value="Suivant" onclick=suivant()>
+				<input id = bouton_intro type="button" value="Suivant" onclick="suivant()">
 			</div>
 		
 			<div id = "regles">
@@ -198,9 +198,9 @@
 			</div>
 			<div id="Waterlimon" style="display:block;"></div><!--la case avec ce que dit M. W -->
 			<div id = "propositions"><!---les trois propositions, ce sont des boutons, la value est neutre puisqu'elle est définie par une fonction (nouvelle_question), le style de base est le style neutre (ni bonne ni moyenne ni mauvaise réponse, et quand on clique sur une div, ça lance la fonction check )-->
-				<button id = "div_1" class="divs" onclick=check(0);></button>
-				<button id = "div_2"  class="divs" onclick=check(1);></button>
-				<button id = "div_3"  class="divs" onclick=check(2);></button>
+				<button id = "div_1" class="divs" onclick="check(0);"></button>
+				<button id = "div_2"  class="divs" onclick="check(1);"></button>
+				<button id = "div_3"  class="divs" onclick="check(2);"></button>
 			</div>
 
 			<input id = "suiv" type="button" class="Suivant" value="Suivant" onclick="nouvelle_question()"><!---Le bouton pour passer à la question d'après, tous les boutons de ce genre (pour passer au truc d'après) ont la même classe--->
@@ -260,270 +260,6 @@
 				</div>
 			</div>
 		</div>
-		<input id="next" type="button" value="suivant" class="Suivant" style="right:50px;" onclick=changer_de_div() > <!---le bouton pour changer de divrep --->
- 	</body>
-</html><!DOCTYPE html>
-<html lang="fr">
-<!--- Le head--->
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="styles/waterlimon.css">
-		<title>Salle L-3.03</title> 
-	</head>
- 	<body>
-		<!---L'introduction du jeu--->
-		<script> //script intro
-			function suivant(){
-				document.getElementById("intro_du_jeu").style.display = "none";
-				document.getElementById("regles").style.display = "block";
-			};
-
-			function commencer(){
-				document.getElementById("regles").style.display = "none"; //on cache les règles
-				document.getElementById("jeu").style.display = "flex"; //on affiche jeu (les propositions, suivant, la photo du personnage)
-
-				document.getElementById("outro").style.display="none"; //on cache l'outro (toutes les divs de la narration quand on a gagné)
-				x=-1; // on initialise une variable x à -1
-				points=0; //pareil pour les points
-				document.getElementById('compteur_de_points').innerHTML = points; //on update le contenu de compteur de points
-				nouvelle_question(); //on lance la fonction nouvelle fonction
-			} 
-  		</script>
- 
- 		<script> // script jeu
- 			//on déclare toutes les variables globales d'un coup
-			document.getElementById("mj").style.display="none";
-			let bonne_reponse;
-			let moyenne_reponse;
-			let mauvaise_reponse;
-			let verifclick;
-			let x;
-			let points;
-			let z;
-			let liste_des_noms_de_divs;
-			let divmoy;
-			let divbon;
-			let divmal;
-
-			const bonnes_reponses = [
-				[1,2,0],[0,1,2],[2,0,1],[0,2,1],[1,0,2], [2,1,0]
-			];
-			// on crée une liste de liste avec les numéros des bonnes réponses,
-			// des moyennes, puis des mauvaises réponses (ex, pour la question 1,
-			// la bonne réponse est la numéro 1, la moyenne réponse est la numéro 2,
-			// et la mauvaise réponse est la numéro 0)
-
-			const reponses = [
-				["Il serait temps de réaliser maintenant.","Je comprends, ça a dû être un choc pour vous.","Courage, ça va passer !"], 
-				["C'est si soudain, je n'imagine pas votre peine…","Certes… Vous voulez un mouchoir ?","Oui, aujourd'hui il ne plaisante plus."],
-				["Oh… Rapidement alors…","Non merci ça ira, vous savez qui l'a tué ?","Bien sûr, parler de vos souvenirs pourrait vous faire du bien."],
-				["Quel geste généreux, cela a dû vous rapprocher énormément","Super, on peut revenir au présent ?","Eh ben, comme quoi il en faut peu."],
-				["Oooh, ma grand-mère habite là bas !","Cela doit vous rappeler de nombreux souvenirs d’enfance.","Tu parles d’une destination de vacances…"],
-				["On s'en fiche de son perroquet !! LES INFOS ?????","Vous voulez que je m'occupe de son perroquet ?","Je suis vraiment désolé, vous n'êtes pas seul, sachez-le."]
-			];
-			// on crée une liste avec autant de sous-listes que de question.
-			// Chaque sous-liste contient les 3 propositions pour la réponse,
-			// elles sont dans l'ordre où elles seront sur la page 
- 
-			const Texte_Waterlimon = [ 
-				// liste avec les répliques de M. Waterlimon
-				"M. Waterlimon : M. Champignon, oh je… je suis désolé, je n’arrive toujours pas à y croire… *snif*",
-				"M. Waterlimon : Hier encore il était là, à plaisanter, et aujourd’hui… ",
-				"M. Waterlimon : C’était mon meilleur a…ami, vous savez ? On se connait depuis la m…maternelle ! *snif* Vous voulez que je vous raconte notre rencontre ?",
-				"M. Waterlimon : C’était en moyenne section, nous étions dans la classe de Mlle Greluche, il m’a prêté son… *snif* son feutre vert et c’est ainsi que nous sommes devenus meilleurs amis.",
-				"M. Waterlimon : Nous sommes restés inséparables depuis… Nous avions prévu de partir ensemble à… Trifouillis les bretelles, nous y allons chaque été depuis notre adolescence…",
-				"M. Waterlimon : Mais je n’aurai pas la force d’y retourner maintenant que… Ooooh, et son perroquet, Shiitake, qui va s’en occuper ? C’est un animal très sensible… S’est-il déjà rendu compte que son fidèle ami était dé… décédé ?"
-			];
- 
-			function nouvelle_question(){ //à la x+1 ième question...(parce que x commence à -1, tkt)
-				x=x+1; // on augmente la variable (oui c'est au début et pas à la fin, et on commence à x=-1, c'est pas le plus efficace mais onnêtement ça change pas grand chose)
-				
-				//on affecte à des variables les numéros de la bonne, de la moyenne, et de la mauvaise réponse
-				bonne_reponse= bonnes_reponses[x][0];
-				moyenne_reponse=bonnes_reponses[x][1];
-				mauvaise_reponse=bonnes_reponses[x][2];
-				
-				document.getElementById("Waterlimon").innerHTML=Texte_Waterlimon[x]// on va chercher la réplique de W dans la liste avec l'index x, et on le met dans la div où il parle
-				document.getElementById('div_1').innerHTML = reponses[x][0];//dans la div pour la proposition 1, on met le premier élément de la sous-liste de propositions n°x (en gros on met la 1ère réponse de la xème question) 
-				
-				document.getElementById('div_1').className= "divs style_neutre";//et on met un style neutre (bleu-vert) (ni bonne, ni moyenne, mauvaise réponse)
-
-				
-				document.getElementById('div_2').innerHTML = reponses[x][1];//pareil avec les 2 autres cases
-				document.getElementById('div_2').className="divs style_neutre";
-				
-				document.getElementById('div_3').innerHTML = reponses[x][2];
-				document.getElementById('div_3').className= "divs style_neutre";
-				document.getElementById('suiv').style.display ="none";//cacher bouton suivant
-				verifclick=0;// on réinitialise verifclick pour ce tour 
-				//(verifclick sert à détecter quand l'utilisateur essaie de tricher en cliquant plusieurs fois par question),
-				//on la met à 1 quand l'utilisateur clique sur une proposition et on la réinitialise à chaque question
-			}
- 
-			function check(y){//fonction activée quand une case réponse est cliquée, pour vérifier la réponse
-				liste_des_noms_de_divs=["div_1","div_2","div_3"];//éloquent
-				divmoy=liste_des_noms_de_divs[moyenne_reponse];//en gros, on a besoin pour la suite d'avoir l'identifiant de la div avec la moyenne réponse. donc on passe de "je connais le numéro de la moyenne réponse" à "je connais l'id de la div qui contient la moyenne réponse" avec l'aide d'une liste où si je cherche le xe élément, j'obtiens "div-x" (en gros) 
-				divbon=liste_des_noms_de_divs[bonne_reponse];// pareil avec bonne et mausaise réponse --> bonne et mauvaise div
-				divmal=liste_des_noms_de_divs[mauvaise_reponse];
-				if (verifclick==1) {
-					alert("N'essayez pas de tricher !");
-				} //si le joueur essaie de tricher en cliquant plusieurs fois pas question, on le remet à sa place
-				if (y==bonne_reponse && verifclick==0) { //si l'utilisateur ne triche pas et si la réponse choisie (y) est la bonne (y prend le numéro de la case, voir code html de chaque case)
-					points=points+10;//on augmente la variable points de 10
-				}
-				if (y==moyenne_reponse && verifclick==0) { //si l'utilisateur ne triche pas et si la réponse choisie (y) est la moyenne (y prend le numéro de la case, voir code html de chaque case)
-					points=points+5;//on augmente la variable points de 5
-				}	 
-				
-				// ensuite, vu qu'on sait quel id porte quelle réponse, grâce aux magouilles de la ligne 373-6, on peut faire un getelementbyid et modifier la couleur des divs pour que ça s'adapte à la justesse de la réponse (vert jaune rouge, Ampel !!)
-				document.getElementById(divmoy).className = "divs bof";
-				document.getElementById(divbon).className = "divs psy";
-				document.getElementById(divmal).className = "divs sanstact";
-				
-				if (x < 5){//si on en est pas à la dernière question
-					document.getElementById('suiv').style.display = "block";//montrer bouton suivant
-				} else { //si c'est la dernière question
-					document.getElementById("next").style.display="block";// on montre le bouton next (équivalent du bouton suivant mais dans l'outro)
-					z=0;// et on dit bonjour au nouveau paramètre : z
-					
-					//ensuite, en fonction de son score, le message de la première div de l'outro sera personnalisé (on change le innerHTML)
-					if (points <18) { 
-						document.getElementById("premiere_rep").innerHTML="Décidément, vous avez une âme de pierre ! Comment pouvez-vous être si peu sensible au désespoir de ce professeur ? Honte à vous !";
-					} else if (points<32){
-						document.getElementById("premiere_rep").innerHTML="Vous êtes un peu maladroit dans vos réponses… Mais au moins vous essayez d’être compréhensif ! Pensez à être plus délicat dans la vraie vie.";
-					} else {
-						document.getElementById("premiere_rep").innerHTML="Quelle compassion ! Oreille attentive, mots justes… Vous pourriez être psy !";
-					}
-				}
-				verifclick=1;//pour savoir que le joueur a cliqué sur une case (les points ne varieront plus lors de ce tour car la condition verifclick différent de 1 ne sera plus vérifiée au prochain clic))
-				document.getElementById('compteur_de_points').innerHTML = points; //on update le contenu de compteur de points
-			}
-     
-			function game_master(){//fonction pour ma santé mentale (et parce que c'est stylé) : permet d'aller direct à la fin du jeu 
-				x=5;
-				points = 100;
-				check(0);
-			}
-		</script>
-		<script>// script de l'outro
-			const divs_apres_jeu=["divrep1","divrep2","divrep3","divrep4","divrep5","divrep6"];// la liste des ID des divreps (une divrep = une div avec nom de perso + une avec ce qu'il dit)
-  
-			function changer_de_div(){// fonction activée quand on clique sur next
-				if (z==0){// si c'est la première fois (on vient d'afficher la correction de la dernière question et next vient d'apparaître)
-					document.getElementById("jeu").style.display="none";//on cache les éléments du jeu
-					document.getElementById("outro").style.display="flex";//on montre l'outro
-					
-					//en gros il y a 6 cases de narration/paroles de personnages après, et z correspond au numéro de la case où on en est
-					document.getElementById(divs_apres_jeu[0]).style.display="flex";// on montre divrep 1 (la liste divs_apres_jeu est ligne 428, elle contient le nom des divreps qu'on va afficher)
-					z=1;//on augment z de 1 
-				} else {
-					document.getElementById(divs_apres_jeu[z-1]).style.display="none";//on cache la divrep précédente (grâce à l'indice z) 
-					document.getElementById(divs_apres_jeu[z]).style.display="flex";//on montre la divrep suivante (grâce à l'indice z)
-					z=z+1;// on augmente l'indice de 1
-				}
-			}
- 			document.getElementById("next").style.display="none"; 
-  
-		</script> 
- 
-		<div id="conteneur_intro">
-		
-			<div id = "intro_du_jeu">
-				<h1>
-					En arrivant dans la salle, vous appercevez M. Waterlimon, l'air bien abattu.
-					Vous vous approchez de lui et engagez la conversation, bien décidé à obtenir des informations !
-				</h1>
-				<input id = bouton_intro type="button" value="Suivant" onclick=suivant()>
-			</div>
-		
-			<div id = "regles">
-			
-				<h1>
-					Si vous voulez des infos, il va falloir le consoler, mais en êtes-vous capable ?
-					Pendant que M. Waterlimon vous parle, des réponses vous seront proposées, choisissez selon votre coeur.
-					La correction s'affichera selon un code couleur. 
-				</h1>
-				
-				<input id = bouton_intro type="button" value="Jouer" onclick=commencer()>
-			</div>
-			
-		</div>
-
-		<!---Le jeu--->
-
-		<div id= "jeu">
-
-			<div id="conteneur_compteur_de_points">	
-				<div id = "vos_points" > Vos points </div>
-				<div id = "compteur_de_points">0</div>
-			</div>
-			<div id="Waterlimon" style="display:block;"></div><!--la case avec ce que dit M. W -->
-			<div id = "propositions"><!---les trois propositions, ce sont des boutons, la value est neutre puisqu'elle est définie par une fonction (nouvelle_question), le style de base est le style neutre (ni bonne ni moyenne ni mauvaise réponse, et quand on clique sur une div, ça lance la fonction check )-->
-				<button id = "div_1" class="divs" onclick=check(0);></button>
-				<button id = "div_2"  class="divs" onclick=check(1);></button>
-				<button id = "div_3"  class="divs" onclick=check(2);></button>
-			</div>
-
-			<input id = "suiv" type="button" class="Suivant" value="Suivant" onclick=nouvelle_question()><!---Le bouton pour passer à la question d'après, tous les boutons de ce genre (pour passer au truc d'après) ont la même classe--->
-			
-			<input id="mj" type="button" onclick="game_master()"  value="accès MJ"><!--- bouton de triche pour nous, pour aller direct à l'outro--->
-		</div>	
-
-		<!---après le jeu--->
-		<div id="outro" ><!---Une div avec tout ce qui se passe après le jeu--->
-
-			<!---les 6 divreps sont construites de la même manières, une case avec le nom du perso, de la classe perso et une case avec ce qui est dit de la classe rep--->
-			<!---toutes les cases  sont cachées par défaut--->	
-			<div id="divrep1" style="display:none;">
-				<div class="perso">Narrateur</div>
-			
-				<div id="premiere_rep" class="rep">
-				</div>
-			</div>
-	
-			<div id="divrep2" style="display:none;">
-				<div class="perso">Narrateur</div>
-			
-				<div class="rep">
-					Malheureusement, rien de ce que vous pouviez dire ne peut consoler M. Waterlimon. Parfois, les mots et une présence rassurante ne suffisent pas, et seul le temps peut permettre à quelqu’un de surmonter une épreuve aussi terrible. 
-				</div>
-			</div>
-
-			<div id="divrep3" style="display:none;">
-				<div class="perso">Narrateur
-				</div>
-			
-				<div class="rep"> M. Waterlimon éclate en sanglots incontrôlables et s’effondre sur votre épaule. Vous lui donnez des petites tapes dans le dos mais au bout de 10 minutes, vous commencez à vous impatienter ! Heureusement, Mme Fontaneth et M. Boisson arrivent pour prendre la relève.
-				</div>
-			</div>
-
-			<div id="divrep4" style="display:none;">
-				<div class="perso">Narrauteur
-				</div>
-			
-				<div class="rep">Vous sortez de la salle et trouvez Mme Homard dans le couloir marmonner
-				</div>
-			</div>
-
-			<div id="divrep5" style="display:none;">
-				<div class="perso">Mme Homard
-				</div>
-			
-				<div class="rep">Décidément, ces professeurs de sciences sont bien étranges… 
-				</div>
-			</div>
-
-			<div id="divrep6" style="display:none;">
-				<div class="perso">Narrateur
-				</div>
-			
-				<div class="rep">Pourquoi Mme Homard semble-t-elle se méfier des professeurs de sciences ? Aurait-elle aperçu quelque chose ? Suivez-la dans sa salle pour en savoir plus !
-				</div>
-			</div>
-		</div>
-		<input id="next" type="button" value="suivant" class="Suivant" style="right:50px;" onclick=changer_de_div() > <!---le bouton pour changer de divrep --->
+		<input id="next" type="button" value="suivant" class="Suivant" style="right:50px;" onclick="changer_de_div()" > <!---le bouton pour changer de divrep --->
  	</body>
 </html>
-
