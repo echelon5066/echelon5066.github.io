@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <!--- Le head- -->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/homard.css">
+
+        <title>Salle G-1.01</title>
+    </head>
+
+
+    <body>
+        <!---L'introduction du jeu- -->
+        <script>
+            //script intro
+
+            //on déclare toutes nos variables 
+
+            let bonne_reponse;
+            let verifclick;
+            let x;
+            let points;
+            let z;
+
+
+
+            function suivant() { //fonction pour passer de la div d'acceuil à la div d'explication du jeu lorsque'on clique sur suivant
+                document.getElementById("intro_du_jeu").style.display = "none";
+                document.getElementById("regles").style.display = "block";
+            };
+
+
+
+
+            function commencer() { //fonction pour démarrer le jeu 
+                document.getElementById("regles").style.display = "none"; //on cache les règles
+                document.getElementById("jeu").style.display = "flex"; //on affiche jeu (les propositions, suivant, la photo du personnage, les points...)
+                document.getElementById("restart").style.display = "none"; //on cache le bouton pour recommencer
+                document.getElementById("outro").style.display = "none"; //on cache l'outro (toutes les divs de la narration quand on a gagné)
+                x = -1; // on initialise une variable x 
+                points = 0; //pareil pour les points
+                document.getElementById('compteur_de_points').innerHTML = points; //on update le contenu de compteur de points
+                nouvelle_question(); //on lance la fonction nouvelle fonction
+            }
+        </script>
+
+
+        <script>
+            //script jeu
+
+
+            const bonnes_reponses = [1, 2, 3, 2, 2, 1, 3, 1, 2, 1, 1, 3]; //on crée une liste avec les numéros des bonnes réponses
+            const reponses = [
+                ["Napoléon I", "César", "Christophe Colomb"],
+                ["Pétain", "Dreyfus", "Mussolini"],
+                ["Hausmann", "Emile Zola", "Bismarck"],
+                ["Bismarck", "Marx", "Darwin"],
+                ["Charles de Gaulle", "Philippe Pétain", "Winston Churchill"],
+                ["Louise Michel", "Ada Lovelace", "Ségolène Royal"],
+                ["Ada Lovelace", "Olympe de Gouges", "George Sand"],
+                ["Robespierre", "Danton", "Camille Desmoulins"],
+                ["Boucicaut", "Haussmann", "Churchill"],
+                ["Napoléon III", "Staline", "Jules Ferry"],
+                ["Simone de Beauvoir", "Olympe de Gouges", "Sophie Scholl"],
+                ["Metternich", "Alexandre Dumas", "Gambetta"]
+            ]; // on crée une liste avec autant de sous-listes que de question. Chaque sous-liste contient les 3 propositions pour le personnage 
+
+            const lien_images = [
+				["images/homard/0_Napoleon.jpg", "images/homard/0_Napoleon_flou.png"],
+				["images/homard/1_Dreyfus.jpg", "images/homard/1_Dreyfus_flou.png"],
+				["images/homard/2_Bismarck.jpg", "images/homard/2_Bismarck_flou.png"],
+				["images/homard/3_Marx.jpg", "images/homard/3_Marx_flou.png"],
+				["images/homard/4_Petain.jpg", "images/homard/4_Petain_flou.png"],
+				["images/homard/5_LouiseMichel.jpg", "images/homard/5_LouiseMichel_flou.png"],
+				["images/homard/6_Sand.jpg", "images/homard/6_Sand_flou.png"],
+				["images/homard/7_Robespierre.jpg", "images/homard/7_Robespierre_flou.png"],
+				["images/homard/8_Haussmann.jpg", "images/homard/8_Haussmann_flou.png"],
+				["images/homard/9_Nap3.webp", "images/homard/9_Nap3_flou.png"],
+				["images/homard/10_Beauvoir.jpg", "images/homard/10_Beauvoir_flou.png"],
+				["images/homard/11_Gambetta.jpg", "images/homard/11_Gambetta_flou.png"]
+			]; // liste avec les liens des images floues et nettes (en souslistes)
+
+
+
+            function nouvelle_question() { //à la x ième question...(en partant de 0, nsi oblige)
+                x = x + 1 //on augmente la variable x 
+                bonne_reponse = bonnes_reponses[x]; // on va chercher la bonne réponse de la question traitée dans la liste avec l'index x 
+                document.getElementById('div_1').value = reponses[x][0]; //dans la div pour la proposition 1, on met le premier élément de la sous-liste de propositions n°x
+                document.getElementById('div_1').className = "divs style_neutre"; //et on met un style neutre (ni bonne, ni mauvaise réponse) (divs c'est juste la classe normale)
+
+
+                document.getElementById('div_2').value = reponses[x][1]; //pareil avec les 2 autres cases
+                document.getElementById('div_2').className = "divs style_neutre";
+
+                document.getElementById('div_3').value = reponses[x][2];
+                document.getElementById('div_3').className = "divs style_neutre";
+                document.getElementById('suiv').style.display = "none"; //cacher bouton suivant
+                document.getElementById('photo_du_personnage').src = lien_images[x][1]; //on change l'image en allant cercher le nouveau lien par index dans la liste avec les liens (x parce que c'est la xe question, et 1 parce que c'est la photo floue et pas nette)
+                verifclick = 0; // on réinitialise verifclick pour ce tour 
+                //(verifclick sert à détecter quand l'utilisateur essaie de tricher en cliquant plusieurs fois par question),
+                //on la met à 1 quand l'utilisateur clique sur une proposition et on la réinitialise à chaque question, les points ne changent plus si il reclique
+
+
+            }
+
+            function check(y) { //fonction activée quand une case réponse est cliquée, pour vérifier la réponse
+
+                if (verifclick == 1) {
+                    alert("N'essayez pas de tricher !")
+                } //si le joueur essaie de tricher en cliquant plusieurs fois par question, on le remet à sa place
+                if (y == bonne_reponse && verifclick == 0) { //si l'utilisateur ne triche pas et si la réponse choisie (y) est la bonne (y prend le numéro de la case, voir code html de chaque case)
+                    points = points + 1; //on augmente la variable points de 1
+                }
+
+                //ensuite, en fonction de la bonne réponse, on met la case juste avec le style bonne réponse
+                //et les autres avec le style mauvaise réponse (vert et rouge quoi)
+                // ya plus efficace que 12 lignes de code dans la salle de Limon mais un peu flemme de changer
+                if (bonne_reponse == 1) {
+                    document.getElementById('div_1').className = "divs juste";
+                    document.getElementById('div_2').className = "divs faux";
+                    document.getElementById('div_3').className = "divs faux";
+                }
+                if (bonne_reponse == 2) {
+                    document.getElementById('div_2').className = "divs juste";
+                    document.getElementById('div_1').className = "divs faux";
+                    document.getElementById('div_3').className = "divs faux";
+                }
+                if (bonne_reponse == 3) {
+                    document.getElementById('div_3').className = " divs juste";
+                    document.getElementById('div_1').className = "divs faux";
+                    document.getElementById('div_2').className = "divs faux";
+                };
+                if (x < 11) { //si on en est pas à la dernière question
+                    document.getElementById('suiv').style.display = "block"; //montrer bouton suivant
+                }
+                document.getElementById('photo_du_personnage').src = lien_images[x][0]; //on met l'image nette à la place de l'image floue en allant chercher le lien 0 de la sous-liste x 
+                verifclick = 1; //pour savoir que le joueur a déjà cliqué sur une case à ce tour (les points ne varieront plus lors de ce tour car la condition verifclick différent de 1 ne sera plus vérifiée au prochain clic))
+                document.getElementById('compteur_de_points').innerHTML = points; //on update le contenu de compteur de points
+                if (x == 11) { // si on a fini la dernière question
+                    if (points >= 10) { // si il a au moins 10 points
+                        z = 0; //on dit bonjour au nouveau paramètre, z 
+                        document.getElementById("next").style.display = "block"; //on montre le bouton suivant de l'outro (pas le même que celui pour changer de question)
+
+
+
+                    }
+                    if (points < 10) { //si le score est inférieur à 10
+                        alert("Malheureusement, vos connaissances en histoire sont un peu faibles, réessayez !"); //on fait un alert pour lui dire gentiment que ça va pas
+                        document.getElementById('restart').style.display = "block"; //montrer bouton recommencer;
+                        document.getElementById('suiv').style.display = "none"; //cacher bouton suivant;
+                    }
+                }
+
+            }
+
+            function game_master() { //fonction pour ma santé mentale : permet d'aller direct à la fin du jeu 
+                x = 11;
+                points = 100; //parce qu'on a le droit, c'est nous qu'on code d'abord
+                check(1);
+            }
+        </script>
+        <script>
+            // script de l'outro
+            //principe de l'outro : à chaque réplique, il y a une case avec le nom du personnage, et une case avec ce qu'il dit (on met l'ensemble dans une "divrep"), ainsi qu'un bouton suivant. Il y a une liste avec les id de toutes les divreps dans l'ordre. A chaque fois qu'on clique sur suivant, on cache la divrep précédente et on montre la suivante (à l'aide d'un indice qui augment à chaque fois et de la liste avec les noms des id de toutes les divreps)
+            const divs_apres_jeu = ["divrep1", "divrep2", "divrep3", "divrep4", "divrep5"]; // la liste des ID des divreps
+
+            function changer_de_div() { // fonction activée quand on clique sur suivant
+                if (z == 0) { //le bouton suivant de l'outro apparaît dès la dernière question du jeu, donc la première fois qu'on clique dessus, il faut cacher le jeu et montrer l'outro
+                    document.getElementById("jeu").style.display = "none"; //on cache les éléments du jeu
+                    document.getElementById("outro").style.display = "block"; //on montre l'outro
+                    document.getElementById(divs_apres_jeu[0]).style.display = "block"; // on montre divrep 1 
+                    z = 1; //on augmente le paramètre
+                } else { // si on vient pas de finir le jeu
+                    document.getElementById(divs_apres_jeu[z - 1]).style.display = "none"; //on cache la divrep précédente (grâce à l'indice) 
+                    document.getElementById(divs_apres_jeu[z]).style.display = "block" //on montre la divrep suivante (grâce à l'indice)
+                    z = z + 1;
+                } // on augmente l'indice de 1
+            }
+        </script>
+
+        <div id="conteneur_intro">
+
+            <div id="intro_du_jeu" class="intro">
+                <h1>
+	Vous arrivez dans la salle G101 et y trouvez Mme Homard. Répondez à son quiz d'histoire et recevez votre indice !
+			</h1>
+                <input id=b outon_intro type="button" value="Suivant" onclick=suivant()>
+            </div>
+
+            <div id="regles" class="intro" style="display:none;">
+
+                <h1>
+		Des photos floutées de personnages historiques vont ici s'afficher, votre but est de les reconnaître.</h1>
+                <h1> Mme Homard ne vous donnera son indice que si vous avez au moins 10 bonnes réponses sur 12. </h1>
+                <h1> La correction s'affichera selon un code couleur (rouge pour faux, vert pour juste). Bonne chance !
+			</h1>
+
+                <input id=b outon_intro type="button" value="Jouer" onclick=commencer()>
+            </div>
+
+        </div>
+
+        <!---Le jeu -->
+
+
+
+
+
+        <div id="jeu">
+
+            <div id="conteneur_compteur_de_points">
+                <div id="vos_points"> Vos points </div>
+                <div id="compteur_de_points">0</div>
+            </div>
+
+            <div id="propositions">
+                <!---les trois propositions, ce sont des boutons, la value est neutre puisqu'elle est définie par une fonction (nouvelle_question), le style de base est le style nutre (ni bonne ni mauvaise réponse, et quand on clique sur une div, ça lance la fonction check (mais naaaaan))-->
+                <input id="div_1" type="button" value="" class="divs style_neutre" onclick=check(1);>
+                <input id="div_2" type="button" value="" class="divs style_neutre" onclick=check(2);>
+                <input id="div_3" type="button" value="" class="divs style_neutre" onclick=check(3);>
+            </div>
+
+            <img id="photo_du_personnage" src="">
+            <!---La case pour la photo du personnage, le lien est défini par une fonction (nouvelle question pour l'image floue et check pour l'image nette- -->
+
+            <input id="suiv" type="button" class="Suivant" value="Suivant" onclick=nouvelle_question()>
+            <!---Le bouton pour passer à la question d'après, tous les boutons de ce genre (pour passer au truc d'après) ont la même classe- -->
+            <input id="restart" type="button" class="Suivant" value="Recommencer" onclick=commencer()>
+            <!---Le bouton pour recommencer- -->
+            <input id="mj" type="button" onclick="game_master()" value="accès MJ">
+            <!--- bouton de triche pour nous, pour aller direct à l'outro- -->
+        </div>
+
+        <!---après le jeu- -->
+        <div id="outro">
+            <!---Une div avec tout ce qui se passe après le jeu- -->
+
+            <!---les 5 divreps sont construites de la même manières, une case avec le nom du perso, de la classe perso et une case avec ce qui est dit de la classe rep- -->
+            <!---toutes les cases  sont cachées par défaut- -->
+            <div id="divrep1" style="display:none;">
+                <div class="perso">Mme Homard
+                </div>
+
+                <div class="rep">Vos connaissances en histoire m'impressionnent ! Bon, pour tout vous dire, j'ai mes raisons de penser que les professeurs de sciences sont quelque peu... instables émotionnellement. Tenez ! La semaine dernière j'ai vu Mme Fontaneth se disputer violemment avec M. Champignon ! Quelle mauvaise ambiance...
+                </div>
+            </div>
+
+
+            <div id="divrep2" style="display:none;">
+                <div class="perso">Narrateur
+                </div>
+
+                <div class="rep" style="display:flex;flex-direction:column;">Soudain, les hauts-parleurs se mettent à vibrer, et la voix de Mme Mozza-Garcia retentit dans tout le lycée.
+                    <audio controls src="audios/homard/convocation.mp3" style="margin:10px;"></audio>
+                </div>
+            </div>
+
+            <div id="divrep3" style="display:none;">
+                <div class="perso">Narrateur
+                </div>
+
+                <div class="rep">Mme Homard part rencontrer Madame la Proviseure, intriguée. Mme Weißermann, qui passait par là, la regarde s'éloigner, l'air contrarié.
+                </div>
+            </div>
+
+            <div id="divrep4" style="display:none;">
+                <div class="perso">Mme Weißermann
+                </div>
+
+                <div class="rep">Convoquer Mme Homard en pleine période de crise ? Mme Mozza-Garcia est décidément bien étrange...
+                </div>
+            </div>
+
+            <div id="divrep5" style="display:none;">
+                <div class="perso">Narrateur
+                </div>
+
+                <div class="rep">Vous voulez en savoir plus ? Suivez Mme Weißermann dans sa salle !
+                </div>
+            </div>
+
+
+
+        </div>
+        <input id="next" type="button" value="suivant" class="Suivant" style="right:50px;" onclick=changer_de_div()>
+        <!---le bouton pour changer de divrep - -->
+    </body>
+
+</html>
