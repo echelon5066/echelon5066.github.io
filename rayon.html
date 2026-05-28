@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Musik-Zuerst_Rayon</title>
+		<link rel="stylesheet" href="styles/rayon.css">
+    </head>
+    <body>
+		<div id="divrep1" >
+			<div class="perso" id="perso">Narrateur</div>
+		
+			<div class="rep" id="texte" >Ecoutez, de la musique !!</div>
+		</div>
+		<input id="next" type="button" value="suivant" class="Suivant" style="right:50px;" onclick="changer_de_div()" >
+		<div id="compteur"></div>
+
+		<div id="div-1"></div>
+
+		<p id = "div-Q">
+		Quel est le titre de ce morceau ? Son compositeur ? Sa tonalité ?<br>
+		Les dates de vie du compositeur ? L'âge qu'il avait quand il est mort ?
+		</p>
+		<audio controls id="son"></audio>
+		<select id="menu1"></select>
+		<select id="menu2"></select>
+		<select id="menu3"></select>
+		<select id="menu4"></select>
+		<select id="menu5"></select>
+		<button id="bouton" class="Suivant" >suivant</button>
+		<img id="Agenda" src="images/rayon/agenda-champignon.png" alt="Agenda">
+		<button id="BoutonRefresh" onclick="window.location.reload()" class="Suivant">Recommencer</button>
+		<p class="rep1" id="Suspect"> 
+		Tiens tiens... une réunion sur la SNT dans le jardin... peu avant qu'on l'y trouve mort ! Je crois qu'on a trouvé nos suspects ! Et ce cup of Tea avec M. Waterlimon la veille... 
+			<br>
+			Allons voir s'il sait quelque chose ! je crois que les salles des professeurs sont indiqués sur le panneau d'affichage.
+		</p>
+	
+		<script>
+			document.getElementById("div-Q").style.display="none";
+			document.getElementById("son").style.display="none";
+			document.getElementById("menu1").style.display="none";
+			document.getElementById("menu2").style.display="none";
+			document.getElementById("menu3").style.display="none";
+			document.getElementById("menu4").style.display="none";
+			document.getElementById("menu5").style.display="none";
+			document.getElementById("bouton").style.display="none";
+			document.getElementById("compteur").style.display="none";
+			document.getElementById("Agenda").style.display="none";
+			document.getElementById("BoutonRefresh").style.display="none";
+			document.getElementById("Suspect").style.display="none";
+			let z=0;
+			let textes=[
+				"Elle semble provenir de la salle --. Allez-y ! Vous pourrez sûrement y trouver un indice.",
+				"Bonjour, je suis en train de préparer les musik zuerst pour les classes d'Euro, pouvez-vous m'aider ?",
+				"Les post-it qui indiquaient les informations de chaque CD se sont enlevés ?", 
+				"Il faut que vous répondiez à chacune de ces questions pour chaque morceau que je vais passer." ,
+			];
+			let perso=["Narrateur","Monsieur Rayon","Monsieur Rayon","Monsieur Rayon"];
+
+			function changer_de_div(){
+				document.getElementById("perso").innerHTML= perso[z];
+				document.getElementById("texte").innerHTML=textes[z];
+				z=z+1;
+				
+				if (z==5){
+					document.getElementById("divrep1").style.display="none";
+					document.getElementById("next").style.display="none";
+					document.getElementById("div-Q").style.display="block";
+					document.getElementById("son").style.display="block";
+					document.getElementById("menu1").style.display="block";
+					document.getElementById("menu2").style.display="block";
+					document.getElementById("menu3").style.display="block";
+					document.getElementById("menu4").style.display="block";
+					document.getElementById("menu5").style.display="block";
+					document.getElementById("bouton").style.display="block";
+				}  
+			}
+				
+			let données_vraies=[
+				["audios/rayon/le-nozze-di-figaro.mp3", "Le Nozze di Figaro", "Mozart", "Ré majeur", "(1756-1791)", "35 ans"],
+				["audios/rayon/toccata.ogg", "Toccata et fugue", "Bach", "Do mineur", "(1685-1750)", "65 ans"],
+				["audios/rayon/Concerto_Flute_Harpe.mp3", "Concerto pour flûte et harpe", "Mozart", "C-Dur", "(1756-1791)", "35 ans"],
+				["audios/rayon/le-chant-des-cygnes.mp3", "Le Chant du Cygne", "Schubert", "D-Dur", "(1797-1828)", "31 ans"],
+				["audios/rayon/Passion.mp3", "La passion selon Saint Jean", "Bach", "Sol mineur", "(1685-1750)", "65 ans"]
+			];
+
+			let données_Q=[
+				[
+					["Ach, Herr Strafe mich nicht", données_vraies[0][1], "Don Giovanni"],
+					["Rameau", "Haydn", données_vraies[0][2]],
+					[données_vraies[0][3], "C-Dur", "Mi Majeur"],
+					["(1683-1764)", données_vraies[0][4], "(1732-1809)"],
+					[données_vraies[0][5], "81 ans", "77 ans"]
+				],
+
+				[
+					[données_vraies[1][1], "Prélude pour Orgue", "Symphonie N°3"],
+					["Haendel", données_vraies[1][2], "Vivaldi"],
+					["Mi Majeur", "Re mineur", données_vraies[1][3]],
+					["(1685-1759)", données_vraies[1][4], "(1678-1741)"],
+					["74 ans", données_vraies[1][5], "63 ans"]
+				],
+
+				[
+					["Concerto pour violon", "Concerto pour hautbois", données_vraies[2][1]],
+					["Beethoven", données_vraies[2][2], "Haydn"],
+					["Do# mineur", données_vraies[2][3], "Si majeur"],
+					["(1770-1827)", données_vraies[2][4], "(1732-1809)"],
+					["57 ans", données_vraies[2][5], "77 ans"]
+				],
+
+				[
+					[données_vraies[3][1], "Schwansee", "La truite"],
+					[données_vraies[3][2], "Schumann", "Beethoven"],
+					[données_vraies[3][3], "Fa mineur", "Fa majeur"],
+					["(1797-1829)", "(1810-1856)", données_vraies[3][4]],
+					["32 ans", "46 ans", données_vraies[3][5]]
+				],
+
+				[
+					["Sonate pour hautbois", données_vraies[4][1], "Intermezzo"],
+					["Hans Zimmer", "Mendelssohn", données_vraies[4][2]],
+					["Sib Majeur", données_vraies[4][3], "H moll"],
+					["(1957- )", "(1809-1847)", données_vraies[4][4]],
+					["69 ans", "38 ans", données_vraies[4][5]]
+				]
+			];
+
+			// Affiche la première question au chargement de la page
+			window.onload = function() {
+				afficherQuestion(0);
+			};
+
+			let total=0;
+			let point=0;
+			let ActuQuestion = 0;
+			let bouton = document.getElementById("bouton");
+
+			bouton.addEventListener("click",reponse);
+
+			function CreationMenu(menuId,donnees) { // crée une fonction qui permet de créer un menu à différents endroits de la page
+				const menu = document.getElementById(menuId); 
+				for (let i = 0; i < 3; i++) { // fait une boucle pour crée chaque option d'un menu
+					let option = document.createElement("option"); // crée une des options dans le menu
+					option.value = donnees[i]; // associe une valeur a une des option du menu
+					option.text = donnees[i]; // associe un texte a une des option du menu
+					menu.appendChild(option); // ajoute l'option dans le menu qui s'affiche dans le html	
+				}
+			}
+													
+			function reponse() {
+				let rep1 = document.getElementById("menu1").value;
+				let rep2 = document.getElementById("menu2").value;
+				let rep3 = document.getElementById("menu3").value;
+				let rep4 = document.getElementById("menu4").value;
+				let rep5 = document.getElementById("menu5").value;
+
+				if (rep1 === données_vraies[ActuQuestion][1]) {point += 1}
+				if (rep2 === données_vraies[ActuQuestion][2]) {point += 1}
+				if (rep3 === données_vraies[ActuQuestion][3]) {point += 1}
+				if (rep4 === données_vraies[ActuQuestion][4]) {point += 1}
+				if (rep5 === données_vraies[ActuQuestion][5]) {point += 1}
+
+				document.getElementById("compteur").style.display="block";
+				document.getElementById("compteur").innerHTML= "vous avez : " + point + " points";
+
+				ActuQuestion++;
+				if (ActuQuestion < données_vraies.length) {
+					afficherQuestion(ActuQuestion)
+				};
+				if (ActuQuestion == 5 ) {
+					if (point>=0) {
+					document.getElementById("compteur").innerHTML = "Bravo, vous avez "+ point+ " points sur 25. C'est suffisant pour obtenir mon indice. M. Champignon avait un agenda... Le voici.";
+					document.getElementById("div-Q").style.display="none";
+					document.getElementById("son").style.display="none";
+					document.getElementById("menu1").style.display="none";
+					document.getElementById("menu2").style.display="none";
+					document.getElementById("menu3").style.display="none";
+					document.getElementById("menu4").style.display="none";
+					document.getElementById("menu5").style.display="none";
+					document.getElementById("bouton").style.display="none";
+					document.getElementById("compteur").style.display="none";
+					document.getElementById("div-1").style.display="none";
+					document.getElementById("Agenda").style.display="block";
+					document.getElementById("Suspect").style.display="block";
+				} else{
+					document.getElementById("compteur").innerHTML = "Ach ! Vous avez "+point+ " points. Dommage, recommencez!"
+					document.getElementById("BoutonRefresh").style.display="block";}
+				}	
+			}
+			
+			function VideMenu(menuId) {  
+				let menu = document.getElementById(menuId)
+				menu.innerHTML = "";
+			}
+			
+			function afficherQuestion(index) {
+				VideMenu("menu1");
+				VideMenu("menu2");
+				VideMenu("menu3");
+				VideMenu("menu4");
+				VideMenu("menu5");
+				CreationMenu("menu1", données_Q[index][0]);
+				CreationMenu("menu2", données_Q[index][1]);
+				CreationMenu("menu3", données_Q[index][2]);
+				CreationMenu("menu4", données_Q[index][3]);
+				CreationMenu("menu5", données_Q[index][4]);
+				document.getElementById("son").src = données_vraies[ActuQuestion][0];
+			}
+		</script>
+	</body>
+</html>

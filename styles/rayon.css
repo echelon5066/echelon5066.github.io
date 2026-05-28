@@ -1,0 +1,144 @@
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-image:url("../images/rayon/fdSalle.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: sans-serif;
+}
+#div-1{ 
+    position: absolute; 
+    top:29%; 
+    left: 44%; 
+    font-size: 30px;
+}
+#div-Q{
+    position: absolute; 
+    top:35%; 
+    left:25%; 
+    font-size: 25px;
+    color: white;
+}
+#son{
+    position: absolute; 
+    top:60%; 
+    left:44%;
+}
+#menu1{
+    position: absolute; 
+    left:27%; 
+    top:52%;
+}
+#menu2{
+    position: absolute;
+    left:42%;
+    top:52%;
+}
+#menu3{
+    position: absolute;
+    left:50%; 
+    top:52%;
+}
+#menu4{
+    position: absolute;
+    left :59%;
+    top:52%;
+}
+#menu5{
+    position: absolute; 
+    left:69%; 
+    top:52%;
+}
+#bouton{
+    position: absolute; 
+    left:90%; 
+    top:90%;
+}
+
+#divrep1{
+    display:block;
+    box-sizing: border-box;
+    position : absolute;
+    bottom : 20px;
+    width:100%;
+    justify-content: center;
+    align-items:center;
+    }
+#compteur{
+    box-sizing: content-box;
+    color: black;
+    background-color: #A0F0C8BF;
+    border-radius: 5px;
+    position : absolute;
+    margin : 20px;
+    padding : 10px;
+}
+    
+#Agenda{
+    height: 80vh;
+    width: auto;
+    margin: auto;         
+    padding: 0;
+}
+
+#BoutonRefresh{
+    position: absolute;
+    left:90%;
+    top:85%;
+}
+    
+.rep{
+    box-sizing: border-box;
+    color: black;
+    background-color: #A0F0C8BF;
+    border-radius: 5px;
+    font-size:clamp(16px, 2.4vw, 20px);
+    text-align: justify;
+    padding:50px 200px 50px 50px;
+    margin:30px 30px 0px 10px;
+    line-height:1.4em;}
+.rep1{
+    box-sizing: border-box;
+    color: black;
+    background-color: #A0F0C8BF;
+    border-radius: 5px;
+    font-size:clamp(16px, 2.4vw, 20px);
+    margin:auto;
+    padding:5px;
+    line-height:1.4em;}
+
+.perso{
+    position: absolute;
+    left: 0px;
+    top: 20px;
+    color: white;
+    padding: 15px;
+    font-size:clamp(14px, 1vw, 18px) ;
+    background-color: #008b7c;
+}    
+    
+.Suivant{
+    position : absolute;
+    right: 20px;
+    color: white;
+    padding: 17px 44px;
+    border: red;
+    border-radius: 5px;
+    font-size: clamp(16px, 1.2vw, 20px);
+    cursor: pointer;
+    background-color:#008b7c;
+    display:block;
+    bottom:30px;
+}
+#Suspect {
+    display:block;
+    box-sizing: border-box;
+    position : absolute;
+    bottom : 20px;
+    width:100%;
+    justify-content: center;
+    align-items:center;
+}
