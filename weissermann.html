@@ -6,8 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="vaissermann.css">
-  <title>Vaisseaumann- I004</title>
+  <link rel="stylesheet" href="styles/weissermann.css">
+  <title>F-0.03</title>
 </head> 
 									<!--Fin du head-->
 
@@ -17,7 +17,7 @@
 	<div id="background"></div>
 
 	<div id="intro_du_jeu"> <!--Division qui contient l'intro du jeu avec un bouton pour commencer -->
-		<h1>Welcome in Mrs. Vaisseaumann's room !</h1>
+		<h1>Welcome in Mrs. Weißermann's room !</h1>
 		<button class="bouton_intro" onclick="suivant('intro_du_jeu', 'boite_dialogue')">Suivant</button>
 	</div>
 
@@ -49,10 +49,10 @@
 		document.getElementById(apparu).style.display = mode;
 	}  
 	
-	<!-- L'index des dialogues dans la boîte de dialogue-->
+	// L'index des dialogues dans la boîte de dialogue-->
 	let index = 0;
 	
-	<!-- Liste contenant les paroles de Mme Vaisseaumann -->
+	// Liste contenant les paroles de Mme Vaisseaumann -->
 	const dialogues = [
 		"Hello<br> Vous m'avez suivi ici car vous voulez en savoir plus concernant la disparation de Mr.Champignon",
 		"Avant de vous donner cette indice, j'ai besoin de votre aide... ",
@@ -64,18 +64,18 @@
 		"Bon courage."
     ];
 
-	<!-- Fonction déclencher à chaque click sur '-->' : elle permet de faire avancer le dialogue / les paroles de Mme Vaisseaumann -->
+	// Fonction déclencher à chaque click sur '-->' : elle permet de faire avancer le dialogue / les paroles de Mme Vaisseaumann -->
     function avancerHistoire() {
-		<!-- On augmente l'index de 1 -->
+		// On augmente l'index de 1 -->
         index = index + 1;
 		
-		<!-- Si l'index est supérieur au nombres de paroles cela signifie que le dialogue est fini -->
+		// Si l'index est supérieur au nombres de paroles cela signifie que le dialogue est fini -->
         if (index >= dialogues.length) {
             document.getElementById("boite_dialogue").style.display = "none"; 
             document.getElementById("jeu").style.display = "block";
             return;
         }
-		<!-- On fait alors disparaître la boîte de dialogue et on fait apparaître le jeu -->
+		// On fait alors disparaître la boîte de dialogue et on fait apparaître le jeu -->
         document.getElementById("texte_jeu").innerHTML = dialogues[index];
     }
 
@@ -103,7 +103,7 @@
 	];
 
     // Initialisation, on affiche la première image
-    document.getElementById("image").src = images[0].src;
+    document.getElementById("image").src = "images/weissermann/" + images[0].src;
 	
 	//Fonction pour changer la photo et remettre a carte au centre
     function imageSuivante() {
@@ -112,7 +112,7 @@
         
 		//Si l'index est plus petit que le nombre d'image = il reste des images donc on met l'image dans la carte
         if (imageIndex < images.length) {
-            document.getElementById("image").src = images[imageIndex].src;
+            document.getElementById("image").src = "images/weissermann/" + images[imageIndex].src;
         } else { // Il ne reste plus d'imaes
             // Fin du jeu
             document.getElementById("jeu").innerHTML = `
