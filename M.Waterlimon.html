@@ -70,7 +70,7 @@ let divmal
  ["Oh… Rapidement alors…","Non merci ça ira, vous savez qui l'a tué ?","Bien sûr, parler de vos souvenirs pourrait vous faire du bien."],
  ["Quel geste généreux, cela a dû vous rapprocher énormément","Super, on peut revenir au présent ?","Eh ben, comme quoi il en faut peu."],
  ["Oooh, ma grand-mère habite là bas !","Cela doit vous rappeler de nombreux souvenirs d’enfance.","Tu parles d’une destination de vacances…"],
- ["On s'en fiche de son perroquet !! LES INFOS ?????","Vous voulez que je m'occupe de son perroquet ?”","Je suis vraiment désolé, vous n'êtes pas seul, sachez-le."]];// on crée une liste avec autant de sous-listes que de question. Chaque sous-liste contient les 3 propositions pour la réponse, elles sont dans l'ordre où elles seront sur la page 
+ ["On s'en fiche de son perroquet !! LES INFOS ?????","Vous voulez que je m'occupe de son perroquet ?","Je suis vraiment désolé, vous n'êtes pas seul, sachez-le."]];// on crée une liste avec autant de sous-listes que de question. Chaque sous-liste contient les 3 propositions pour la réponse, elles sont dans l'ordre où elles seront sur la page 
  
  const Texte_Waterlimon = [ 
  // liste avec les répliques de M. Waterlimon
@@ -189,7 +189,7 @@ const  divs_apres_jeu=["divrep1","divrep2","divrep3","divrep4","divrep5","divrep
   else{
   
    document.getElementById(divs_apres_jeu[z-1]).style.display="none";//on cache la divrep précédente (grâce à l'indice z) 
-    document.getElementById(divs_apres_jeu[z]).style.display="flex"//on montre la divrep suivante (grâce à l'indice z)
+    document.getElementById(divs_apres_jeu[z-1]).style.display="flex"//on montre la divrep suivante (grâce à l'indice z)
 	z=z+1;// on augmente l'indice de 1
  }
  }
