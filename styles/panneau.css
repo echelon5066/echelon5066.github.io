@@ -11,7 +11,7 @@ body {
         background-position: center;
         background-repeat: no-repeat;
         height: 100vh; 
-        width: auto;
+        width: 100%;
         position: relative; 
 #suivant {
     position: absolute;
