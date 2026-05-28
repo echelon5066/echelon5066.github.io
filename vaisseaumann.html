@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/vaisseaumann.css">
-  <title>Salle F-0.0hh3</title>
+  <title>Salle F-0.0jj3</title>
 </head> 
 									<!--Fin du head-->
 
@@ -38,8 +38,10 @@
 		<div id="carte">
 			<img id="image" alt="Image à trier" draggable="false"> 
 		</div>
-		<div id="resultat"></div>
 	</div>
+	<div id="resultat"></div>
+
+
 	
 	<script>
 	
@@ -122,7 +124,7 @@
 	];
 
     // Initialisation, on affiche la première image
-    document.getElementById("image").src = "images/vaisseaumann/" + images[0].src;
+    document.getElementById("image").src = images[0].src;
 	
 	//Fonction pour changer la photo et remettre a carte au centre
     function imageSuivante() {
@@ -134,15 +136,17 @@
             document.getElementById("image").src = images[imageIndex].src;
         } else { // Il ne reste plus d'images
             // Fin du jeu
-            document.getElementById("jeu").innerHTML = `
+            document.getElementById("resultat").innerHTML = `
                 <div style="text-align:center; color:white; background:rgba(0,0,0,0.8); padding:30px; border-radius:20px;">
                     <h2>La partie terminée !</h2>
-                    <p style="font-size:22px;">Votre score final est de : <strong>${score} /16</strong></p>
+                    <p style="font-size:22px;">Votre score final est de : <strong>${score} /15</strong></p>
                 </div>`;
 			document.getElementById("jeu").style.display = "none";
 			document.getElementById("boite_dialogue").style.display = "block";
+
+			document.getElementById("bouton_suivant").onclick = avancerFin;
 			index=20;
-			avancerFin()
+			
         }
     }
 	
