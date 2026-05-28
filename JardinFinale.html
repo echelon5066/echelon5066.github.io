@@ -93,11 +93,24 @@
 			line-height:1.4em;
 			
 			}
-
+	  #rep1{
+	  
+			box-sizing: border-box;
+   			color: black;
+    		background-color: #577635;
+			border-radius: 5px;
+			font-size:clamp(16px, 2.4vw, 20px);
+    		text-align: justify;
+			padding:20px;
+			line-height:1.4em;
+			
+			}
         </style>
     </head>
     <body>
         <div class="image-container">
+			<p id= "rep1">Voilà la scène de crime ! Peut être que les objets nous donnerons un indice ? *Survolez les objets pour obtenir des informations* </p>
+			<input type="button" onclick=" effacer()"
             <img class="background-image" src="images/ImageJardinProjetNSImodifier.jpg">
             <div class = "rep" id="zoneDeText"></div> 
 
@@ -109,6 +122,10 @@
         </div>
 
         <script>
+			function effacer(){
+			let rep1 = document.getElementById("rep1");	
+			rep1.style.display = "none";
+			}
 			let zoneDeText = document.getElementById("zoneDeText"); 
 			zoneDeText.style.display = "none";
 			
