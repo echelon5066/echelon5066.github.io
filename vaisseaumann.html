@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/weissermann.css">
+  <link rel="stylesheet" href="styles/vaisseaumann.css">
   <title>F-0.03</title>
 </head> 
 									<!--Fin du head-->
@@ -17,7 +17,7 @@
 	<div id="background"></div>
 
 	<div id="intro_du_jeu"> <!--Division qui contient l'intro du jeu avec un bouton pour commencer -->
-		<h1>Welcome in Mrs. Weißermann's room !</h1>
+		<h1>Welcome in Mrs. Vaisseaumann's room !</h1>
 		<button class="bouton_intro" onclick="suivant('intro_du_jeu', 'boite_dialogue')">Suivant</button>
 	</div>
 
@@ -103,7 +103,7 @@
 	];
 
     // Initialisation, on affiche la première image
-    document.getElementById("image").src = "images/weissermann/" + images[0].src;
+    document.getElementById("image").src = "images/vaisseaumann/" + images[0].src;
 	
 	//Fonction pour changer la photo et remettre a carte au centre
     function imageSuivante() {
@@ -112,7 +112,7 @@
         
 		//Si l'index est plus petit que le nombre d'image = il reste des images donc on met l'image dans la carte
         if (imageIndex < images.length) {
-            document.getElementById("image").src = "images/weissermann/" + images[imageIndex].src;
+            document.getElementById("image").src = "images/vaisseaumann/" + images[imageIndex].src;
         } else { // Il ne reste plus d'imaes
             // Fin du jeu
             document.getElementById("jeu").innerHTML = `
