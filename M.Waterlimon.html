@@ -51,6 +51,7 @@ nouvelle_question();//on lance la fonction nouvelle fonction
  
  <script> //script jeu
  //on déclare toutes les variables globales d'un coup
+document.getElementById("mj").style.display="none";
  let bonne_reponse 
 let moyenne_reponse
 let mauvaise_reponse
@@ -189,11 +190,11 @@ const  divs_apres_jeu=["divrep1","divrep2","divrep3","divrep4","divrep5","divrep
   else{
   
    document.getElementById(divs_apres_jeu[z-1]).style.display="none";//on cache la divrep précédente (grâce à l'indice z) 
-    document.getElementById(divs_apres_jeu[z-1]).style.display="flex"//on montre la divrep suivante (grâce à l'indice z)
+    document.getElementById(divs_apres_jeu[z]).style.display="flex"//on montre la divrep suivante (grâce à l'indice z)
 	z=z+1;// on augmente l'indice de 1
  }
  }
-  
+ document.getElementById("next").style.display="none"; 
   
 </script> 
  
