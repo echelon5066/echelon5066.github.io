@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/vaisseaumann.css">
-  <title>Salle F-0.0jjjj3</title>
+  <title>Salle F-0.0gggg3</title>
 </head> 
 									<!--Fin du head-->
 
@@ -94,13 +94,15 @@
         document.getElementById("texte_jeu").innerHTML = dialogues[index];
     }
 	 function avancerFin() {
-		 document.getElementById("texte_jeu").innerHTML = dialogues[index];
-		 index = index +1;
-		 if (index >= dialogues.length) {
+		index = index + 1;
+		if (index < dialogues.length) {
+			document.getElementById("texte_jeu").innerHTML = dialogues[index];
+		} 
+		else {
 			document.getElementById("boite_dialogue").style.display = "none"; 
-        }
-	 }
-
+		}
+	}
+		
     // Système de score et de gestion des images
     let score = 0; //La valeur du score
     let imageIndex = 0; //L'index de l'image afffiché
@@ -141,13 +143,19 @@
                     <h2>La partie terminée !</h2>
                     <p style="font-size:22px;">Votre score final est de : <strong>${score} /15</strong></p>
                 </div>`;
-			document.getElementById("jeu").style.display = "none";
-			document.getElementById("boite_dialogue").style.display = "block";
+			setTimeout(function() {
+				document.getElementById("resultat").style.display = "none";
+				document.getElementById("jeu").style.display = "none";
+				document.getElementById("boite_dialogue").style.display = "block";
 
-			document.getElementById("bouton_suivant").onclick = avancerFin;
-			index=20;
-			
-        }
+				// Changement de l'action du bouton
+				document.getElementById("bouton_suivant").onclick = avancerFin;
+				
+				// CORRECTION ICI : On initialise l'index sur 19 et on force l'affichage immédiat
+				index = 19;
+				document.getElementById("texte_jeu").innerHTML = dialogues[index];
+			}, 2000);
+		}
     }
 	
 	function remettreCarteAuCentre() {
