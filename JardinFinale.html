@@ -103,9 +103,14 @@
     		text-align: justify;
 			padding:20px;
 			line-height:1.4em;
+			position: absolute;
+			top:10%;
+			left:15%;
 			
 			}
+			
 		#bouton{
+		
 			position: absolute;
 			top:90%;
 			left: 90%;
@@ -118,8 +123,8 @@
         <div class="image-container">
 
             <img class="background-image" src="images/ImageJardinProjetNSImodifier.jpg">
-			<p id= "rep1">Voilà la scène de crime ! Peut être que les objets nous donnerons un indice ? *Survolez les objets pour obtenir des informations* </p>
-			<input id="bouton" type="button" value="suivant" onclick=" effacer()"
+			<div id= "rep1">Voilà la scène de crime ! Peut être que les objets nous donnerons un indice ? *Survolez les objets pour obtenir des informations* </div>
+			<input id="bouton" type="button" value="suivant" onclick=" effacer()">
             <div class = "rep" id="zoneDeText"></div> 
 
             <button id="PorteFeuille"> > </button>
@@ -130,16 +135,19 @@
         </div>
 
         <script>
+
 			function effacer(){
 			let rep1 = document.getElementById("rep1");	
 			rep1.style.display = "none";
+			let bouton = document.getElementById("bouton");	
+			bouton.style.display = "none";
 			}
 			let zoneDeText = document.getElementById("zoneDeText"); 
 			zoneDeText.style.display = "none";
 			
             let text = ["Un porte feuille ? Allons, vous n'allez pas en profit... mais... mais ! stop !!! voler un mort c'est quand même voler enfin !!",
 						"Vous cherchez les sujets des contrôles ? Enfin, ce n'est plus d'actualité ! Concentrez-vous sur cette enquête !",
-						"Tiens tiens des tasses... mais, les thés 'nont pas la même couleur !! Et celle-ci dégage une odeur étrange, aurait-on pu l'empoisonner ?",
+						"Tiens tiens des tasses... mais, les thés n'ont pas la même couleur !! Et celle-ci dégage une odeur étrange, aurait-on pu l'empoisonner ?",
 						"Hmm... des clés... l'arme du crime ?",
 						"Oh, l'empreinte du corps, encore fraîche... tiens il n'y a pas de sang, pourquoi ?"];
 
