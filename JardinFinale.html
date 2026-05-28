@@ -105,13 +105,21 @@
 			line-height:1.4em;
 			
 			}
+		#bouton{
+			position: absolute;
+			top:90%;
+			left: 90%;
+			padding: 5px;
+			
+			}
         </style>
     </head>
     <body>
         <div class="image-container">
-			<p id= "rep1">Voilà la scène de crime ! Peut être que les objets nous donnerons un indice ? *Survolez les objets pour obtenir des informations* </p>
-			<input type="button" value="suivant" onclick=" effacer()"
+
             <img class="background-image" src="images/ImageJardinProjetNSImodifier.jpg">
+			<p id= "rep1">Voilà la scène de crime ! Peut être que les objets nous donnerons un indice ? *Survolez les objets pour obtenir des informations* </p>
+			<input id="bouton" type="button" value="suivant" onclick=" effacer()"
             <div class = "rep" id="zoneDeText"></div> 
 
             <button id="PorteFeuille"> > </button>
