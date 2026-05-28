@@ -30,7 +30,13 @@
  
  		<script> // script jeu
  			//on déclare toutes les variables globales d'un coup
-			document.getElementById("mj").style.display="none";
+	document.addEventListener('keydown', (e) => {
+   		 if (e.ctrlKey && e.key === 'm') {
+       		 game_master(); // Appelle la fonction pour aller à la fin du jeu
+    	}
+	});
+
+
 			let bonne_reponse;
 			let moyenne_reponse;
 			let mauvaise_reponse;
