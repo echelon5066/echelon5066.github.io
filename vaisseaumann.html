@@ -143,19 +143,21 @@
                     <h2>La partie terminée !</h2>
                     <p style="font-size:22px;">Votre score final est de : <strong>${score} /15</strong></p>
                 </div>`;
-			setTimeout(function() {
-				document.getElementById("resultat").style.display = "none";
-				document.getElementById("jeu").style.display = "none";
-				document.getElementById("boite_dialogue").style.display = "block";
+			document.getElementById("resultat").style.display = "block";
+            document.getElementById("resultat").className = ""; // Enlève le rouge/vert du dernier tri
 
-				// Changement de l'action du bouton
-				document.getElementById("bouton_suivant").onclick = avancerFin;
-				
-				// CORRECTION ICI : On initialise l'index sur 19 et on force l'affichage immédiat
-				index = 19;
-				document.getElementById("texte_jeu").innerHTML = dialogues[index];
-			}, 2000);
-		}
+            setTimeout(function() {
+                document.getElementById("resultat").style.display = "none";
+                document.getElementById("boite_dialogue").style.display = "block";
+
+                // Changement de l'action du bouton
+                document.getElementById("bouton_suivant").onclick = avancerFin;
+                
+                // On initialise l'index sur 19 et on affiche la boîte de dialogue
+                index = 19;
+                document.getElementById("texte_jeu").innerHTML = dialogues[index];
+            }, 3000);// au bout de 3000 millisecondes = 3 secondes
+        }
     }
 	
 	function remettreCarteAuCentre() {
