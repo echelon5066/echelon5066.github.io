@@ -5,10 +5,18 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="styles/menu.css">
 		<link rel="stylesheet" href="styles/waterlimon.css">
 		<title>Salle L-3.03</title> 
 	</head>
  	<body>
+
+		<div id="menu_deroulant">
+        <button>Menu</button>
+        <div class="liens">
+        <a href="panneau.html">Aller voir le panneau d'affichage</a>
+         </div>
+		</div>
 		<!---L'introduction du jeu--->
 		<script> //script intro
 			function suivant(){
@@ -155,7 +163,12 @@
 					//en gros il y a 6 cases de narration/paroles de personnages après, et z correspond au numéro de la case où on en est
 					document.getElementById(divs_apres_jeu[0]).style.display="flex";// on montre divrep 1 (la liste divs_apres_jeu est ligne 428, elle contient le nom des divreps qu'on va afficher)
 					z=1;//on augment z de 1 
-				} else {
+				} 
+				else if (z==6){
+					document.getElementById(divs_apres_jeu[z-1]).style.display="none";//on cache la divrep précédente (grâce à l'indice z)
+					document.getElementById("next").style.display="none";// on cache le bouton next 
+				}
+				else {
 					document.getElementById(divs_apres_jeu[z-1]).style.display="none";//on cache la divrep précédente (grâce à l'indice z) 
 					document.getElementById(divs_apres_jeu[z]).style.display="flex";//on montre la divrep suivante (grâce à l'indice z)
 					z=z+1;// on augmente l'indice de 1
