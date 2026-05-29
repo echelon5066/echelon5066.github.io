@@ -81,26 +81,26 @@ button{
 
 #titre{
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
-width: 80%;
-height: 100vh;
+width: 90%;
 transform: translate(-50%,-50%);
   text-align: center;
   color: white;
 }
 #titre h1{
-  font-size: 109px;
+  font-size: clamp(38px, 7vw, 95px);
   font-family: sans-serif;
   text-shadow:
     0 6px 0 black, 0 0 40px red, 0 0 50px darkred;
 }
 #titre h2{
-  font-size: 49px;
+  font-size: clamp(18px, 3vw, 42px);
   font-family: "Eater";
   color: red;
   text-shadow:
     0 8px 0 black, 0 0 1px red, 0 0 3px darkred;
+width: 100%;
 }
 
 #notif_motta{
