@@ -124,11 +124,11 @@
 		if (index < dialogues.length) {
 			document.getElementById("texte_jeu").innerHTML = dialogues[index];
 		} 
-		if (index == 28 && index < dialogues.length) {
+		if (index => 28 && index < dialogues.length) {
 			document.getElementById("prenom").innerText = "Vous";
 			document.getElementById("prenom").style.backgroundColor = "pink";
 		}
-		else {
+		else if (index >= dialogues.length){
 			document.getElementById("boite_dialogue").style.display = "none"; 
 			document.getElementById("menu_deroulant").style.display = "block"; 
 		}
