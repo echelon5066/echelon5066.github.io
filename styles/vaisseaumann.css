@@ -4,6 +4,72 @@ html, body {
     font-family: sans-serif;
 }
 
+
+#menu_deroulant {
+  position: fixed;
+  z-index: 150;
+  right: 15px;
+  top: 15px;
+  width: 120px;
+  font-family: sans-serif;
+}
+
+#menu_deroulant button {
+  width: 100%;
+  padding: 10px;
+  background: rgba(50, 50, 50, 0.9); 
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#menu_deroulant button:hover {
+  background: #ffb6c1; 
+  color: #222; 
+  border-color: #ffb6c1;
+}
+
+.liens {
+  display: none;
+  flex-direction: column;
+  margin-top: 5px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+#menu_deroulant:hover .liens {
+  display: flex;
+}
+
+.liens a {
+  background: rgba(240, 240, 240, 0.85); 
+  color: #333;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 14px;
+  transition: 0.2s;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.liens a:last-child {
+  border-bottom: none;
+}
+
+.liens a:hover {
+  background: rgba(255, 182, 193, 0.9);
+  color: #000;
+  padding-left: 15px; 
+}
+
+
+
+
+
+
 #background {
     position: fixed;
     width: 100%;
