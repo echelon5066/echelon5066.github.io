@@ -124,7 +124,7 @@
 		if (index < dialogues.length) {
 			document.getElementById("texte_jeu").innerHTML = dialogues[index];
 		} 
-		else if(index === 28){
+		if (index == 28 && index < dialogues.length) {
 			document.getElementById("prenom").innerText = "Vous";
 			document.getElementById("prenom").style.backgroundColor = "pink";
 		}
