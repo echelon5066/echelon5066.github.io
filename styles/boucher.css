@@ -18,7 +18,7 @@
 
 .Txt {
     position: absolute;
-    top: 86%;
+    top: 80%;
     left: 50%;
     transform: translateX(-50%);
     font-size: 20px;
@@ -29,7 +29,7 @@
 
 .Speaker {
     position: absolute;
-    top: 83%;
+    top: 75%;
     left: 50%;
     transform: translateX(-50%);
     font-size: 20px;
