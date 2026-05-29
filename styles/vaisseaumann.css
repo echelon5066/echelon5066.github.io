@@ -130,7 +130,7 @@ html, body {
       box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
     }
 
-button { 
+#boite_dialogue button, .bouton_intro { 
     position: absolute; 
     bottom: 10px; 
     right: 20px; 
