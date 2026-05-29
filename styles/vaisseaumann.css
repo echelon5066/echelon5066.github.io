@@ -8,10 +8,11 @@ html, body {
 #menu_deroulant {
   position: fixed;
   z-index: 150;
-  right: 15px;
-  top: 15px;
+  right: 20px;      
+  top: 20px;  
   width: 120px;
   font-family: sans-serif;
+  text-align: right; 
 }
 
 #menu_deroulant button {
