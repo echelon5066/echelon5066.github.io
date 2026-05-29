@@ -13,11 +13,11 @@ body{
 }
 
 .fond1{
-  background-image: url('https://lycee-henri4.com/wp-content/uploads/2020/12/accueil1-retail.jpg');
+  background-image: url('Images/accueil/lycee1;jpg');
   filter: brightness(0.5) blur(2px);
 }
 .fond2{
-  background-image: url('https://pbs.twimg.com/media/FOnDcSXXIAYcNj3.jpg');
+  background-image: url('images/accueil/hall.jpg');
 }
 
 #video_geno{
