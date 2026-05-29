@@ -4,6 +4,7 @@
   background-image:url('https://thumbs.dreamstime.com/b/salle-de-classe-du-coll%C3%A8ge-vide-avec-tableau-blanc-propre-retour-au-concept-d-%C3%A9ducation-scolaire-286133737.jpg');
           background-repeat: no-repeat; 
           background-size: cover;
+	 	background-height: 100vh;
           background-position: center;
 		  font-family:"Georgia";
 		  }
