@@ -28,16 +28,16 @@
 	<div id="background"></div>
 
 	<div id="intro_du_jeu"> <!--Division qui contient l'intro du jeu avec un bouton pour commencer -->
-		<h1>Welcome in Mrs. Weißermann's room !</h1>
+		<h1>Welcome in Mrs. Vaisseaumann's room !</h1>
 		<button class="bouton_intro" onclick="suivant('intro_du_jeu', 'boite_dialogue')">Suivant</button>
 	</div>
 
 
 
 
-	<!--On crée une boîte de dialogue qui contiendra les paroles de Madame Weißermann et un bouton pour les faire défiler -->
+	<!--On crée une boîte de dialogue qui contiendra les paroles de Madame Vaisseaumann et un bouton pour les faire défiler -->
 	<div id="boite_dialogue" > 
-		<div id=prenom>Mme Weißermann</div>
+		<div id=prenom>Mme Vaisseaumann</div>
 		<!-- On crée un identifiant pour le texte que contiendra la boîte de dialogue afin de pouvoir y faire appel dans le script et donc le modifier facilement -->
 		<p id="texte_jeu">Hello<br> Vous m'avez suivi ici car vous voulez en savoir plus concernant la disparation de Mr.Champignon</p>
 		<button id="bouton_suivant" onclick="avancerHistoire()">➡</button> <!--Bouton pour faire défiler le texte -->
@@ -66,7 +66,7 @@
 	// L'index des dialogues dans la boîte de dialogue-->
 	let index = 0;
 	
-	// Liste contenant les paroles de Mme Weißermann -->
+	// Liste contenant les paroles de Mme Vaisseaumann -->
 	const dialogues = [
 		"Welcome dans la salle F-0.03... Ignorez l'odeur de café brûlé, c'est parfaitement normal.",
 		"Vous m'avez sûrement suivie ici car vous voulez des informations sur la mystérieuse disparition de Monsieur Champignon...",
@@ -105,7 +105,7 @@
 		
 ];
 
-	// Fonction déclencher à chaque click sur '-->' : elle permet de faire avancer le dialogue / les paroles de Mme Weißermann -->
+	// Fonction déclencher à chaque click sur '-->' : elle permet de faire avancer le dialogue / les paroles de Mme Vaisseaumann -->
     function avancerHistoire() {
 		// On augmente l'index de 1 -->
         index = index + 1;
