@@ -100,18 +100,19 @@ html, body {
 
 #boite_dialogue {
     display: none;
-    position: relative;
-    bottom: 30px;
+    position: absolute;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 50%;
     height: 20%;
-    background: rgba(15, 15, 25, 0.85); 
+    background: rgba(15, 15, 25, 0.35); 
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     padding: 20px 80px 20px 30px; /* Plus d'espace à droite pour ne pas chevaucher le bouton */
-    box-sizing: border-box;       /* Évite que le padding déforme la boîte */
+    box-sizing: border-box; 
+    color: white;
     z-index: 2000;
 }
 
