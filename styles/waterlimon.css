@@ -1,12 +1,15 @@
 
   
- body {
-  background-image:url('https://thumbs.dreamstime.com/b/salle-de-classe-du-coll%C3%A8ge-vide-avec-tableau-blanc-propre-retour-au-concept-d-%C3%A9ducation-scolaire-286133737.jpg');
-          background-repeat: no-repeat; 
-          background-size: cover;
-          background-position: center;
-		  font-family:"Georgia";
-		  }
+body {
+    background-image: url(https://thumbs.dreamstime.com/b/salle-de-classe-du-coll%C3%A8ge-vide-avec-tableau-blanc-propre-retour-au-concept-d-%C3%A9ducation-scolaire-286133737.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /* bottom: 0px; */
+    /* position: relative; */
+    /* background-position: center; */
+    font-family: "Georgia";
+    z-index: -1;
+}
 		  
 		  
 		  #conteneur_intro{
