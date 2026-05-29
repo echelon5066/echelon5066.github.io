@@ -28,16 +28,16 @@
 	<div id="background"></div>
 
 	<div id="intro_du_jeu"> <!--Division qui contient l'intro du jeu avec un bouton pour commencer -->
-		<h1>Welcome in Mrs. Vaisseaumann's room !</h1>
+		<h1>Welcome in Mrs. Weißermann's room !</h1>
 		<button class="bouton_intro" onclick="suivant('intro_du_jeu', 'boite_dialogue')">Suivant</button>
 	</div>
 
 
 
 
-	<!--On crée une boîte de dialogue qui contiendra les paroles de Madame Vaisseaumann et un bouton pour les faire défiler -->
+	<!--On crée une boîte de dialogue qui contiendra les paroles de Madame Weißermann et un bouton pour les faire défiler -->
 	<div id="boite_dialogue" > 
-		<div id=prenom>Mme Vaisseaumann</div>
+		<div id=prenom>Mme Weißermann</div>
 		<!-- On crée un identifiant pour le texte que contiendra la boîte de dialogue afin de pouvoir y faire appel dans le script et donc le modifier facilement -->
 		<p id="texte_jeu">Hello<br> Vous m'avez suivi ici car vous voulez en savoir plus concernant la disparation de Mr.Champignon</p>
 		<button id="bouton_suivant" onclick="avancerHistoire()">➡</button> <!--Bouton pour faire défiler le texte -->
@@ -66,7 +66,7 @@
 	// L'index des dialogues dans la boîte de dialogue-->
 	let index = 0;
 	
-	// Liste contenant les paroles de Mme Vaisseaumann -->
+	// Liste contenant les paroles de Mme Weißermann -->
 	const dialogues = [
 		"Welcome dans la salle F-0.03... Ignorez l'odeur de café brûlé, c'est parfaitement normal.",
 		"Vous m'avez sûrement suivie ici car vous voulez des informations sur la mystérieuse disparition de Monsieur Champignon...",
@@ -86,26 +86,26 @@
 		"Un peu comme Tinder, mais pour la désinformation.",
 		"Good luck.",
 		"Et surtout...",
-		"ne faites pas confiance aux mains avec six doigts.",
+		"Ne faites pas confiance aux mains avec six doigts.",
 		"Comme promis, voici ce que je sais sur la disparition de Monsieur Champignon...",
-		"Hier après-midi, en allant au collège pour mon cours avec les 3ème 3, j'ai soudain entendu des éclats de voix de voix qui provenanit du jardin de la proviseure.",
+		"Hier après-midi, en allant au collège pour mon cours avec les 3ème 3, j'ai soudain entendu des éclats de voix de voix qui provenaient du jardin de la proviseure.",
 		"En jetant un coup d'oeil, j'ai vu feu Monsieur Champignon et la proviseure Mozza-Garcia en pleine 'discussion'",
-		"Ils huralaient fort ...",
+		"Ils hurlaient fort ...",
 		"Je n'ai pas compris grand chose, mais il me semble qu'il parlait d'un poste ...",
 		"Oui... il me semble que c'était pour de la NSI ...",
-		"Après ça je suis allé faire cours à mes 3ème directement.",
+		"Après ça je suis allée faire cours à mes 3ème directement.",
 		"Voilà c'est tout ce que je sais... depuis cet incident je n'ai plus revu Monsieur Champignon",
 		"Goodbye ! Et courage pour votre enquête !",
 		"Une dispute hein ?",
 		"Mais .... pourquoi n'y ai-je pas pensé plus tôt !?",
-		"Madame Mozza-Garcia à bien dit que le corps avait été retrouvé dans le jardin",
-		"Et maintenant on me dit qu'elle s'est disputé avec lui au même endroit quelques jeures avant sa mort ?",
+		"Madame Mozza-Garcia a bien dit que le corps avait été retrouvé dans le jardin",
+		"Et maintenant on me dit qu'elle s'est disputé avec lui au même endroit quelques heures avant sa mort ?",
 		"Il se passe des choses vraiemnt étranges ici...",
 		"Il faut absolument que j'aille dans le jardin ! Je trouverai peut-être quelque chose ..."
 		
 ];
 
-	// Fonction déclencher à chaque click sur '-->' : elle permet de faire avancer le dialogue / les paroles de Mme Vaisseaumann -->
+	// Fonction déclencher à chaque click sur '-->' : elle permet de faire avancer le dialogue / les paroles de Mme Weißermann -->
     function avancerHistoire() {
 		// On augmente l'index de 1 -->
         index = index + 1;
