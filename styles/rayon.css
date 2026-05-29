@@ -52,11 +52,7 @@ body {
     left:69%; 
     top:52%;
 }
-#bouton{
-    position: absolute; 
-    left:90%; 
-    top:90%;
-}
+
 
 #divrep1{
     display:block;
@@ -84,11 +80,6 @@ body {
     padding: 0;
 }
 
-#BoutonRefresh{
-    position: absolute;
-    left:90%;
-    top:85%;
-}
     
 .rep{
     box-sizing: border-box;
